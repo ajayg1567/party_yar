@@ -60,5 +60,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'rails_12factor', group: :production
 
-ruby '2.6.5'
