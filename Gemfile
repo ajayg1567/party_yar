@@ -62,3 +62,4 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'rails_12factor', group: :production
 
+ruby '2.6.5'
