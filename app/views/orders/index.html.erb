@@ -1,0 +1,81 @@
+<div class="inner-page-content0">
+
+  <div class="my-acount-deatils">
+    <div class="container" style="width: 85%;">
+      <div class="row">
+        <%= render 'my_account/my_account_sidemenu'%>
+
+        
+        <div class="col-md-10">
+          <div class="profile-edit-0details my-order">
+            <div class="order-query">
+              <h1>My Orders</h1>
+              <!-- <a href="#">General Query</a> -->
+            </div>
+
+            <%@orders.each do |order|%>
+            <div class="order-place-date1">
+              <p>Order Placed: <%= order.created_at.strftime('%a, %d %b, %y, %H:%M')%> HRS</p>
+              <span>Order No: <%= order.order_no%></span>
+            </div>
+
+            <div class="delivered-on-list">
+              <div class="delivered-on0" style="width: 50%;">
+                <p class="Delivered-pop" style="text-align: left;"><span class="status">In transit</span><br><span><%= order.created_at.strftime('%a, %d %b, %y')%></span></p>
+                <div class="images_cushion">
+                  <div class="raw">
+                    <div class="col-md-8">
+                      <div class="raw">
+                        <div class="col-md-6">
+                          <img src="<%= url_for(@products[order.product_id].banner) if @products[order.product_id].banner.attached?%>">
+                        </div>
+                        <div class="col-md-6">
+                          <p style="float: left;margin-left: 1em;"><%= @products[order.product_id].name%><br>
+                            <%if order.additional[:product_upgrade_id].present?%>
+                              <%= @product_upgrades[order.product_upgrade_id].price.to_i%> * 1
+                            <%else%>
+                              <%= @products[order.product_id].price.to_i%> * 1
+                            <%end%>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <p>Delivery Details</p>
+                      <p>Tue, 25 Dec 18</p>
+                      <p>Courier</p>
+                      <p>09:00 Hrs-21:00 Hrs</p>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="delivered-on0" style="width: 25%;">
+                <p class="Delivered-pop"><span>Recipient's Deatils </span><br><span> Wed, 26 Dec 18</span></p>
+
+              </div>
+
+              <div class="delivered-on0" style="width: 25%;">
+                <p class="Delivered-pop" style="text-align: right;"><span>Sub Order No. </span><br><span><%= order.order_no%></span></p>
+                <div class="images_cushion_btn" style="display: grid;">
+                  <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
+                  <a href="#" class="track-order_2"><i class="fa fa-question-circle" aria-hidden="true"></i>Raise query</a>              
+                  <%= link_to admin_invoice_show_path(order, format: :pdf), :class=>'track-order_3 btn btn-primary' do %>
+										<i class="fa fa-download" aria-hidden="true"></i> Download Invoice
+										<%end%>
+
+                   
+                </div>
+              </div>            
+            </div>
+            <%end%>
+
+          </div>
+        </div> <!-- col-md-10-->
+        
+
+      </div>
+    </div>
+  </div>
+</div>

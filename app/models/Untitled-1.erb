@@ -1,0 +1,139 @@
+<h3>Order #<%= @order.order_no%> Details</h3>
+<h4> Payment Made via <%= @order.payment_mode.capitalize %></h4><br>
+<div class="row">
+<div class="col-md-4">
+<p><strong>General</strong></p>
+<p>Date Created:</p>
+<%= @order.created_at.strftime('%a, %d %b, %y, %H:%M')%> HRS
+</div>
+<div class="col-md-4">
+<p><strong>Billing Address</strong></p>
+
+</div>
+<div class="col-md-4">
+<p><strong>Shipping Address</strong></p>
+</div>
+</div>
+
+
+
+<p>
+  <strong>Order Number:1</strong>
+  <%= @order.order_no %>
+</p>
+
+<p>
+  <strong>Order Name(Product):</strong>
+  <%= @order.product.name %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @order.additional["extra_field_id"] %>
+</p>
+
+<p>
+  <strong>Payment Mode:</strong>
+  <%= @order.payment_mode %>
+</p>
+
+<p>
+  <strong>User Name:</strong>
+  <%= @order.user.name %>
+</p>
+
+<p>
+  <strong>Order Status:</strong>
+  <%= @order.status %>
+</p>
+
+
+
+div class="inner-page-content0">
+
+  <div class="my-acount-deatils">
+    <div class="container" style="width: 85%;">
+      <div class="row">
+          <div class="profile-edit-0details my-order">
+            <div class="order-query">
+              <h1>My Orders</h1>
+              <!-- <a href="#">General Query</a> -->
+            </div>
+
+            <div class="order-place-date1">
+              <p>Order Placed: <%= @order.created_at.strftime('%a, %d %b, %y, %H:%M')%> HRS</p>
+              <span>Order No: <%= @order.order_no%></span>
+            </div>
+
+            <div class="delivered-on-list">
+              <div class="delivered-on0" style="width: 50%;">
+                <p class="Delivered-pop" style="text-align: left;"><span class="status">In transit</span><br><span><%= @order.created_at.strftime('%a, %d %b, %y')%></span></p>
+                <div class="images_cushion">
+                  <div class="raw">
+                    <div class="col-md-8">
+                      <div class="raw">
+                        <div class="col-md-6">
+                          <img src="<%= url_for(@product.banner) if @product.banner.attached?%>">
+                        </div>
+                        <div class="col-md-6">
+                          <p style="float: left;margin-left: 1em;"><%= @product.name%><br>
+                            <%if @order.additional[:product_upgrade_id].present?%>
+                              <%= @product_upgrades[order.product_upgrade_id].price.to_i%> * 1
+                            <%else%>
+                              <%= @product.price.to_i%> * 1
+                            <%end%>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <p>Delivery Details</p>
+                      <p>Tue, 25 Dec 18</p>
+                      <p>Courier</p>
+                      <p>09:00 Hrs-21:00 Hrs</p>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="delivered-on0" style="width: 25%;">
+                <p class="Delivered-pop"><span>Recipient's Deatils </span><br><span> Wed, 26 Dec 18</span></p>
+
+              </div>
+
+              <div class="delivered-on0" style="width: 25%;">
+                <p class="Delivered-pop" style="text-align: right;"><span>Sub Order No. </span><br><span><%= @order.order_no%></span></p>
+                <div class="images_cushion_btn" style="display: grid;">
+                  <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
+                  <a href="#" class="track-order_2"><i class="fa fa-question-circle" aria-hidden="true"></i>Raise query</a>
+                  <a href="#" class="track-order_3"><i class="fa fa-download" aria-hidden="true"></i>Download Invoice</a>
+                </div>
+              </div>            
+            </div>
+          
+
+          </div>
+        </div> <!-- col-md-10-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-6">
+		<a href="#" class="well-link">
+				<div class="panel panel-success panel-shadow">
+					<div class="panel-heading">Another Link</div>
+					<div class="panel-body">
+						The description goes here in the panel body.
+					</div>
+				</div>    
+			</a>
+	</div>

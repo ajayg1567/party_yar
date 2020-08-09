@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-lg-12 offset-lg-3">
+    <div class="well bs-component">
+      <fieldset>
+        <legend>Products <%= link_to 'Add Product', new_admin_product_path, class: 'btn btn-primary btn-sm custom'%>
+         &nbsp;&nbsp; <%= link_to 'Upload Products', import_form_admin_products_path, class: 'btn btn-warning', style: "position:absolute;" %>
+        </legend>
+        
+        <table class="responsive nowrap table table-hover" id="dttb-products" data-sort="true" data-source="<%= admin_products_url(format: :json)%>">
+          <thead>
+            <tr>
+              <th data-data="name">Name</th>
+              <th data-data="price">Price</th>
+              <th data-data="shipping_method_id">Shipping method</th>
+              <th data-data="sub_category_id">Sub category</th>
+              <th data-data="quantity">Quantity</th>
+              <th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px"></th>
+            </tr>
+          </thead>
+        </table>
+      </fieldset>
+    </div>
+  </div>
+</div>

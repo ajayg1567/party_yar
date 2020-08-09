@@ -1,0 +1,101 @@
+<style type="text/css">
+.heading-status {
+margin-top: -1%;
+}
+.panel-success > .panel-heading {
+    color: black;
+    font-weight: bold;
+}
+
+a.track-order_1 {
+    background: #f76804;
+    color: #ffffff;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 16px;
+    margin: 0 auto 10px;
+    display: inline-block;
+    max-width: 100%;
+    }
+a.track-order_3 {
+    border: solid 1px #0a21d6;
+    background: #ffffff;
+    color: #0021f3;
+    text-align: center;
+    padding: 7px 10px;
+    font-size: 16px;
+    margin: 0 auto 10px;
+    display: inline-block;
+    max-width: 100%;
+}
+
+</style>
+<h3>Order #<%= @order.order_no%> Details</h3>
+<h4> Payment Made via <%= @order.payment_mode.capitalize %></h4><br>
+<div class="row">
+<div class="col-md-4">
+<p><strong>General</strong></p>
+<p><strong>Order Placed On:,</strong></p>
+<%= @order.created_at.strftime('%a, %d %b, %y, %H:%M')%> HRS
+</div>
+<div class="col-md-3">
+<p><strong>Billing Address</strong></p>
+<p><%= @full_address%></p>
+</div>
+</div>
+<br>
+<div class="form-group" style="width:15%;">
+  <label for="sel1">Change Order Status</label>
+  <%= select_tag "credit_card", options_for_select(["Completed","Processing","Delivered","Failed","Cancelled" ], @order_status),:class=>'form-control' %>
+
+</div>
+
+<br>
+<section class="container">
+  <div class="panel panel-default panel-success panel-shadow">
+			    <div class="panel-heading" style="padding: 24px 12px;">
+      
+          <div class="col-md-4 heading-status">
+           <span class="status ">In transit</span><span><%= @order.created_at.strftime('%a, %d %b, %y')%></span>
+          </div>
+          <div class="col-md-4 heading-status">
+          <p class="Delivered-pop"><span>Recipient's Deatils </span><span> Wed, 26 Dec 18</span></p>
+          </div>
+          <div class="col-md-4 heading-status">
+           <p class="Delivered-pop"><span>Sub Order No. </span><span><%= @order.order_no%></span></p>
+          </div>
+    </div>
+			    <div class="panel-body">
+     <div class="col-md-3">
+           <img src="<%= url_for(@product.banner) if @product.banner.attached?%>" width="150">
+          </div>
+          <div class="col-md-3">
+          <p style="float: left;margin-left: 1em;"><%= @product.name%><br>
+                            <%if @order.additional[:product_upgrade_id].present?%>
+                              <%= @product_upgrades[order.product_upgrade_id].price.to_i%> * 1
+                            <%else%>
+                              <%= @product.price.to_i%> * 1
+                            <%end%>
+                          </p>
+          </div>
+          <div class="col-md-3">
+           <p>Delivery Details</p>
+                      <p>Tue, 25 Dec 18</p>
+                      <p>Courier</p>
+                      <p>09:00 Hrs-21:00 Hrs</p>
+          </div>
+
+          <div class="col-md-3">
+           
+                  <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
+                  
+                  <a href="#" class="track-order_3"><i class="fa fa-download" aria-hidden="true"></i>Download Invoice</a>
+                
+          </div>
+    </div>
+  </div>
+</section>
+
+
+<%= link_to 'Edit', edit_admin_order_path(@order) %> |
+<%= link_to 'Back', admin_orders_path %>

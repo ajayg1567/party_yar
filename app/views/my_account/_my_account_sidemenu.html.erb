@@ -1,0 +1,24 @@
+<div class="col-md-2">
+	<div class="my-profile-list">
+		<h1>My Account</h1>
+		<ul>
+			<h2>My Profile</h2>
+			<li><%= nav_link 'Edit Profile', profile_edit_path(User.last) %></li>
+			<li><%= nav_link 'Change Password', change_password_path(User.last) %></li>
+			<h2>Orders</h2>
+			<li><%= nav_link 'My Orders', my_orders_path %></li>
+			<h2>Gift Coupons</h2>
+			<li><a href="#">Used</a></li>
+			<li><a href="#">Unused</a></li>	
+			<h2>Ticket History</h2>
+			<li><a href="#">My Tickets</a></li>
+			<li><a href="#">Raise Query</a></li>	
+			<h2>Saved Address(s)</h2>
+			<li><a href="#">All Address(s)</a></li>	
+			<h2>Reminders</h2>
+			<li><a href="#">My Reminders</a></li>
+			<li><a href="#">Add New Reminder</a></li>	
+			<li><%= link_to "Logout", destroy_user_session_path, class: "account-logout", method: :delete %></li>
+		</ul>
+	</div>
+</div>

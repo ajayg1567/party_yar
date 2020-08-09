@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-lg-12 offset-lg-3">
+		<div class="well bs-component">
+			<fieldset>
+				<legend>Users</legend>
+
+				<table class="responsive nowrap table table-hover" id="dttb-users" data-sort="true" data-source="<%= admin_users_path(format: :json)%>">
+					<thead>
+						<tr>
+							<th data-data="name">Name</th>
+							<th data-data="email">Email</th>
+							<th data-data="phone">Phone</th>
+							<th data-data="created_at">Created at</th>
+							<th data-data="updated_at">Updated at</th>
+							<th data-data="url" data-orderable="false" data-class-name="all" data-searchable="false" class="skip-export" width="100px">Actions</th>
+						</tr>
+					</thead>
+
+				</table>
+			</fieldset>
+		</div>
+	</div>
+</div>

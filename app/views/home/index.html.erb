@@ -1,0 +1,134 @@
+<section class="flower-list">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul>
+					<% @gift_types.each do |gift_type| %>
+						<li><a href="<%= gift_type_url(gift_type)%>"><%= image_tag url_for(gift_type.icon)%><p><%= gift_type.name%></p></a></li>
+					<%end%>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section class="banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<img src="assets/banner-2.png">
+			</div>
+		</div>
+	</div>			
+
+</section>
+
+<section class="flower-gift">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<a href="#"><img src="assets/flower-gift-1.jpg"></a>
+			</div>
+			<div class="col-md-4">
+				<a href="#"><img src="assets/flower-gift-2.jpg"></a>
+			</div>			
+
+			<div class="col-md-4">
+				<a href="#"><img src="assets/flower-gift-3.jpg"></a>
+			</div>			
+		</div>
+	</div>			
+
+</section>
+
+
+<section class="order-delivery">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<p><i class="fa fa-check"></i> Delivering Emotions Since 1994</p>
+			</div>
+			<div class="col-md-3">
+				<p><i class="fa fa-clock-o"></i> We Deliver, On Time - Every Time!</p>
+			</div>			
+
+			<div class="col-md-3">
+				<p><i class="fa fa-gift"></i> An Order Delivered Every 2.5 Seconds</p>
+			</div>	
+
+			<div class="col-md-3">
+				<p><i class="fa fa-get-pocket"></i> 100% Smile Guaranteed</p>
+			</div>				
+		</div>
+	</div>			
+
+</section>
+
+
+
+<section class="trending-now">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="birtday-heading">Trending Now</h1>
+			</div>
+
+			<div class="tranding-details">
+				<ul>
+					<div class="col-md-3">
+						<li>
+							<a href="#">
+								<img src="assets/cake-2.jpg">
+								<span class="cake-name">Butterscotch Cake</span>
+								<span class="our-price"><i class="fa fa-inr" aria-hidden="true"></i> 549</span>
+							</a>
+						</li>
+					</div>
+					<div class="col-md-3">
+						<li>
+							<a href="#">
+								<img src="assets/cake-2.jpg">
+								<span class="cake-name">Butterscotch Cake</span>
+								<span class="our-price"><i class="fa fa-inr" aria-hidden="true"></i> 549</span>
+							</a>
+						</li>
+					</div>
+
+					<div class="col-md-3">
+						<li>
+							<a href="#">
+								<img src="assets/cake-2.jpg">
+								<span class="cake-name">Butterscotch Cake</span>
+								<span class="our-price"><i class="fa fa-inr" aria-hidden="true"></i> 549</span>
+							</a>
+						</li>
+					</div>
+
+					<div class="col-md-3">
+						<li>
+							<a href="#">
+								<img src="assets/cake-2.jpg">
+								<span class="cake-name">Butterscotch Cake</span>
+								<span class="our-price"><i class="fa fa-inr" aria-hidden="true"></i> 549</span>
+							</a>
+						</li>
+					</div>
+
+					<div class="col-md-3">	
+						<li>
+							<a href="#">
+								<img src="assets/cake-2.jpg">
+								<span class="cake-name">Butterscotch Cake</span>
+								<span class="our-price"><i class="fa fa-inr" aria-hidden="true"></i> 549</span>
+							</a>
+						</li>
+					</div>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>	
+
+

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shipping Methods</h1>
+<%= link_to 'Add new', new_admin_shipping_method_path, :class => "btn btn-primary" %><br/>
+<br>
+<table id="dttb-1" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Tag name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shipping_methods.each do |shipping_method| %>
+      <tr>
+        <td><%= shipping_method.tag_name %></td>
+        <td><%= shipping_method.price %></td>
+        <td><%= link_to 'Show', admin_shipping_method_path(shipping_method), class: 'btn-success btn-sm' %>
+            <%= link_to 'Edit', edit_admin_shipping_method_path(shipping_method), class: 'btn-warning btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

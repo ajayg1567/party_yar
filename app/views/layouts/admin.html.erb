@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Partyar | Home</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <%= stylesheet_link_tag 'admin/admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag Ckeditor.cdn_url%>
+</head>
+
+<body>
+  <div class="wrapper">
+    <%= render 'shared/admin/sidebar'%>
+    <div id="content">
+      <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+        toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+      </script>
+      <% end %>
+      <%= yield%>
+      <%= render 'shared/admin/footer'%>
+    </div>
+  </div>
+</body>
+</html>

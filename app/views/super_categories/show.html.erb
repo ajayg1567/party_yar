@@ -1,0 +1,142 @@
+<div class="inner-page-content0">
+  <div class="cake-selling">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <h1><%= @sub_category.try(:name) %></h1>
+      <p>Cake is an inevitable part of birthday celebration that fills every moment with utmost joy and happiness. Buy bestseller birthday cakes from our website to wish your loved ones and make their big day extra special. The fresh and yummy flavor of our cakes will add sweetness to their celebration and put a big smile on their face.</p>
+    </div>
+  </div>
+</div>
+</div>
+<ol class="breadcrumb">
+    <%= render_breadcrumbs :tag => :li, :separator => ">" %>
+</ol>
+
+<div class="cake-gift">
+	<div class="container">
+		<div class="row">
+      <div class="col-md-12">		
+        <div class="birthday-cake-menu">
+         <div class="col-md-3 dropdown">
+           <button class="dropbtn">Gift Type
+           <p style="position: fixed"><%= @sub_category.try(:name)%></p></button>
+           <div class="dropdown-content">
+            <% @gift_types.each do |gt| %>
+              <%= link_to gt.name,'#' %>
+            <% end %>
+          </div>
+
+
+        </div>
+        <div class="col-md-3 dropdown">
+         <button class="dropbtn"> Occasion</button>
+         <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+
+      </div>			
+
+      <div class="col-md-3 dropdown">
+        <button class="dropbtn"> Delivery City </button>
+        <div class="dropdown-content">
+         <a href="#">Link 1</a>
+         <a href="#">Link 2</a>
+         <a href="#">Link 3</a>
+       </div>
+     </div>		
+   </div>
+
+   <div class="price-dropdown-list">
+     <div class="dropdown">
+      <button class="dropbtn">Price</button>
+      <div class="dropdown-content">
+       <a href="#">Below 501</a>
+       <a href="#">Below 501</a>
+       <a href="#">Below 501</a>
+     </div>
+   </div>	
+ </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<section class="cake-product-list">
+	<div class="container">
+		<div class="row">
+
+      <% @products.each do |product|%>
+        <a href="<%= product_path(product)%>">
+        <div class="col-md-3">
+          <div class="cake-crousel-text">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <% product.gallery.each_with_index do |gallery_url, index| %>
+                <div class="item <%= index == 0 ? 'active' : ''%>">
+                  <%= image_tag(gallery_url,size: "250x250") if gallery_url.present? %>
+                </div>
+                <% break if index == 3%>
+                <%end if product.gallery.attached?%>
+              </div>
+
+            </div>
+            <span class="b-name"><%= product.name%></span>
+            <span class="f-price"><%= product.price.to_i%></span>	
+            <!-- <p><span class="l-price">699</span> <span class="o-price">21% OFF</span></p> -->
+
+            <div class="delivery-earliest">
+              Delivery:
+              <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery"><%= ShippingMethod.find(product.shipping_method_ids).map(&:tag_name).join(',') %></time>
+            </div>
+
+            <span class="stars-5">☆☆☆☆☆ <p>1809 Reviews</p></span>	
+            </div>
+          </div>	<!-- col-md-3 -->
+        </a>
+        <%end%>
+
+      </div>
+    </div>			
+
+  </section>
+
+
+  <div class="best-seller-cake">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <h3>Order Yummy Bestseller Birthday Cakes Online From Ferns N Petals</h3>
+      <p>Birthdays are the most important occasion in people’s life that calls for a grand celebration. And if it’s the birthday of a dear one you hold close to your heart, you cannot go with the ordinary cakes. You need something special to show that they are important to you and you care a lot about them. Ferns N Petals brings to you an extensive collection of bestseller cakes for birthday celebration like fondant cakes, photo cakes, heart-shaped cakes, and cartoon cakes. These cakes will enhance the fun factor of your loved one’s birthday celebrations and give them sweet memories to cherish forever. Be it the 18th birthday of your brother or 50th birth anniversary of your dad, our selected B’day bestseller cakes will help convey your wishes to them in the sweetest manner possible. You can order a scrumptious heart-shaped red velvet cake to send birthday cake for girlfriend that will delight her senses and taste buds in the best manner.</p>
+
+      <h3>Send Mouthwatering Bestseller Birthday Cakes to Delight the Heart of Your Loved Ones</h3>
+      <p>Be it your daughter’s first birthday party or your best friend’s birthday celebration, the cake is considered the perfect gifting item to bring a sweet smile on their face. Ferns N Petals offers a tempting range of best seller birthday cakes that you can send on your Mother’s birthday to reciprocate the love and care that she showers upon you all day long. Or you can surprise your little son with a superman birthday cake by Ferns N Petals to get him excited for the celebration. We also have a special range of number birthday cakes for kids to help you offer something unique and thoughtful to your children on their D-day and make it memorable for them. Apart from the bestseller birthday cakes, we also offer best seller birthday flowers and birthday combos on our website at affordable prices. You can send them to your loved ones residing in India & abroad through our exemplary same day, next day, and midnight delivery service.</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+

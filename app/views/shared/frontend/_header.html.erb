@@ -1,0 +1,241 @@
+<style type="text/css">
+.desktop-menu-list .menu > ul > li > ul > li > ul > li a{
+	font-size: .9em !important
+}
+.desktop-menu-list .menu > ul > li > ul > li{
+	width: 15% !important;
+}
+.desktop-menu-list .menu > ul > li > ul > li > ul > li {
+	padding: 2px 0;
+}
+</style>
+<header>
+	<div class="top-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="contact-here">
+						<ul>
+							<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:+91 921 242 2000">Call Us +91 921 242 2000</a></li>
+							<li><i class="fa fa-gift" aria-hidden="true"></i><a href="#">Corporate Gifts</a></li>
+							<li><div class="dropdown">
+								<button class="dropbtn">More</button>
+								<div class="dropdown-content">
+									<a href="#">Help Center</a>
+									<a href="#">Franchise Enquiry</a>
+									<a href="#">Wedding Enquiry</a>
+									<a href="#">Become a Partner</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="middle-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="logo">
+					<a href="<%= root_path%>"><img src="/assets/logo.png"></a>
+				</div>
+				
+				<div class="header-search">
+					<div class="form-group has-search">
+						<!-- <span class="fa fa-search form-control-feedback"></span>
+							<input type="text" class="form-control" placeholder="Search Here......"> -->
+							<!-- <section class="main"> -->
+
+								<form class="search" method="get" action="/">
+									<!-- <span class="fa fa-search form-control-feedback"></span> -->
+									<input type="text" name="query" class="form-control" value="<%= params[:query]%>" placeholder="Search flowers, gifts, cakes etc." />
+									<button type="submit" class="btn btn-warning"><i class="fa fa-search"></i></button>
+									<ul class="results">
+										<% SuperCategory.first(5).each do |s|%>
+											<%= link_to "#{s.name}", root_path(query: s.name)%>
+										<%end%>
+									</ul>
+								</form>
+							<!-- </section> -->
+						</div>
+					</div>			
+				</div>
+				<div class="col-md-6">
+					<div class="user-login">
+						<ul>
+							<li>
+								<div class="popover__wrapper">
+									<a href="">
+										<h2 class="popover__title" id="open_cart_container"><i class="fa fa-shopping-cart"></i><br> Cart</h2>
+									</a>
+									<div class="popover__content" id="cart_container">
+										<div class="my-cart-heading">
+											<h4 style="float: left;" id="myCartQuantity">My Cart(<%= current_cart.items.length %>)</h4>
+											<i class="fa fa-close" id='close_cart_container' style="float: right;" data-unicode="f07a"></i>
+										</div>
+										<div id="cart" style="<%= current_cart.present? ? 'height: 260px;' : 'height: auto;'%>">
+											<%= render 'cart/cart'%>
+										</div>
+
+									</div>
+								</div>							
+							</li>
+							<li><div class="dropdown account-dropdown">
+								<button class="dropbtn"><a href="#"><i class="fa fa-user" aria-hidden="true"></i><br> Account</a></button>
+								<div class="dropdown-content">
+									<h1>
+										<%if user_signed_in?%>
+										Welcome! &nbsp &nbsp &nbsp <%= current_user.name %>
+										<%else%>
+										Hi Guest  <%= link_to "Login", new_user_session_path %>
+										<%end%>
+									</h1>
+									<a href="<%= my_account_path%>">My Profile</a>
+									<a href="#">Track Order</a>
+									<a href="#">My Order</a>
+									<a href="#">Address Book</a>
+									<a href="#">Gift Vouchers</a>
+									<a href="#">Tickets</a>
+									<%if user_signed_in?%>
+									<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+									<%end%>
+								</div>
+							</div>
+						</li>						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+</div>
+
+<div class="desktop-menu-list">
+	<div class="menu-container">
+		<div class="menu">
+			<ul>
+			  <% SuperCategory.includes(:categories).each_with_index do |super_category,index| %>
+				<li>
+				   <%= link_to super_category.name,'#',{class: "#{index == 0? 'active' : ''}"} %>
+				   <ul>
+					 <% super_category.categories.includes(:sub_categories).each do |category| %>
+						<li>
+						  <%= link_to category.name,'#' %>
+						  <% unless category.sub_categories.empty? %>
+						   <ul class="menu-list-scroll">
+							 <% category.sub_categories.each do |sub_category| %>
+								<li>
+								  <%= link_to sub_category.name,super_category_path(id: super_category,sub_category_id: sub_category)%>
+								</li>
+							 <% end %>
+						   </ul>
+						   <% end %>
+						</li>
+					 <% end %>
+				   </ul>
+				</li>
+			  <% end %>
+			</ul>
+		</div>
+	</div>
+</div>	 
+
+
+
+<div class="mobile-drop-down-menu">
+	<nav id='cssmenu'>
+		<div id="head-mobile"></div>
+		<div class="button"></div>
+		<ul>
+			<li class='active'><a href='#'>HOME</a></li>
+			<li><a href='#'>ABOUT</a>
+				<ul class="about-dropdown">
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>	  
+				</ul>
+			</li>
+			<li><a href='#'>PRODUCTS</a>
+				<ul>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+				</ul>
+			</li>
+			<li><a href='#'>BIO</a>
+				<ul>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+				</ul>
+
+			</li>
+			<li><a href='#'>VIDEO</a>
+				<ul>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+				</ul>
+			</li>
+			<li><a href='#'>GALLERY</a>
+				<ul>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+					<li><a href='#'>Product 1</a></li>
+				</ul>
+			</li>
+			<li><a href='#'>CONTACT</a></li>
+		</ul>
+	</nav>
+
+</div>	
+</header>

@@ -1,0 +1,146 @@
+<div class="inner-page-content0">
+
+<%if @products[:sub_category]%>
+<div class="cake-selling">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1><%= @products[:sub_category].name%></h1>
+				<p><%= @products[:sub_category].description%></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="cake-gift">
+	<div class="container">
+		<div class="row">
+		<div class="col-md-12">		
+		<div class="birthday-cake-menu">
+			<div class="dropdown">
+			  <button class="dropbtn">Gift Type</button>
+			  <div class="dropdown-content">
+  				<% @gift_types.each do |gift_type|%>
+            <a href="<%= sorting_gift_types_path(gift_type: gift_type.id)%>" id="gift_type"><%= gift_type.name%></a>
+          <%end%>
+			  </div>
+			</div>
+
+			<div class="dropdown">
+			  <button class="dropbtn"> Occasion</button>
+			  <div class="dropdown-content">
+          <% @occasions.each do |occasion|%>
+            <a href="<%= sorting_gift_types_path(occasion: occasion.id)%>" id="filterByOccasion"><%= occasion.name%></a>
+          <%end%>
+			  </div>
+			</div>			
+			
+			<div class="dropdown">
+			<button class="dropbtn">Delivery City</button>
+			  <div class="dropdown-content">
+  				<% @products[:cities].each do |i|%>
+            <a href="<%= sorting_gift_types_path(city: i.city)%>" id="filterBycity"><%= i.city%></a>
+          <% end %>
+			  </div>
+			</div>
+
+		</div>
+
+    <div style="display: none;" id="gift-type-id" data-id="<%= @gift_type.id%>"></div>
+			
+    <div class="price-dropdown-list">
+			<div class="dropdown">
+      <button class="dropbtn">Price</button>
+      <div class="dropdown-content">
+        <%@products[:prices_group].each do |price, count|%>
+          <%if price < 501 %>
+            <a href="#"><%= radio_button_tag "price", price %>Below 501 (<%= count%>)</a>
+          <%elsif price >= 501 %>
+            <a href="#"><%= radio_button_tag "price", price %><%= price%> + (<%= count%>)</a>
+          <%elsif price >= 2500 %>
+            <a href="#"><%= radio_button_tag "price", price %><%= price%> and above (<%= count%>)</a>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+
+	</div>
+			
+	</div>
+	</div>
+	</div>
+</div>
+
+
+
+
+<section class="cake-product-list" id="gift-products">
+  <div class="container">
+    <div class="row">
+      <% @products[:products].each_with_index do |product, index| %>
+        <div class="col-md-3">
+          <div class="cake-crousel-text">
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+
+                <div class="item">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+
+                <div class="item">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+              </div>
+
+            </div>
+
+            <span class="b-name"><%= product.name %></span>
+            <span class="f-price"><%= product.price %></span>	
+            <p><span class="l-price">699</span> <span class="o-price">21% OFF</span></p>
+
+            <div class="delivery-earliest">
+            Earliest Delivery:
+              <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery">Today</time>
+            </div>
+
+            <span class="stars-5">☆☆☆☆☆ <p>1809 Reviews</a></span>	  
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+
+</section>
+
+<%else%>
+  <h1 align="center">No results found for this gift type</h1><br><br>
+<%end%>
+
+
+<div class="best-seller-cake">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Order Yummy Bestseller Birthday Cakes Online From Ferns N Petals</h3>
+				<p>Birthdays are the most important occasion in people’s life that calls for a grand celebration. And if it’s the birthday of a dear one you hold close to your heart, you cannot go with the ordinary cakes. You need something special to show that they are important to you and you care a lot about them. Ferns N Petals brings to you an extensive collection of bestseller cakes for birthday celebration like fondant cakes, photo cakes, heart-shaped cakes, and cartoon cakes. These cakes will enhance the fun factor of your loved one’s birthday celebrations and give them sweet memories to cherish forever. Be it the 18th birthday of your brother or 50th birth anniversary of your dad, our selected B’day bestseller cakes will help convey your wishes to them in the sweetest manner possible. You can order a scrumptious heart-shaped red velvet cake to send birthday cake for girlfriend that will delight her senses and taste buds in the best manner.</p>
+				
+				<h3>Send Mouthwatering Bestseller Birthday Cakes to Delight the Heart of Your Loved Ones</h3>
+				<p>Be it your daughter’s first birthday party or your best friend’s birthday celebration, the cake is considered the perfect gifting item to bring a sweet smile on their face. Ferns N Petals offers a tempting range of best seller birthday cakes that you can send on your Mother’s birthday to reciprocate the love and care that she showers upon you all day long. Or you can surprise your little son with a superman birthday cake by Ferns N Petals to get him excited for the celebration. We also have a special range of number birthday cakes for kids to help you offer something unique and thoughtful to your children on their D-day and make it memorable for them. Apart from the bestseller birthday cakes, we also offer best seller birthday flowers and birthday combos on our website at affordable prices. You can send them to your loved ones residing in India & abroad through our exemplary same day, next day, and midnight delivery service.</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

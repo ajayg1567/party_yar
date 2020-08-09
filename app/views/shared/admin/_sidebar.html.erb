@@ -1,0 +1,26 @@
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Partyar-Admin</h3>
+  </div>
+
+  <ul class="list-unstyled components">
+
+    <li class="<%= 'active' if current_page?(admin_url) %>"><a href="<%= admin_url %>">Dashboard</a></li>
+    <li class="<%= 'active' if current_page?(admin_orders_url) %>"><%= link_to 'Orders',admin_orders_path %></li>
+    <li class="<%= 'active' if current_page?(admin_users_url) %>"><a href="<%= admin_users_url %>">Users</a></li>
+    <li class="<%= 'active' if current_page?(admin_shipping_methods_url) %>"><a href="<%= admin_shipping_methods_url %>">Shipping Methods</a></li>
+    <li class="<%= 'active' if current_page?(admin_super_categories_url) %>"><a href="<%= admin_super_categories_url %>">Super Categories</a></li>
+    <li class="<%= 'active' if current_page?(admin_occasions_url) %>"><a href="<%= admin_occasions_url %>">Occasions</a></li>
+    <li class="<%= 'active' if current_page?(admin_categories_url) %>"><a href="<%= admin_categories_url %>">&#8226;  Categories</a></li>
+    <li class="<%= 'active' if current_page?(admin_sub_categories_url) %>"><a href="<%= admin_sub_categories_url %>">&#8226;  Sub-Categories</a></li>
+    <li class="<%= 'active' if current_page?(admin_gift_types_url) %>"><a href="<%= admin_gift_types_url %>">Gift Types</a></li>
+    <li class="<%= 'active' if current_page?(admin_products_url) %>"><a href="<%= admin_products_url %>">Products</a></li>
+    <li class="<%= 'active' if current_page?(admin_add_ons_url) %>"><a href="<%= admin_add_ons_url %>">Add On</a></li>
+    <li>
+      <%if user_signed_in?%>
+        <p style="color: #000;font-size: 12px;">Signed in as:<br/> <%= current_user.email%></p>
+        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger btn-xs' %>
+      <%end%>
+    </li>
+  </ul>
+</nav>

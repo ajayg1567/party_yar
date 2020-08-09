@@ -1,0 +1,23 @@
+var selectedDate = $('.datepicker').val();
+var pincode = $('.pin-enter').val();
+
+// if (selectedDate == '' || undefined) {
+// 	$('.datepicker').addClass('dateError')
+// }else{
+// 	$('.datepicker').removeClass('dateError')
+// }
+
+// if (pincode == '' || pincode.length < 6) {
+// 	$('.pin-enter').addClass('pincodeError')
+// }else{
+// 	$('.pin-enter').removeClass('pincodeError')
+// }
+
+// if (selectedDate != '' && pincode != '') {
+	$('.popover__content').show()
+	$('.popover__message, #empty_cart').hide()
+	$('.cart-total-heading, .cart-footer').show()
+	$('#myCartQuantity').text('My Cart (<%= current_cart.items.length%>)')
+	$('#cart').empty();
+	$('#cart').append("<%= escape_javascript(render(:partial => 'cart' )) %>")
+// }

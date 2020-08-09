@@ -1,0 +1,138 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
+
+
+
+
+
+  <body class="inner-page-bg">
+    
+<!---------------------Header Start-------------------->
+<header>
+
+<div class="middle-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="logo">
+          <!-- <img src="images/logo.png"> -->
+        </div>          
+      </div>
+
+      </div>
+  </div>  
+</div>
+
+</header>
+
+
+
+<div class="login-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="login-panel-list">
+          <div class="login-panel-2">
+          <div class="login-panel-3">
+          <h1>LOGIN / REGISTER</h1>
+          
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-group'}) do |f| %>
+          <input type="email" name="emailaddress" placeholder="Email ID">
+          </div>
+            <input type="submit" value="Submit">
+          
+          <%end%>
+          
+          <div class="login-using">
+            <p>Or login using</p>
+            <div class="login-socil-icon">
+              <a class="login-using-facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+              <a class="login-using-g" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google</a>
+            </div>
+          </div>
+          </div>
+        
+        <div class="secure-login-panel">
+          <h1>FNP SECURE</h1>
+          <div class="secure-img1">
+          <img src="images/secure.jpg">
+          <p>100% Safe and Secure Payments<br> 6 Million People Trust Us</p>
+          </div>
+            <ul>
+            <!--   <li><a href="#"><img src="images/verified-img.jpg"></a></li>
+              <li><a href="#"><img src="images/master-card.jpg"></a></li>
+              <li><a href="#"><img src="images/rupay.jpg"></a></li>
+              <li><a href="#"><img src="images/american.jpg"></a></li> -->
+            
+            </ul>
+          <div class="smile-guranteed1">  
+          <img src="images/smile-guranteed.jpg">  
+          </div>
+          <div class="question-mark">
+          <a href="#"><i class="fa fa-question-circle"></i> Need Help</a>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <script>
+
+   
+ 
+      $(document).ready(function() {
+        //responsive menu toggle
+        $("#menutoggle").click(function() {
+          $('.xs-menu').toggleClass('displaynone');
+
+          });
+        //add active class on menu
+        $('ul li').click(function(e) {
+          e.preventDefault();
+          $('li').removeClass('active');
+          $(this).addClass('active');
+        });
+      //drop down menu  
+          $(".drop-down").hover(function() {
+            $('.mega-menu').addClass('display-on');
+          });
+          $(".drop-down").mouseleave(function() {
+            $('.mega-menu').removeClass('display-on');
+          });
+      
+      });
+
+   
+  
+
+  </script> 
+</body>

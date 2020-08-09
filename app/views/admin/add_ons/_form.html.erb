@@ -1,0 +1,34 @@
+<%= nested_form_for([:admin, @add_on]) do |form| %>
+    <%= render 'errors' %>
+  
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div><br>
+  
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, class: 'form-control' %>
+    </div><br>
+  
+    <div class="field">
+      <%= form.label :sub_category_id %>
+      <%= form.select :sub_category_id, options_from_collection_for_select(@sub_categories.collect, :id, :name, selected: @add_on.sub_category_id), {:include_blank => "Select sub category"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+    </div><br>
+
+    <div class="field">
+      <%= form.label :category_id %>
+      <%= form.select :category_id, options_from_collection_for_select(@categories.collect, :id, :name, selected: @add_on.category_id), {:include_blank => "Select sub category"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+    </div><br>
+    
+    <div class="field">
+      <%= form.label :gallery %>
+      <%= form.file_field :gallery%>
+    </div><br>
+  
+  
+    <div class="actions"><br>
+      <%= form.submit :class => 'btn btn-primary' %>
+    </div>
+  <% end %><br>
+  

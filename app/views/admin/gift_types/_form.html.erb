@@ -1,0 +1,28 @@
+<%= form_for([:admin, gift_type]) do |form| %>
+  
+  <%= render 'errors', gift_type: gift_type %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name %>
+  </div><br>
+
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.select :type, options_for_select(@categories.collect{|i| ["#{i}", i]}, selected: gift_type.type), {}, { class: "select2", data: { placeholder: "Select type"}, style: 'width:100%;', include_blank: true, :required => true } %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :icon %>
+    <%= form.file_field :icon %>
+  </div><br>
+
+  <%if gift_type.icon.attached?%>
+    <%= image_tag url_for(gift_type.icon), width: '100x100' %>
+  <%end%>
+
+  <div class="actions"><br>
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+<%= form_for([:admin, @super_category]) do |form| %>
+  <%= render 'errors'%>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div><br>
+
+  <div class="actions">
+    <%= form.submit :class => "btn btn-primary" %>
+  </div><br/>
+<% end %>

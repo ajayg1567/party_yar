@@ -1,0 +1,12 @@
+ul.saved-address{
+	padding: 4px 4px 4px 40px;
+	cursor: pointer;
+	position: relative;
+	transition: all .25s ease-in-out;
+	list-style: none;
+}
+
+.pay-now{
+	margin-left: 383px;
+	margin-bottom: 23px;
+}

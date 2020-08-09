@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<h4>Orders</h4>
+<table id="myTable" class="display">
+    <thead>
+        <tr>
+            <th>Order Number</th>
+            <th>Name</th>
+            <th>Order Status</th>
+            <th>Payment Status</th>
+            <th>Total</th>
+            <th>Delivery Date</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+            <td><%= order.order_no %></td>
+            <td><%= order.user.name %></td>
+            <td><%= order.status%></td>
+            <td>payment status</td>
+            <td><%= order.price %></td>
+            <td><%= order.price %></td>
+            <td><%= link_to 'Show',admin_order_path(order)%>|<%= link_to 'Destroy',admin_order_path(order),method: :delete,confirm: "Are you sure?" %>|</td>
+            <td><%= link_to 'Download Invoice', admin_invoice_show_path(order, format: :pdf),:class=>'btn btn-primary' %>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

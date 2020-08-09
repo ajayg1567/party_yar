@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+      <% @products.each_with_index do |product, index| %>
+        <div class="col-md-3">
+          <div class="cake-crousel-text">
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+
+                <div class="item">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+
+                <div class="item">
+                  <img src="/assets/choclate-cake1.jpg">
+                </div>
+              </div>
+
+            </div>
+
+            <span class="b-name"><%= product.name %></span>
+            <span class="f-price"><%= product.price %></span> 
+            <p><span class="l-price">699</span> <span class="o-price">21% OFF</span></p>
+
+            <div class="delivery-earliest">
+            Earliest Delivery:
+              <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery">Today</time>
+            </div>
+
+            <span class="stars-5">☆☆☆☆☆ <p>1809 Reviews</a></span>    
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>

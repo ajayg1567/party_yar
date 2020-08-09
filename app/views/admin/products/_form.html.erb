@@ -1,0 +1,104 @@
+<%= nested_form_for([:admin, @product]) do |form| %>
+  <%= render 'errors' %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.cktext_area :description, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :shipping_method_id, "Shipping Methods" %><br />
+    <% ShippingMethod.all.each do |sm| %>
+      <%= form.check_box :shipping_method_ids, { :multiple => true }, sm.id,nil %><%= sm.tag_name%><br />
+    <% end %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :super_category_id %>
+    <%= form.select :super_category_id, options_from_collection_for_select(@super_categories.collect, :id, :name, selected: @product.super_category_id), {:include_blank => "Select super category"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :sub_category_id %>
+    <%= form.select :sub_category_id, options_from_collection_for_select(@sub_categories.collect, :id, :name, selected: @product.sub_category_id), {:include_blank => "Select sub category"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :banner %>
+    <%= form.file_field :banner %>
+  </div><br>
+
+  <%if @product.banner.attached?%>
+    <%= image_tag url_for(@product.banner), width: '100x100' %>
+  <%end%>
+
+  <div class="field">
+    <%= form.label :gallery %>
+    <%= form.file_field :gallery, multiple: true %>
+  </div><br>
+
+  <%@product.gallery.each do |i|%>
+    <%= image_tag url_for(i), width: '100x100' if i.present? %>
+  <%end if @product.gallery.attached?%>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, class: 'form-control' %>
+  </div><br>
+
+  <legend><b>Add extra fields</b></legend>
+  <%= form.fields_for :extra_fields  do |extra_field| %>
+    <%= extra_field.link_to_remove "Remove this field", class: "btn btn-danger btn-xs remove-button" %><br/>
+    <div class="field">
+      <%= extra_field.label :option_type %>
+      <%= extra_field.select :option_type, options_for_select(ExtraField::OPTIONS), {:include_blank => false},  {style: 'width:100%;', class: "form-control"} %>
+    </div><br/>
+    <div class="field">
+      <%= extra_field.label :option_value %>
+      <%= extra_field.text_field :option_value, class: "form-control" %>
+    </div><br/>
+  <%end%>
+  <%= form.link_to_add "Add new field", :extra_fields, class: "btn btn-default btn-sm", style: 'margin-bottom: 20px;' %>
+
+  <br><legend><b>Add variation</b></legend>
+  <%= form.fields_for :variations  do |variation| %>
+    <%= variation.link_to_remove "Remove this upgrade", class: "btn btn-danger btn-xs remove-button" %><br/>
+    <div class="field">
+      <%= variation.label :quantity %>
+      <%= variation.number_field :quantity, class: "form-control" %>
+    </div><br/>
+    <div class="field">
+      <%= variation.label :size %>
+      <%= variation.select :size, options_for_select(Variation::SIZE), {:include_blank => false},  {style: 'width:100%;', class: "form-control"} %>
+    </div><br/>
+    <div class="field">
+      <%= variation.label :price %>
+      <%= variation.text_field :price, class: "form-control" %>
+    </div><br/>
+    <div class="field">
+      <%= variation.label :thumbnail %>
+      <%= variation.file_field :thumbnail, class: "form-control" %>
+    </div><br/>
+
+  <%end%>
+
+    <%@product.variations.each do |p|%>
+      <%= image_tag url_for(p.thumbnail), width: '100x100' if p.thumbnail.attached? %>
+    <%end%>
+
+  <%= form.link_to_add "Add variations", :variations, class: "btn btn-default btn-sm" %>
+
+  <div class="actions"><br>
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %><br>

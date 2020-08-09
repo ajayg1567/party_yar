@@ -1,0 +1,26 @@
+<p>
+  <strong>Gallery:</strong><br>
+  <%= image_tag url_for(@add_on.gallery), width: '150x150'  if @add_on.gallery.attached?%>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @add_on.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @add_on.try(:description) %>
+</p>
+
+<p>
+  <strong>Sub Category:</strong>
+  <%= @add_on.sub_category.name %>
+</p>
+
+<p>
+  <strong>Category</strong>
+  <%= @add_on.category.name %>
+</p>
+
+<%= link_to 'Edit', edit_admin_add_on_path(@add_on) %> |
+<%= link_to 'Back', admin_add_ons_path %>

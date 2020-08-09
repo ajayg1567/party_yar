@@ -1,0 +1,81 @@
+<div class="inner-page-content0">
+
+	<div class="my-acount-deatils">
+		<div class="container" style="width: 85%;">
+			<div class="row">
+				<%= render 'my_account_sidemenu'%>
+
+				<div class="col-md-8">
+					<div class="profile-edit-0details">
+						<h1>My Profile</h1>
+						<div class="edit-0details">
+							<%= form_for(@profile, url: update_profile_path) do |f|%>
+
+
+								<div class="form-control">						 
+								<label>Name:</label><br>
+									<%= f.text_field :name, value: @profile.name, required: true%>
+								</div>	
+
+								<div class="form-control">	
+									<label>Mobile number:</label>
+									<%= f.text_field :phone, value: @profile.phone, required: true%>					 
+								</div> 
+
+								<div class="form-control">
+									<label>Email Id:</label> 
+									<%= f.text_field :email, value: @profile.email, required: true%>
+								</div>
+
+								<div class="form-control">
+									<label>Gender</label>
+									<%= f.radio_button :gender, 'Male', :checked => true %> 
+									<%= label :gender, 'Male' %>
+									<%= f.radio_button :gender, 'Female' %>
+									<%= label :gender, 'Female' %>
+								</div>	
+
+								<div class="form-control">						
+									<label>Date of birth<br></label>
+									<%= f.date_field :date_of_birth, value: @profile.date_of_birth, required: true%>
+								</div>		
+
+								<div class="form-control">						
+									<label>Date of anniversary</label>
+									<%= f.date_field :date_of_anniversary, value: @profile.date_of_anniversary %>
+								</div>
+									 <%= f.fields_for :address do |ff| %>
+									  <div class="form-control">	
+										<label for="adr">Address</label>
+										<%= ff.text_area :address_line1,{value: @profile.address.try(:address_line1),size: "60*100"} %>
+									  </div>	
+									<div class="form-control">				
+										<label for="city">City</label>
+									    <%= ff.text_field :city,value: @profile.address.try(:city) %>			 
+									</div>
+
+									<div class="form-control">
+										<label for="zip">Zip</label>
+										<%= ff.text_field :pincode,value: @profile.address.try(:pincode) %>		
+									</div>
+
+									<div class="form-control">						  
+										<label for="country">Country</label>     
+                                        <%= ff.country_select :address_line2,{priority_countries: ["IN"]},{value: @profile.address.try(:address_line2),class: "form-control",id: "country",name: "country"} %>
+									</div>	
+									<% end %>
+
+									<div class="save-profile1">
+										<%= f.button 'Save', :class => 'btn btn-primary', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Please wait...."} %>
+										<%= link_to 'Cancel', my_account_path, class: 'btn btn-default'%>					
+									</div>
+
+									<%end%>					
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>

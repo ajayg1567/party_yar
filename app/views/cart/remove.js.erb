@@ -1,0 +1,5 @@
+$('.cart-total-heading, .cart-footer').hide()
+$('.popover__message, #empty_cart').show()
+$('#myCartQuantity').text('My Cart (<%= current_cart.items.length%>)')
+$('#cart').empty();
+$('#cart').append("<%= escape_javascript(render(:partial => 'cart')) %>")

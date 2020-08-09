@@ -1,0 +1,27 @@
+<% @product = Product.new%>
+<%= nested_form_for([:admin, @product], url: import_admin_products_path) do |form| %>
+  <%= render 'errors'%>
+
+  <div class="field">
+  	<%= form.label :category_type %>
+  	<%= form.select :super_category_id, options_for_select(SuperCategory.all.collect{|l| ["#{l.name}", l.id]}), { prompt: 'Select category type' }, :required => true %><br><br>
+  </div>
+
+  <div class="field">
+  	<%= form.label :sub_category_type %>
+  	<%= form.select :sub_category_id, options_for_select(SubCategory.all.collect{|l| ["#{l.name}", l.id]}), { prompt: 'Select sub category type' }, :required => true %><br><br>
+	</div>
+
+
+	<div class="field">
+		<%= form.label :shipping_type %>
+  	<%= form.select :shipping_method_id, options_for_select(ShippingMethod.all.collect{|l| ["#{l.tag_name}", l.id]}), { prompt: 'Select shipping type'}, :required => true %><br><br>
+	</div>
+
+  <%= form.file_field :xls_file, :required => true %><br>
+
+  <div class="actions">
+    <%= form.button "Upload", :class => "btn btn-primary" %>
+    <%= link_to 'Back', admin_products_path, class: "btn btn-success"%>
+  </div>
+<% end %>

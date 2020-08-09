@@ -1,0 +1,33 @@
+<%= nested_form_for([:admin, @shipping_method]) do |form| %>
+<%= render 'errors'%>
+
+<div class="field">
+  <%= form.label :tag_name %>
+  <%= form.text_field :tag_name, class: "form-control", placeholder: 'Tag name' %>
+</div><br>
+
+<div class="field">
+  <%= form.label :price %>
+  <%= form.number_field :price, class: "form-control", placeholder: 'Price' %>
+</div><br>
+
+<legend><b>Add time slots(24hours format 00-23)</b></legend>
+<%= form.fields_for :time_slots  do |answer| %>
+  <%= answer.link_to_remove "Remove this slot", class: "btn btn-danger btn-xs remove-button" %><br/>
+
+  <div class="field">
+    <%= answer.label :from %>
+    <%= answer.time_field :from, class: "form-control" %>
+  </div><br/>
+
+  <div class="field">
+    <%= answer.label :to %>
+    <%= answer.time_field :to, class: "form-control" %>
+  </div><br/>
+<%end%>
+<%= form.link_to_add "Add new slot", :time_slots, class: "btn btn-default btn-sm" %>
+
+<div class="actions"><br/>
+  <%= form.submit :class => "btn btn-primary" %>
+</div>
+<% end %>

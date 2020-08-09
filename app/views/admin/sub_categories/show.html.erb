@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-lg-12 offset-lg-3">
+		<div class="well bs-component">
+			<p>
+				<strong>Name:</strong>
+				<%= @sub_category.name %>
+			</p>
+
+			<p>
+				<strong>Description:</strong>
+				<%= @sub_category.description %>
+			</p>
+
+			<p>
+				<strong>Category:</strong>
+				<%= @sub_category.category.name %> - <%= @sub_category.category.super_category.name%>
+			</p>
+
+			<p>
+			  <strong>Banner:</strong><br>
+			  <%if @sub_category.banner.attached?%>
+			    <%= image_tag url_for(@sub_category.banner), width: '300x300' %>
+			  <%end%>
+			</p>
+
+			<%= link_to 'Edit', edit_admin_sub_category_path(@sub_category) %> |
+			<%= link_to 'Back', admin_sub_categories_path %>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<%= form_for([:admin, @category]) do |form| %>
+  <%= render 'errors' %>
+
+  <div class="field">
+    <%= form.label :category_name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :super_category_id %>
+    <%= form.select :super_category_id, options_from_collection_for_select(@super_categories.collect, :id, :name, selected: @category.super_category_id), {:include_blank => "Select super category"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :occasion_id %>
+    <%= form.select :occasion_id, options_from_collection_for_select(@occasions.collect, :id, :name, selected: @category.occasion_id), {:include_blank => "Select occasion"},  {style: 'width:100%;', class: 'select2', :required => true} %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :banner %>
+    <%= form.file_field :banner %>
+  </div><br>
+
+  <%if @category.banner.attached?%>
+    <%= image_tag url_for(@category.banner), width: '300x300' %>
+  <%end%>
+
+  <div class="actions"><br>
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %><br/>

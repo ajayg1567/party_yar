@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Partyar</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'frontend/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'frontend/application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'frontend/bootstrap.min' %>
+    <%= csrf_meta_tag %>
+    </head>
+
+  <body>
+    <%if controller_name != 'checkout'%>
+      <%= render 'shared/frontend/header'%>
+    <%else%>
+      <%= render 'shared/frontend/checkout_header'%>
+    <%end%>
+    <% unless flash.empty? %>
+    <% flash.each do |key, value| %>
+      <% if key == 'notice' %>
+        <div style="position: absolute;width: 100%;margin-top: 174px;" class="alert alert-success alert-dismissible" role="alert">
+         <%= value %>
+        </div>
+      <% else %>
+        <div style="position: absolute;width: 100%;margin-top: 174px;" class="alert alert-danger alert-dismissible" role="alert">
+          <%= value %>
+        </div>
+      <% end %>
+     <% end %>
+    <% end %>
+    <%= yield %>
+    <%if controller_name != 'checkout'%>
+      <%= render 'shared/frontend/footer'%>
+    <%end%>
+
+    <script type="text/javascript">
+    $(".alert" ).fadeOut(10000); 
+    </script>
+  </body>
+</html>

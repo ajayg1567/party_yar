@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag name:</strong>
+  <%= @shipping_method.tag_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @shipping_method.price %>
+</p>
+
+<p>
+	<strong>Time slots:</strong>
+	<% @shipping_method.time_slots.each_with_index do |slot, index|%>
+		<label><%= index+ 1%>-</label>
+		<div class="field">
+			<strong>From:</strong>
+			<%= slot.from.strftime("%I:%M %p")%>
+		</div>
+		<div class="field">
+			<strong>To:</strong>
+			<%= slot.to.strftime("%I:%M %p")%>
+		</div>
+	<%end%>
+</p>
+<%= link_to 'Edit', edit_admin_shipping_method_path(@shipping_method) %> |
+<%= link_to 'Back', admin_shipping_methods_path %>

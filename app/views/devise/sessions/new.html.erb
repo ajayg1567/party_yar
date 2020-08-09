@@ -1,0 +1,94 @@
+<body class="inner-page-bg">
+  <link rel="stylesheet" href="/assets/frontend/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/frontend/style.css">
+  <link rel="stylesheet" href="/assets/frontend/animate.min.css">
+  <link rel="stylesheet" href="/assets/frontend/font-awesome.css"> 
+  <link rel="stylesheet" href="/assets/frontend/ionicons.min.css"> 
+  <!---------------------Header Start-------------------->
+  <header>
+
+    <div class="middle-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="logo">
+              <img src="/assets/logo.png">
+            </div>          
+          </div>
+
+        </div>
+      </div>  
+    </div>
+
+  </header>
+
+  <div class="login-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="login-panel-list">
+            <div class="login-panel-2">
+              <div class="login-panel-3">
+                <h1>LOGIN / REGISTER</h1>
+
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-group'}) do |f| %>
+                <%= render 'layouts/frontend/error_messages', object: resource %>
+
+
+                <div class="form-group has-feedback">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, placeholder: 'Enter email', autocomplete: "email", class: "form-control", id: "exampleInputEmail1" %>
+                </div>
+                <div class="form-group has-feedback">
+                  <%= f.label :password %><br />
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "exampleInputPassword1", placeholder: "Password" %>
+                </div>
+                <%= f.submit "Log in" %>
+              </div>
+
+              <%end%>
+
+              <div class="login-using">
+                <p>Or login using</p>
+                <div class="login-socil-icon">
+                  <%- if devise_mapping.omniauthable? %>
+                  <%- resource_class.omniauth_providers.each do |provider| %>
+                  <%if provider.to_s == 'facebook'%>
+                  <%= link_to "<i class='fa fa-facebook' aria-hidden='true'></i>#{OmniAuth::Utils.camelize(provider)}".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-facebook" %>
+                  <%else%>
+                  <%= link_to "<i class='fa fa-google-plus' aria-hidden='true'></i>Google".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-g" %>
+                  <%end%>
+                  <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="secure-login-panel">
+              <h1>FNP SECURE</h1>
+              <div class="secure-img1">
+                <img src="/assets/secure.jpg">
+                <p>100% Safe and Secure Payments<br> 6 Million People Trust Us</p>
+              </div>
+              <ul>
+                <li><a href="#"><img src="/assets/verified-img.jpg"></a></li>
+                <li><a href="#"><img src="/assets/master-card.jpg"></a></li>
+                <li><a href="#"><img src="/assets/rupay.jpg"></a></li>
+                <li><a href="#"><img src="/assets/american.jpg"></a></li>
+
+              </ul>
+              <div class="smile-guranteed1">  
+                <img src="/assets/smile-guranteed.jpg">  
+              </div>
+              <div class="question-mark">
+                <a href="#"><i class="fa fa-question-circle"></i> Need Help</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

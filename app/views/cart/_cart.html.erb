@@ -1,0 +1,66 @@
+<%if current_cart.present? && current_cart.items.length > 0%>
+	<% current_cart.items.order(:created_at => :desc).each do |item|%>
+	<%@product = Product.find(item.product_id)%>
+	<%#@product_upgrade = ProductUpgrade.find_by(id: item.additional[:product_upgrade_id].to_i)%>
+	<%@extra_field = ExtraField.find_by(id: item.additional[:extra_field_id].to_i)%>
+   
+	<div class="card" style="margin-top: 1em;" id="cart-item-<%= item.id%>">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12" style="padding: 0;">
+					<div class="col-md-5" style="padding: 0;">
+						<img src="<%= url_for(@product.gallery.first)%>" class="cart-image">
+					</div>
+					<div class="col-md-5" style="text-align: left;padding: 0;">
+						<h5 class="card-title"><%= @product.name%></h5>
+						<div class="row">
+							<div class="col-md-6" style="padding: 0;padding-left: 15px;">
+								<p><%= @product_upgrade.present? ? @product_upgrade.price : @product.price %> x 1</p>
+							</div>
+							<div class="col-md-6" style="padding: 0;">
+								<p style="text-transform: uppercase;"><%= @extra_field&.option_value %></p>
+							</div>
+						</div>
+					</div>
+
+					
+					<div class="col-md-2">
+						<a href="#" class="card-link remove-cart-product" data-id="<%= item.id%>"><i class="fa fa-trash"></i></a>
+					</div>
+				</div>
+			</div>
+			<p class="card-text"><%= item.additional[:pincode] %></p>
+			<div class="delivery-datetime" style="padding:8px;">
+				<p class="selected-address"><%= item.additional[:delivery_date]%><br><%= item.additional[:delivery_time] %></p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="cart-total-heading"><h4 style="float: left;">CART TOTAL</h4>
+		<span class="iner-content" style="float: right;"><p class="inr-icon"></p> <p id="total-price" class="product-price"><%=current_cart.total_price%></p></span>
+	</div>
+	<div class="cart-footer">
+		<%= link_to 'PROCEED TO CHECKOUT', checkout_path, class: 'btn btn-warning checkout-btn'%>
+	</div>
+	
+	<%end%>
+<%else%>
+	<p class="popover__message"><i class="fa fa-shopping-cart" data-unicode="f07a"></i></p>
+	<p id="empty_cart">Your cart is empty <span><br>But it does not have to be.</span></p>
+<% end %>
+
+<script type="text/javascript">
+	// Remove item from cart
+	$('.remove-cart-product').click(function(){
+		var item_id = $(this).data('id');
+		return $.ajax('/remove/' + item_id, {
+			type: 'GET',
+			dataType: 'script',
+			success: function(data) {
+				$('#cart-item-' + item_id).empty();
+			},
+			error: function(data) { }
+		});
+	})
+	
+</script>

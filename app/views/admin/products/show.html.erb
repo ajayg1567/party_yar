@@ -1,0 +1,95 @@
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.try(:description) %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Day delivery:</strong>
+  <%#= @product.day_delivery %>
+</p>
+
+<%# if @product.day_delivery%>
+  <p>
+    <strong>Day delivery till:</strong>
+    <%#= @product.day_delivery_till %>
+  </p>
+<%# end%>
+
+<p>
+  <strong>Shipping methods:</strong>
+  <%= ShippingMethod.find(@product.shipping_method_ids).map(&:tag_name).join(',') %>
+</p>
+
+<p>
+  <strong>Super category:</strong>
+  <%= @product.sub_category.name %>
+</p>
+
+<p>
+  <strong>Banner data:</strong><br>
+  <%if @product.banner.attached?%>
+    <%= image_tag url_for(@product.banner), width: '100x100' %>
+  <%end%>
+</p>
+
+<p>
+  <strong>Gallery data:</strong><br>
+  <%@product.gallery.each do |i|%>
+    <%= image_tag url_for(i), width: '100x100' if i.present? %>
+  <%end if @product.gallery.attached?%>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product.quantity %>
+</p><br>
+
+<legend>Extra Fields</legend>
+<% @product.extra_fields.each_with_index do |extra_field, index|%>
+  <em>Index: <%= index + 1 %></em>
+  <p>
+    <strong>Type:</strong>
+    <%= extra_field.option_type %>
+  </p>
+  <p>
+    <strong>Value:</strong>
+    <%= extra_field.option_value %>
+  </p>
+<%end%>
+
+<legend>Variations</legend>
+<% @product.variations.each_with_index do |product_upgrade, index|%>
+  <em>Index: <%= index + 1 %></em>
+  <p>
+    <strong>Quantity:</strong>
+    <%= product_upgrade.quantity %>
+  </p>
+  <p>
+    <strong>Size:</strong>
+    <%= product_upgrade.size %>
+  </p>
+  <p>
+    <strong>Value:</strong>
+    <%= product_upgrade.price %>
+  </p>
+
+  <p>
+    <strong>Thumbnail:</strong><br>
+    <%@product.variations.each do |p|%>
+      <%= image_tag url_for(p.thumbnail), width: '100x100' if p.thumbnail.attached? %>
+    <%end%>
+  </p>
+<%end%>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>
