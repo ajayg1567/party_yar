@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_one :address,dependent: :destroy
-
+  
   
   def self.from_omniauth(auth)
     p "AUTH-DATA::::::::::::::::::::::#{auth}"

@@ -38,11 +38,12 @@ gem 'pg_search'
 gem 'dotenv-rails'
 gem 'uglifier'
 gem 'country_select', '~> 4.0'
+gem 'letsrate'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
-
+gem 'ratyrate'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

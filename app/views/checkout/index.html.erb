@@ -191,6 +191,7 @@ li.saved-address.selected {
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-weight:bold;">ORDER AND DELIVERY DETAILS</a>
                     </h4>
                   </div>
+                  
                   <div id="collapseTwo" class="panel-collapse collapse in">
                     <% current_cart.items.each_with_index do |item, index|%>
                     <br>
@@ -198,7 +199,7 @@ li.saved-address.selected {
                     <span>GIFT <%= index+1 %></span>
                     </span>
                     <%# @product_upgrade = ProductUpgrade.find_by(id: item.additional[:product_upgrade_id].to_i)%>
-                    <% @extra_field = ExtraField.find_by(id: item.additional[:extra_field_id].to_i)%>
+                     <% @extra_field = ExtraField.find_by(id: item.additional[:extra_field_id].to_i)%> 
                     <div class="panel-body">
       
                       <div class="row">
@@ -225,7 +226,7 @@ li.saved-address.selected {
                         </div>
                         
                         <div class="col-md-2">
-                          <button class="btn btn-success btn-warning delivery-details" id="change_ajax<%= index%>",data-toggle="modal" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" data-prodid="<%= item.id%>">Change</button>
+                          <button class="btn btn-success btn-warning delivery-details" id="change_ajax<%= index%>",data-toggle="modal" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" data-prodid= <%= @product.id%> data-itemid=  <%= item.id%>>Change</button>
                         </div>
                       </div><!-- row -->
                     <% if item.additional[:add_on_ids] %>
@@ -394,7 +395,7 @@ li.saved-address.selected {
                       <div class="col-md-3">
                         <h6 class="my-0" style="font-weight:bold;"><%= current_cart.total_price %></h6>
 
-                        <span class="text-muted"><%= current_cart.shipping_price %></span>
+                        <span class="text-muted" id="shipping_price"><%= current_cart.shipping_price %></span>
                         <h5 class="my-0" style="font-weight:bold;"><%= current_cart.total_amount_with_delivery %></h5>
                       </div>
                     </div>
@@ -570,8 +571,11 @@ function prep_modal()
         }
 
 $(document).ready(function(){
-  var shippingmethodname = "";
+   var shipping_method_name = "";
 	 var delcost = "";
+   var data_id = "";
+   var itemid = "";
+   var prod_id = "";
   prep_modal();
   $("#datepicker").datepicker();
   
@@ -627,49 +631,65 @@ $(document).ready(function(){
    });
   return formInvalid;
    }
+  $(".delivery-details").click(function(){
+      data_id = $(".delivery-details").attr('id');
+      itemid = $("#" + data_id).attr("data-itemid");
+      prod_id = $("#" + data_id).attr("data-prodid");  
+
+  });
+   
     $('.btn-primary').click(function(){
+         
+      
+				var delcost = $(this).closest(".sm-url").find(".delcost").text();
+       
 				if(this.innerText == "Submit") {
 					var slottime = $('input[name=Slottime]');
+          var slot_value = $('input[name="Slottime"]:checked').val();
+          var hello = document.getElementsByClassName('datepicker-switch');
+					var selecteddate = document.getElementsByClassName('active day');
+          var updated_delivery_date = selecteddate[0].innerText+ ',' +hello[0].innerText
+
 					$.each(slottime,function(index,value){
 					   if (value.checked){
                //var addslottime = $('input.delivery-details');
                 $.ajax({
 				              url: '/update_delivery',
 				              method: "GET",
-				              data: { item_id: product,sm_name: shippingmethodname },
+				              data: { product_id: prod_id,sm_name: shipping_method_name, item_id: itemid, slot_time: slot_value , delivery_date: updated_delivery_date,current_cart: <%= current_cart.id %>},
 				              success: function(data){
-					              $(".timeslots").children().remove();
-					              $.each(data,function(index,value){
-					                $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shippingmethodname +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
-					              });
+                        
+                        location.reload();
+                        $("#shipping_price").text(1001);
+					              // $(".timeslots").children().remove();
+					              // $.each(data,function(index,value){
+					              //   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shipping_method_name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+					              // });
   			              }
-			            })
-            });
-            
+			            });         
 						   //addslottime[0].value = addslottime[0].value + ',' + value.value
-						    $('#delivery_modal').modal('toggle');			   
-						   
-       				    }
-					})	
-					$(".delivery-details").val($(".delivery-details").val() + "," + shippingmethodname +":" +delcost);
+					$('#delivery_modal').modal('toggle');			        			
+					$(".delivery-details").val($(".delivery-details").val() + "," + shipping_method_name +":" +delcost);
 				 }
               });
+        }
+
+         });
 
      
 			  $("input[name=shippingmethod_name]").on("click", function(){
 				var product = '<%= @product.id %>';
-				shippingmethodname = this.value;
-
+				shipping_method_name = this.value;
+        
 				delcost = $(this).closest(".sm-url").find(".delcost").text();
-				
 	           $.ajax({
 				   url: '/get_time_slots',
 				   method: "GET",
-				   data: { product_id: product,sm_name: shippingmethodname },
+				   data: { product_id: product ,sm_name: shipping_method_name},
 				   success: function(data){
 					 $(".timeslots").children().remove();
 					 $.each(data,function(index,value){
-					   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shippingmethodname +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+					   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shipping_method_name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
 					 });
   			       }
 			   })

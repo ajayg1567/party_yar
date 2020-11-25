@@ -18,4 +18,15 @@ class CheckoutController < ApplicationController
 		# 	@add_on_products = AddOn.where(:id=> add_on_id) 		
 		# end
 	end
+
+	def update_delivery		
+		@item = Item.find params[:item_id]
+		@item.additional[:delivery_date] = params[:delivery_date]
+		@item.additional[:delivery_time] = params[:slot_time]
+		@item.save
+		sm_price = ShippingMethod.select{|m| m.tag_name.downcase == params[:sm_name].downcase}
+		# @product = Product.find params[:product_id]
+		# @product.shipping_price = sm_price
+		# @product.save			
+	end
 end

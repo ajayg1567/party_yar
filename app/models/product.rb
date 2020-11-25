@@ -13,6 +13,8 @@ class Product < ApplicationRecord
 	belongs_to :super_category
 	has_many :orders, :dependent => :destroy
 	has_many :items, :dependent => :destroy
+	ratyrate_rateable 'name'
+
 
 	def self.find_by_gift_type(gift_type)
 		category = Category.find_by_name(gift_type)

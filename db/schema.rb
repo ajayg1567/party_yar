@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_171447) do
+ActiveRecord::Schema.define(version: 2020_11_08_181121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_07_20_171447) do
     t.string "name"
     t.integer "item_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "average_caches", id: :serial, force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -129,6 +138,14 @@ ActiveRecord::Schema.define(version: 2020_07_20_171447) do
     t.datetime "delivery_date"
   end
 
+  create_table "overall_averages", id: :serial, force: :cascade do |t|
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "product_upgrades", force: :cascade do |t|
     t.integer "quantity"
     t.string "size"
@@ -160,6 +177,29 @@ ActiveRecord::Schema.define(version: 2020_07_20_171447) do
     t.bigint "product_id"
     t.index ["product_id"], name: "index_products_shipping_methods_on_product_id"
     t.index ["shipping_method_id"], name: "index_products_shipping_methods_on_shipping_method_id"
+  end
+
+  create_table "rates", id: :serial, force: :cascade do |t|
+    t.integer "rater_id"
+    t.string "rateable_type"
+    t.integer "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", id: :serial, force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -210,6 +250,15 @@ ActiveRecord::Schema.define(version: 2020_07_20_171447) do
     t.time "from"
     t.time "to"
     t.integer "shipping_method_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_feedbacks", force: :cascade do |t|
+    t.integer "rating"
+    t.string "comment"
+    t.integer "product_id"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

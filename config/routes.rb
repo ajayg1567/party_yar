@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  get 'user_feedbacks/new'
+  post '/rate' => 'rater#create', :as => 'rate'
   root to: 'home#index'
   get 'home/index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -13,7 +14,8 @@ Rails.application.routes.draw do
   resources :occasions, only: :show
 
   post '/purchase' => 'orders#purchase_status'
-
+ 
+  
   resources :products do
     collection do
       get :get_location
@@ -23,6 +25,8 @@ Rails.application.routes.draw do
   post '/cart_addon/:product_id' => 'cart#cart_addon', :as => 'cart_addon'
   get '/remove/:item_id' => 'cart#remove', :as => 'remove'
   get 'checkout' => 'checkout#index'
+  get '/ratings/new' => 'user_feedback#new'
+  
   resources :profile, only: [:edit]
   get 'my-account' => 'my_account#index'
   get 'my-account/:id/profile-edit' => 'my_account#edit_profile', as: :profile_edit
@@ -31,7 +35,7 @@ Rails.application.routes.draw do
   get 'my-account/orders' => 'orders#index', as: :my_orders
   get 'search' => 'super_categories#search', as: :search
   get '/get_time_slots' => 'products#get_time_slots'
-
+  get '/update_delivery' => 'checkout#update_delivery'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post 'new_address' => 'my_account#create_new'
