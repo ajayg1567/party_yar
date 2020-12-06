@@ -7,10 +7,10 @@
         <tr>
             <th>Order Number</th>
             <th>Name</th>
-            <th>Order Status</th>
             <th>Payment Status</th>
             <th>Total</th>
             <th>Delivery Date</th>
+            <th>Order Status</th>
         </tr>
     </thead>
     <tbody>
@@ -18,10 +18,12 @@
         <tr>
             <td><%= order.order_no %></td>
             <td><%= order.user.name %></td>
-            <td><%= order.status%></td>
             <td>payment status</td>
             <td><%= order.price %></td>
-            <td><%= order.price %></td>
+            <td><%= order.delivery_date %></td>
+            <td>
+                <%= select_tag(:state, options_for_select(Order.states.map {|k, v| [k.humanize.capitalize, v]}, selected: Order.states[order.state] ), class: 'select2', style: "width: 70%", data: { remote: true, url: admin_order_update_status_path(order.id), method: :patch }) %>
+            </td>
             <td><%= link_to 'Show',admin_order_path(order)%>|<%= link_to 'Destroy',admin_order_path(order),method: :delete,confirm: "Are you sure?" %>|</td>
             <td><%= link_to 'Download Invoice', admin_invoice_show_path(order, format: :pdf),:class=>'btn btn-primary' %>
         </tr>

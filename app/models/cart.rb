@@ -3,7 +3,8 @@ class Cart < ApplicationRecord
 
 	def add_item(params)
 		additional = {}
-		additional[:add_on_ids] = params[:add_on_ids].split(",") if params["add_on_ids"]
+		additional[:add_ons] = JSON.parse(params['add_ons']) if params["add_ons"]
+		additional[:add_ons].map{|m, count| additional[:add_ons].delete(m) if count <=0 }
 		additional[:product_upgrade_id] = params[:product_upgrade_id]
 		additional[:pincode] = params[:pincode]
 		if params["delivery_details"]
@@ -30,8 +31,8 @@ class Cart < ApplicationRecord
 		items.each do |item|
 			if item.additional[:product_upgrade_id].present?
 				price << ProductUpgrade.find(item.additional[:product_upgrade_id]).price.to_i
-			elsif item.additional[:add_on_ids].present?	
-				price << item.additional[:add_on_ids].map{|m| AddOn.where(:id=> m)}.flatten.map{|n| n.price.to_i}.flatten.map(&:to_i)
+			elsif item.additional[:add_ons].present?
+				price << item.additional[:add_ons].map{|m, count| AddOn.find(m).price.to_i * count.to_i}.flatten.map(&:to_i)
 				price << Product.find(item.product_id).price.to_i
 			else
 				price << Product.find(item.product_id).price.to_i

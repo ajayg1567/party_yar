@@ -1,37 +1,68 @@
 <style type="text/css">
-.saved-address--list {
+  .value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: -1px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .value-button:hover {
+    cursor: pointer;
+  }
+  input.number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .saved-address--list {
     width: 100%;
     float: left;
-}
-.datepicker-inline {
+  }
+  .datepicker-inline {
     width: 324px !important;
-}
-.datepicker,
-.table-condensed {
-  width: 300px;
-  height:300px;
-}
-.del-method-btn{
-	float: right;
-	margin: 0 28px 0 0;
-	border-radius: 0 3px 3px 0;
-	height: 50px;
-	width: 15%;
-	color: #fff;
-	background-color: #009d43;
-	padding: .6em .3em;
-	display: inline-block;
-	text-align: center;
-}
-.delcost{
-	text-decoration: none;
-	font-size: 13px;
-	margin-top: 10px;
-	font-weight: 600;
-	text-align: center;
-	display: inline-block
-}
-#infowindow-content .title {
+  }
+  .datepicker,
+  .table-condensed {
+    width: 300px;
+    height:300px;
+  }
+  .del-method-btn{
+   float: right;
+   margin: 0 28px 0 0;
+   border-radius: 0 3px 3px 0;
+   height: 50px;
+   width: 15%;
+   color: #fff;
+   background-color: #009d43;
+   padding: .6em .3em;
+   display: inline-block;
+   text-align: center;
+ }
+ .delcost{
+   text-decoration: none;
+   font-size: 13px;
+   margin-top: 10px;
+   font-weight: 600;
+   text-align: center;
+   display: inline-block
+ }
+ #infowindow-content .title {
   font-weight: bold;
 }
 
@@ -86,645 +117,67 @@
   border-color: #4d90fe;
 }
 ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 li.saved-address.selected {
-    background: #fff9d8;
+  background: #fff9d8;
 }
 .saved-address--list li.saved-address {
-    border: 1px solid #d5d5d5;
-    border-radius: 4px;
-    padding: 15px 15px 15px 40px;
-    margin-bottom: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: all .25s ease-in-out;
-    list-style: none;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  padding: 15px 15px 15px 40px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: all .25s ease-in-out;
+  list-style: none;
 }
 
 .saved-address--list .check {
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #666;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #666;
 }
 
 .saved-address--list .saved-address--details {
-    font-size: 16px;
-    text-align: left;
-    padding: 0;
-    font-weight: 500;
-    color: #222;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 16px;
+  text-align: left;
+  padding: 0;
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .saved-address--list p.address {
-    padding: 10px 0;
-    font-size: 14px;
-    line-height: 10px;
-    width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  padding: 10px 0;
+  font-size: 14px;
+  line-height: 10px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .gift-header {
-    background: #00994f;
-    padding: 5px 47px;
-    color: #fff;
-    border-radius: 4px 4px 0 0;
-    line-height: 2.8;
-    font-size: 16px;
-    font-family: sans-serif;
-    font-weight: bold;
+  background: #00994f;
+  padding: 5px 47px;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  line-height: 2.8;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 </style>
-<div class="inner-page-content0" style="padding-top: 100px;">
-
-  <div class="my-acount-deatils">
-    <div class="container" style="width: 90%;">
-
-      <div class='row'>
-        <div class='col-md-12'>
-
-          <div id='mainContentWrapper'>
-            <div class="col-md-9">
-              <div class="shopping_cart">
-
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" style="font-weight:bold;">Contact
-                      and Billing Information</a>
-                    </h4>
-                  </div>
-                  <div class="panel-collapse collapse in">
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class="col-md-3">
-                          <p><%= current_user.name%></p>
-                        </div>
-
-                        <div class="col-md-3" style="float: right;">
-                          <p><%= current_user.phone%></p>
-                        </div>
-                        <div class="col-md-3" style="float: right;margin-right: 2em;">
-                          <p><%= current_user.email%></p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                <div class="panel panel-default" id="order_refresh">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-weight:bold;">ORDER AND DELIVERY DETAILS</a>
-                    </h4>
-                  </div>
-                  
-                  <div id="collapseTwo" class="panel-collapse collapse in">
-                    <% current_cart.items.each_with_index do |item, index|%>
-                    <br>
-                    <span class="gift-header">
-                    <span>GIFT <%= index+1 %></span>
-                    </span>
-                    <%# @product_upgrade = ProductUpgrade.find_by(id: item.additional[:product_upgrade_id].to_i)%>
-                     <% @extra_field = ExtraField.find_by(id: item.additional[:extra_field_id].to_i)%> 
-                    <div class="panel-body">
-      
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="row">
-                            <div class="col-md-4">
-                            <img src="<%= url_for(item.product.gallery.first) if item.product.gallery.attached?%>" class="productBanner">
-                              <div class="col-md-2">
-						                    <a href="#" class="card-link remove-cart-product" data-id="<%= item.id%>"><i class="fa fa-trash"><span class="text-muted" style="margin-left:8%;
-                                ">Delete</span></i></a>
-				                  	  </div>
-                            </div> 
-                            <div class="col-md-4">
-                              <p style="font-size: 14px"><%= item.product.name%></p>
-                              <p style="font-size: 14px;"><span>&#8377;</span> <%= (@product_upgrade.present?) ? (@product_upgrade.price) : (item.product.price) %> </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <h4>DELIVERY ON</h4>
-                          <p id="chn_date"><%= item.additional[:delivery_date] %></p>
-                          <p id="chn_time"><%= item.additional[:delivery_time] %></p>
-                        </div>
-                        
-                        <div class="col-md-2">
-                          <button class="btn btn-success btn-warning delivery-details" id="change_ajax<%= index%>",data-toggle="modal" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" data-prodid= <%= @product.id%> data-itemid=  <%= item.id%>>Change</button>
-                        </div>
-                      </div><!-- row -->
-                    <% if item.additional[:add_on_ids] %>
-                    <% add_on_ids = item.additional[:add_on_ids].split(",") %>
-                    <% add_on_objects = add_on_ids.map{|m| AddOn.where(:id=> m)}.flatten%>
-                    <% end %>
-                    </div> <!-- panel-body-->
-                    <!-- this is addon product details -->
-                    <%  if item.additional[:add_on_ids]%>		 
-                   
-                    <% add_on_objects.each do |item1| %>
-                    <div class="panel-body">
-                     
-                     
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="row">
-                            <div class="col-md-4">
-                            <img src="<%= url_for(item1.gallery) if item1.gallery.attached?%>" class="productBanner">
-                            </div> 
-                            <div class="col-md-4">
-                              <p style="font-size: 14px"><%= item1.name%></p>
-                              <p style="font-size: 14px;"><span>&#8377;</span> <%= item1.price %> </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                     <% end %>
-                     
-
-
-                     <% end %>
-                      <!-- end of product add_on_details-->
-
-
-                    <!-- Add on Product Details-->
-                    
-                  
-                    <!-- end add on product details-->
-                  
-
-                  
-                    <!-- Address panel -->
-                    <div class="panel panel-default">
-                      <div class="panel-heading" >
-                        <h4 class="panel-title">
-                          <a href="#collapseAddress<%= index%>" data-toggle="collapse" data-parent="#accordion" >+ Add New Address</a>
-                        </h4>
-                      </div>
-                      <div id="collapseAddress<%= index%>" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <div class="col-md-12">
-                          <h1>Enter New Address</h1>
-						
-							<%= form_for(@address, url: new_address_path, :html =>{:id=>"address_form#{index}"}) do |f|%>	
-              
-              <div class="form-group col-md-6">	
-									<label>Recipient's Name:</label>
-									<%= f.text_field :name, :name=> "name",:id=> "rec_name#{index}", :class=> "form-control",value: @address.name, required: true%>					 
-							</div>                
-                	<div class="form-group col-md-6">												
-									<label>Recipient's Mobile number:</label>
-									<%= f.text_field :mobile, :name=> "mobile",:id=>"rec_mobile#{index}",:class=>'form-control',value: @address.mobile, required: true%>					 
-								</div>                        
-                <div class="form-group col-md-6">								
-									<label>Recipient's Email Id:</label> 
-									<%= f.text_field :email, :name=> "email",:id=>"rec_email#{index}",:class=>'form-control',value: @address.email, required: true%>
-								</div>	          
-               <div class="form-group col-md-6">				 									  	
-										<label>Recipient's Address</label>
-										<%= f.text_area :address_line1, :name=> "address_line1",:id=>"rec_address#{index}",:class=>'form-control',value: @address.try(:address_line1),size: "60*100"%>
-								</div>	                    
-                    <div class="form-group col-md-6">													
-										<label>Recipient's City</label>
-									    <%= f.text_field :city, :name=> "city",:id=>"rec_city#{index}",:class=>'form-control',value: @address.try(:city) %>			 
-									  </div>                
-                  
-                  <div class="form-group col-md-6">				
-										<label>Landmark</label>
-									    <%= f.text_field :landmark,:name=> "landmark", :id=>"rec_landmark#{index}",:class=>'form-control',value: @address.try(:landmark) %>			 
-									</div>                             
-                  <div class="form-group col-md-6">									
-										<label for="zip">Zip</label>
-										<%= f.text_field :pincode,:name=> "pincode", :id=>"rec_zip#{index}",:class=>'form-control',value: @address.try(:pincode) %>		
-									</div>								
-                <div class="form-group col-md-6">
-									
-                  <div class="col-md-6" style="margin-top:6%;">
-										<%= f.submit 'Save', :class => 'btn btn-primary btn-block', data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Please wait...."},:style=>"background-color: #ff9212;
-    color: white;" %>
-										</div>
-                    <div class="col-md-6" style="margin-top:6%;">
-                    <%= link_to 'Cancel', '#', class: 'btn btn-default btn-block cancel_btn ',id: "cancel_btn#{index}",:style=>"background-color: #999;color:white; "%>
-                    </div>
-                    <%= f.hidden_field :item_id, :name=> "item_id",:id=>"item#{index}",:value => "#{item.id}" %>														
-                    </div>
-                    
-									<%end%>
-								</div>              
-                </div>
-                 
-              </div>
-              
-            </div>
-            <h4 class="panel-title" style="font-weight: bold;margin-left: 2%;" id="select_address<%= index%>">SELECTED ADDRESS</h4><br> 
-                    <ul id="address_selected<%= index%>">
-                    <!-- Address panel -->
-
-                    <!-- Selected Address panel -->
-                   
-                    
-                    </ul>
-                    </div>
-                    <!-- Selected Address panel -->
-
-                    <!-- Free message and card -->
-                    <h4>Free message and card</h4><br>
-                    <!-- Free message and card -->
-                  <%end%>
-                      
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">I agree to the Terms & Conditions / Disclaimer</label>
-                    </div>
-                    <!-- <button data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="btn btn-primary">Submit</button> -->
-
-                    <form action="/purchase" method="POST">
-                        <script
-                        src="https://checkout.razorpay.com/v1/checkout.js"
-                        data-key="rzp_test_ceKCXwYi0JrUYI"
-
-                        data-amount="<%= (current_cart.total_amount_with_delivery) * 100 %>"
-                        data-name="<%= "#{@product.name}" %>"
-                        data-description="<%= truncate(@product.description.html_safe, :length => 80, :omission => "" , :escape => false)%>"
-                        data-image="/assets/logo.png"
-
-                        data-prefill.name="<%= "#{current_user.name}" %>"
-                        data-prefill.email="<%= "#{current_user.email}" %>"
-                        data-theme.color="#F37254"
-                        >
-                      </script>
-                      <!-- <input type="hidden" value="<%#= "#{@product.id}" %>" name="product_id"> -->
-                      <input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
-                    </form>
-
-
-                  </div> <!-- Collapse div -->
-                </div> <!-- Panel Default-->
-</div>
-              <!-- $("#collapseTwo").slideToggle(); -->
-
-         
-        
-            <div class="col-md-3">
-              <ul class="list-group mb-3">
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h4 style="font-weight:bold;">PRICE DETAILS</h4>
-                    <div class="row">
-                      <div class="col-md-9">
-                        <h6 class="text-muted">Total Product price</h6>
-                        <span class="text-muted">Shipping</span>
-                        <h5 class="text-muted" id="payment_total">Total</h5>
-                      </div>
-                      <div class="col-md-3">
-                        <h6 class="my-0" style="font-weight:bold;"><%= current_cart.total_price %></h6>
-
-                        <span class="text-muted" id="shipping_price"><%= current_cart.shipping_price %></span>
-                        <h5 class="my-0" style="font-weight:bold;"><%= current_cart.total_amount_with_delivery %></h5>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <div class="footer-1">
-                <h5>FNP SECURE</h5>
-                <div class="visa-icon">
-                  <img src="assets/visa-icon.png">
-                </div>
-              </div>
-
-            </div>
-
-
-          </div>
-        </div> <!-- col-md-12 -->
-      </div> <!-- row -->
-    </div> <!-- container -->
-  </div> 
-</div>
-
-<!-- Modal for shipping and delivery-->
-
-<div class="modal fade" id="delivery_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:20%;z-index:9999999">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" style="border-bottom: 0px">
-        
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-	   <!-- calendar -->
-        <div class="modal-split">
-		 <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT DELIVERY DATE</h4>
-		 <div id="datepicker" data-provide="datepicker-inline" style="text-align: -webkit-center;"></div>
-		 <hr />
-		</div>
-		<!-- shipping -->
-		<div class="modal-split">
-		<h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT SHIPPING METHOD</h4>
-		<hr />
-		<ul>
-	      <% ShippingMethod.find(@product.shipping_method_ids).each do |shipping_method| %>
-		    <li class="sm-list">
-		     <a class="sm-url">
-		      <label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
-				<%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
-			    <span style="display: inline-block"><%= shipping_method.tag_name %></span>
-			  </label>
-		      <div class="input-group-button button del-method-btn">
-		        <span class="delcost" style=""><%= shipping_method.price%></span>
-		      </div>
-		     </a>
-		    </li>
-		  <% end %>
-		</ul>
-    	</div>
-		<!-- timeslots -->
-		<div class="modal-split">
-		<h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;">SELECT THE TIME SLOT</h4>
-		<hr />
-		<ul class="timeslots">
-		</ul>
-		</div>
-      </div>
-      <div class="modal-footer">
-        
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end of modal-->
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<!-- testing panel -->
-<script type="text/javascript">
-function prep_modal()
-			  {
-				$(".modal").each(function() {
-			  
-				var element = this;
-				  var pages = $(this).find('.modal-split');
-			  
-				if (pages.length != 0)
-				{
-					  pages.hide();
-					  pages.eq(0).show();
-			  
-					  var b_button = document.createElement("button");
-							  b_button.setAttribute("type","button");
-									b_button.setAttribute("class","btn btn-primary btn-lg");
-									b_button.setAttribute("style","display: none;width:30%;background: #f68808;");
-									b_button.innerHTML = "Back";
-			  
-					  var n_button = document.createElement("button");
-							  n_button.setAttribute("type","button");
-									n_button.setAttribute("class","btn btn-primary btn-lg");
-									n_button.setAttribute("style","width:30%;background-color: #038e3e;");
-									n_button.innerHTML = "Next";
-			  
-					  $(this).find('.modal-footer').append(b_button).append(n_button);
-			  
-			  
-					  var page_track = 0;
-			  
-					  $(n_button).click(function() {
-						  var hello = document.getElementsByClassName('datepicker-switch');
-						  var selecteddate = document.getElementsByClassName('active day');
-						  if ((hello[0] != undefined) && (selecteddate[0] != undefined))
-							{
-					     	  $('input.delivery-details').val(selecteddate[0].innerText+ ',' +hello[0].innerText);
-							  
-						    }
-							this.blur();  			  
-						  if(page_track == 0)
-						  {
-							  $(b_button).show();
-						  }
-						  if(page_track == pages.length-2)
-						  {
-							  $(n_button).text("Submit");
-						  }
-
-					  if(page_track == pages.length-1)
-					  {
-						$(element).find("form").submit();
-					  }
-			  
-						  if(page_track < pages.length-1)
-						  {
-							  page_track++;
-			  
-							  pages.hide();
-							  pages.eq(page_track).show();
-						  }
-			  
-			  
-					  });
-			  
-					  $(b_button).click(function() {
-			  
-						  if(page_track == 1)
-						  {
-							  $(b_button).hide();
-						  }
-			  
-						  if(page_track == pages.length-1)
-						  {
-							  $(n_button).text("Next");
-						  }
-			  
-						  if(page_track > 0)
-						  {
-							  page_track--;
-			  
-							  pages.hide();
-							  pages.eq(page_track).show();
-						  }
-			  
-			  
-					  });
-			  
-				}
-			  
-				});
-        }
-
-$(document).ready(function(){
-   var shipping_method_name = "";
-	 var delcost = "";
-   var data_id = "";
-   var itemid = "";
-   var prod_id = "";
-  prep_modal();
-  $("#datepicker").datepicker();
-  
-    $(".delivery-details").click(function(){
-				$("#delivery_modal").modal('show');
-				});
-        
-    $("#loader").hide();
-    $('.remove-cart-product').click(function(){
-		var item_id = $(this).data('id');
-		return $.ajax('/remove/' + item_id, {
-			type: 'GET',
-			dataType: 'script',
-			success: function(data) {
-        alert("this is inside success");
-        $('#cart-item-' + item_id).empty();
-        location.reload();
-			},
-			error: function(data) { }
-		});
-	})
-   
-    $("#accordion").hide();
-    $('.cancel_btn').click(function(){
-      var col_name = $(this).attr('id').match(/\d+/g);
-      $("#collapseAddress" + col_name +".panel-collapse").collapse('toggle');
-    });
-    $(".razorpay-payment-button").addClass("pay-now btn btn-primary")
-    $(".razorpay-payment-button").prop('disabled', true);
-    $("#exampleCheck1").click(function(){
-    if($(this).prop("checked") == true && ValidateForm()){
-      $(".razorpay-payment-button").prop('disabled', false);
-        
-    }
-    else if($(this).prop("checked") == false){
-      $(".razorpay-payment-button").prop('disabled', true);
-    }
-   });  
-
-   function ValidateForm() {
-    var formInvalid = false;
-    var gift_header = $(".gift-header").text().match(/\d+/g);
-    
-   $.each(gift_header, function(index, value) {
-      if ($("#address_selected" +index).find('li').length > 0) {
-        formInvalid = true;
-      } 
-      else {
-         alert('Forgot to fill the address !Please fill up all fields');
-         formInvalid = false;
-      } 
-
-   });
-  return formInvalid;
-   }
-  $(".delivery-details").click(function(){
-      data_id = $(".delivery-details").attr('id');
-      itemid = $("#" + data_id).attr("data-itemid");
-      prod_id = $("#" + data_id).attr("data-prodid");  
-
-  });
-   
-    $('.btn-primary').click(function(){
-         
-      
-				var delcost = $(this).closest(".sm-url").find(".delcost").text();
-       
-				if(this.innerText == "Submit") {
-					var slottime = $('input[name=Slottime]');
-          var slot_value = $('input[name="Slottime"]:checked').val();
-          var hello = document.getElementsByClassName('datepicker-switch');
-					var selecteddate = document.getElementsByClassName('active day');
-          var updated_delivery_date = selecteddate[0].innerText+ ',' +hello[0].innerText
-
-					$.each(slottime,function(index,value){
-					   if (value.checked){
-               //var addslottime = $('input.delivery-details');
-                $.ajax({
-				              url: '/update_delivery',
-				              method: "GET",
-				              data: { product_id: prod_id,sm_name: shipping_method_name, item_id: itemid, slot_time: slot_value , delivery_date: updated_delivery_date,current_cart: <%= current_cart.id %>},
-				              success: function(data){
-                        
-                        location.reload();
-                        $("#shipping_price").text(1001);
-					              // $(".timeslots").children().remove();
-					              // $.each(data,function(index,value){
-					              //   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shipping_method_name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
-					              // });
-  			              }
-			            });         
-						   //addslottime[0].value = addslottime[0].value + ',' + value.value
-					$('#delivery_modal').modal('toggle');			        			
-					$(".delivery-details").val($(".delivery-details").val() + "," + shipping_method_name +":" +delcost);
-				 }
-              });
-        }
-
-         });
-
-     
-			  $("input[name=shippingmethod_name]").on("click", function(){
-				var product = '<%= @product.id %>';
-				shipping_method_name = this.value;
-        
-				delcost = $(this).closest(".sm-url").find(".delcost").text();
-	           $.ajax({
-				   url: '/get_time_slots',
-				   method: "GET",
-				   data: { product_id: product ,sm_name: shipping_method_name},
-				   success: function(data){
-					 $(".timeslots").children().remove();
-					 $.each(data,function(index,value){
-					   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shipping_method_name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
-					 });
-  			       }
-			   })
-			});
-  
-  
-
-    $("input[name=commit]").click(function(event){
-        event.preventDefault();
-        var form_id = $(this).closest("form").attr('id');
-        var form_value = $("#" + form_id).serialize();
-
-	        $.ajax({
-				   url: '/new_address',
-				   method: "POST",
-				   data: { address: form_value },
-				   success: function(data){
-             var response = data;
-             var addr_name = form_id.match(/\d+/g);
-              $("#collapseAddress" + addr_name +".panel-collapse").collapse('toggle');
-              $("#" + form_id)[0].reset();              
-              $('#address_selected'+ addr_name).append('<li style="list-style-type: none;margin-right:10%;"><div class="panel-group" id="accordion2"><div class="panel panel-default"><div class="panel panel-default"><div class="panel-heading" style="background-color:#fff9d8"><div class="panel-body" style="padding: 0px;"><div class="col-md-1"><label for="r12" style="width: 100%;"><input type="radio" id="r12" name="occupation" value="Not-Working" required /> </div><div class="col-md-9"><p id="response_address"></p></div><div class="col-md-2"><div class="col-md-2"><a href="#"><i class="fa fa-trash delete_panel" aria-hidden="true" style="text-align: right;padding-left: 30%;font-size: medium;" ></i></a><p></p></div></div><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"></a></label></div></div><div id="collapseThree" class="panel-collapse collapse"><div class="panel-body"><p>Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of CSS and HTML conventions. <a href="http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank">Learn more.</a></p></div></div></div></div></li>');
-              $('#address_selected' + addr_name + ' '+'li:last-child').find("#response_address").html("<span style='font-weight:bold;'>" + response["name"] + " " + response["mobile"] + " " + "<br><br>" + response["address_line1"] + " " + response["city"] + " " + response["pincode"] + "</span><br><br>");            
-              $(".delete_panel").on('click',function(){
-              $(this).closest('li').remove();
-              $(this).closest("#response_address").empty();
-    });
- 			       },
-           error: function(jqXHR, textStatus, errorThrown) {
-             alert("in error---");
-           }    
-			   })
-			});
-
-
-  })
-  
-</script>
+<div class="inner-page-content0" id ="checkout-cart"style="padding-top: 100px;">
+  <%= render(:partial => 'cart') %>
+</div> 

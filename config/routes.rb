@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'search' => 'super_categories#search', as: :search
   get '/get_time_slots' => 'products#get_time_slots'
   get '/update_delivery' => 'checkout#update_delivery'
+  get '/update_add_ons' => 'checkout#update_add_ons'
+  get '/remove_add_on' => 'checkout#remove_add_on'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post 'new_address' => 'my_account#create_new'
@@ -48,7 +50,9 @@ Rails.application.routes.draw do
     resources :sub_categories
     resources :categories
     resources :super_categories
-    resources :orders,only: [:index,:show,:edit,:destroy]
+    resources :orders,only: [:index,:show,:edit,:destroy] do
+      patch :update_status
+    end
     resources :products do
       collection do
         post :import
