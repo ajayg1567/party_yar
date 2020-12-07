@@ -1,205 +1,205 @@
 <style type="text/css">
 
-#map {
-  height: 100%;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-#description {
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-}
-.datepicker-inline {
-    width: 324px !important;
-}
-.datepicker,
-.table-condensed {
-  width: 300px;
-  height:300px;
-}
-
-#infowindow-content .title {
-  font-weight: bold;
-}
-
-#infowindow-content {
-  display: none;
-}
-
-#map #infowindow-content {
-  display: inline;
-}
-
-.pac-card {
-  margin: 10px 10px 0 0;
-  border-radius: 2px 0 0 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  font-family: Roboto;
-}
-
-#pac-container {
-  padding-bottom: 12px;
-  margin-right: 12px;
-}
-
-.pac-controls {
-  display: inline-block;
-  padding: 5px 11px;
-}
-
-.pac-controls label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
-}
-
-#pac-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
-  margin-left: 12px;
-  padding: 0 11px 0 13px;
-  text-overflow: ellipsis;
-  width: 178px;
-  height: 39px;
-}
-
-#pac-input:focus {
-  border-color: #4d90fe;
-}
-
-#title {
-  color: #fff;
-  background-color: #4d90fe;
-  font-size: 25px;
-  font-weight: 500;
-  padding: 6px 12px;
-}
-
-
-
-.value-button {
-  display: inline-block;
-  border: 1px solid #ddd;
-  margin: 0px;
-  width: 40px;
-  height: -1px;
-  text-align: center;
-  vertical-align: middle;
-  padding: 11px 0;
-  background: #eee;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.value-button:hover {
-  cursor: pointer;
-}
-
-form #decrease {
-  margin-right: -4px;
-  border-radius: 8px 0 0 8px;
-}
-
-form #increase {
-  margin-left: -4px;
-  border-radius: 0 8px 8px 0;
-}
-
-form #input-wrap {
-  margin: 0px;
-  padding: 0px;
-}
-#mymodal { 
-        z-index: 1000000000; 
-        }
-input.number {
-  text-align: center;
-  border: none;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  margin: 0px;
-  width: 40px;
-  height: 40px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+  #map {
+    height: 100%;
+  }
+  /* Optional: Makes the sample page fill the window. */
+  html, body {
+    height: 100%;
     margin: 0;
-}odal-dialog {
-    margin: 300px auto;
-}
-.empty {
-    border: 1px solid red;
+    padding: 0;
+  }
+  #description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .datepicker-inline {
+    width: 324px !important;
+  }
+  .datepicker,
+  .table-condensed {
+    width: 300px;
+    height:300px;
   }
 
-.carousel-control { width:  4%; }
-.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+  #infowindow-content .title {
+    font-weight: bold;
+  }
+
+  #infowindow-content {
+    display: none;
+  }
+
+  #map #infowindow-content {
+    display: inline;
+  }
+
+  .pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+  }
+
+  #pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+  }
+
+  .pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+  }
+
+  .pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 178px;
+    height: 39px;
+  }
+
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+  #title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+  }
+
+
+
+  .value-button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: -1px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 11px 0;
+    background: #eee;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .value-button:hover {
+    cursor: pointer;
+  }
+
+  form #decrease {
+    margin-right: -4px;
+    border-radius: 8px 0 0 8px;
+  }
+
+  form #increase {
+    margin-left: -4px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  form #input-wrap {
+    margin: 0px;
+    padding: 0px;
+  }
+  #mymodal { 
+    z-index: 1000000000; 
+  }
+  input.number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }odal-dialog {
+      margin: 300px auto;
+    }
+    .empty {
+      border: 1px solid red;
+    }
+
+    .carousel-control { width:  4%; }
+    .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
 
     @media (max-width: 767px) {
-        .carousel-inner .active.left { left: -100%; }
-        .carousel-inner .next        { left:  100%; }
-        .carousel-inner .prev        { left: -100%; }
-        .active > div { display:none; }
-        .active > div:first-child { display:block; }
+      .carousel-inner .active.left { left: -100%; }
+      .carousel-inner .next        { left:  100%; }
+      .carousel-inner .prev        { left: -100%; }
+      .active > div { display:none; }
+      .active > div:first-child { display:block; }
 
     }
     @media (min-width: 767px) and (max-width: 992px ) {
-        .carousel-inner .active.left { left: -50%; }
-        .carousel-inner .next        { left:  50%; }
-        .carousel-inner .prev        { left: -50%; }
-        .active > div { display:none; }
-        .active > div:first-child { display:block; }
-        .active > div:first-child + div { display:block; }
+      .carousel-inner .active.left { left: -50%; }
+      .carousel-inner .next        { left:  50%; }
+      .carousel-inner .prev        { left: -50%; }
+      .active > div { display:none; }
+      .active > div:first-child { display:block; }
+      .active > div:first-child + div { display:block; }
     }
     @media (min-width: 992px ) {
-        .carousel-inner .active.left { left: -25%; }
-        .carousel-inner .next        { left:  25%; }
-        .carousel-inner .prev        { left: -25%; }    
+      .carousel-inner .active.left { left: -25%; }
+      .carousel-inner .next        { left:  25%; }
+      .carousel-inner .prev        { left: -25%; }    
     }
 
-.alert.alert-info, .button
-{ 
-   max-width: 600px; 
-   margin: 40px auto;
-   text-align: center;
-}
-.sm-list 
-{
-  list-style: none;
-  display: table;
-  height: 50px;
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  padding: 0 7%;
-}
-.sm-url {
+    .alert.alert-info, .button
+    { 
+     max-width: 600px; 
+     margin: 40px auto;
+     text-align: center;
+   }
+   .sm-list 
+   {
+    list-style: none;
+    display: table;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 0 7%;
+  }
+  .sm-url {
     text-align: left !important;
     display: table-cell;
     vertical-align: middle;
     padding: 0 !important;  
-}
-#myModal {
+  }
+  #myModal {
     top: 172px !important;
-}
+  }
 
-.del-method-btn{
+  .del-method-btn{
     float: right;
     margin: 0 28px 0 0;
     border-radius: 0 3px 3px 0;
@@ -210,559 +210,609 @@ input[type=number]::-webkit-outer-spin-button {
     padding: .6em .3em;
     display: inline-block;
     text-align: center;
-}
-.delcost{
+  }
+  .delcost{
     text-decoration: none;
     font-size: 13px;
     margin-top: 10px;
     font-weight: 600;
     text-align: center;
     display: inline-block
-}
+  }
+  .cakes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cakes:hover {
+    cursor: pointer;
+  }
+  .selected-cake{
+    border: 2px solid #1ca21c;
+  }
+  .money-icon{
+    font-size: 15px;
+    font-family: fontawesome;
+    color: #000000;
+  } 
+  .cake-price{
+    font-size: 15px;
+    font-family: Roboto-Regular;
+    color: red;
+  }
 </style>
 
 
 
 <div class="inner-page-content0">
-    <div class="seller-product-wrapper">
-        <div class="container product-wrapper-container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="cake-wrapper-now">
-                            <div class="col-md-2">
-                                <ul>
-                                    <% @product.gallery.each_with_index do |gallery, index|%>
-                                        <li><a href="#"><img src="<%= url_for(gallery)%>" class="imageGalleryThumb" style="<%= index == 0 ? 'border: 3px solid #009d43' : '' %>"></a></li>
-                                    <%end if @product.gallery.attached?%>
-                                </ul>
-                        </div>
-                            <div class="col-md-10">
-                                <img src="<%= url_for(@product.gallery.first) if @product.gallery.attached?%>" class="productBanner">
-                                <div class="cake-count">
-                                    <img src="/assets/smile-guranteed-1.jpg">
-                                    <div class="secure-payment">
-                                        <ul>
-                                            <li>100% Safe and Secure Payments.</li>
-                                            <li>6 Million People Trust Us.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!---------------col-md-6-------------->
-
-                <div class="col-md-6">
-                    <div class="chocolate-cake-products">
-                        <h2 class="cake"><%= @product.name%></h2>
-                        <span class="stars-container stars-100"> ☆☆☆☆☆ <a href="#">42 Reviews</a></span>
-                        <div class="price-off">
-                            <span class="iner-content"><p class="inr-icon"></p> <p class="product-price"><%= @product.price.to_i%></p></span>
-                            <!-- <span class="iner-content2"><p class="inr-icon"></p> <del>999</del> 20% OFF</span> -->
-                            <span data-upgrade-id="" id="upgradeID" style="display: none;"></span>
-                            <p class="exclusive-text">Inclusive of all taxes</a>
-                            </div>
-
-                            <% unless @product.product_upgrades.empty? %>
-                            <div class="pic-up-grade">
-                                <h3>Pick an upgrade </h3>
-                                <ul>
-                                    <% @product.product_upgrades.each do |upgrade| %>
-                                    <li><a href="#"><img src="<%= url_for(upgrade.thumbnail)%>" width='80px' class="productUpgrade" data-upgrade-price="<%= upgrade.price.to_i%>" data-upgrade-id="<%= upgrade.id%>"><br><%= upgrade.size%><span><p class="inr-icon"> <%= upgrade.price.to_i%></p></span></a></li>
-                                    <%end%>
-                                </ul>
-                            </div>  
-                            <% end %>
-                            <div class="location_search1">
-                                <div class="form-group">
-                            <div class="row">
-                            <div class="col-md-3" style="width:36%;">
-                            <p><i class="fa fa-map-marker" aria-hidden="true" style="left:16px;"></i><input id="pac-input" type="text" placeholder="Enter a location"></p>
-                                    
-                            <div id="map"></div>
-                            </div>  
-                            <div class="col-md-3">
-                            <p>
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>       
-                                    <input type="text" class="delivery-details" data-toggle="modal" data-backdrop="true" data-keyboard="true">
-                                    </p>
-                            </div>  
-                                    <!--p>Test modal</p-->
-                                    <div class="button">
-                                    </div>
-                            
-      </div>
-<!-- Modal -->
-
-<div class="modal fade" id="delivery_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:20%;z-index:9999999">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" style="border-bottom: 0px">
-        
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <!-- calendar -->
-        <div class="modal-split">
-         <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT DELIVERY DATE</h4>
-         <div id="datepicker" data-provide="datepicker-inline" style="text-align: -webkit-center;"></div>
-         <hr />
-        </div>
-        <!-- shipping -->
-        <div class="modal-split">
-        <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT SHIPPING METHOD</h4>
-        <hr />
-        <ul>
-          <% ShippingMethod.find(@product.shipping_method_ids).each do |shipping_method| %>
-            <li class="sm-list">
-             <a class="sm-url">
-              <label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
-                <%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
-                <span style="display: inline-block"><%= shipping_method.tag_name %></span>
-              </label>
-              <div class="input-group-button button del-method-btn">
-                <span class="delcost" style=""><%= shipping_method.price%></span>
+  <div class="seller-product-wrapper">
+    <div class="container product-wrapper-container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="cake-wrapper-now">
+              <div class="col-md-2">
+                <ul>
+                  <% @product.gallery.each_with_index do |gallery, index|%>
+                  <li><a href="#"><img src="<%= url_for(gallery)%>" class="imageGalleryThumb" style="<%= index == 0 ? 'border: 3px solid #009d43' : '' %>"></a></li>
+                  <%end if @product.gallery.attached?%>
+                </ul>
               </div>
-             </a>
-            </li>
-          <% end %>
-        </ul>
-        </div>
-        <!-- timeslots -->
-        <div class="modal-split">
-        <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;">SELECT THE TIME SLOT</h4>
-        <hr />
-        <ul class="timeslots">
-        </ul>
-        </div>
-      </div>
-      <div class="modal-footer">
-        
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end of modal-->
-                                <div class="form-group">
-                                    <%@product.extra_fields.each do |ef|%>
-                                        <%if ef.option_type == 'Boolean'%>
-                                            <input type="radio" name="cake" class="extra_field" value="<%= ef.id%>"> <%= ef.option_value%>
-                                        <%end%>
-                                        <%if ef.option_type == 'TextArea'%>
-                                            <div class="form-group">
-                                                <textarea name="message" class="message" rows="10" cols="30" placeholder="Comments"></textarea>             
-                                            </div>
-                                        <%end%>
-                                    <%end%>
-                                </div>
+              <div class="col-md-10">
+                <img src="<%= url_for(@product.gallery.first) if @product.gallery.attached?%>" class="productBanner">
+                <div class="cake-count">
+                  <img src="/assets/smile-guranteed-1.jpg">
+                  <div class="secure-payment">
+                    <ul>
+                      <li>100% Safe and Secure Payments.</li>
+                      <li>6 Million People Trust Us.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!---------------col-md-6-------------->
 
-                                <span id="selectedExtraFieldID" data-extra-field-id="" style="display: none;"></span>
-                                <div class="form-group">
-                                    <div class="modal-product-list">
-                                        <%= link_to add_to_cart_url(product_id: @product.id, product_upgrade_id: ''), class: 'btn btn-warning btn-lg checkout', :id=>"add_to_cart_check",method: :post, remote: true do %>
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart
-                                        <%end%>
-                                        <button type="button" id ="button1" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">Buy Now</button>
-                                </div>
-                                </div>
-                            </div>
+        <div class="col-md-6">
+          <div class="chocolate-cake-products">
+            <h2 class="cake"><%= @product.name%></h2>
+            <span class="stars-container stars-100"> ☆☆☆☆☆ <a href="#">42 Reviews</a></span>
+            <div class="price-off">
+              <span class="iner-content"><p class="inr-icon"></p> <p class="product-price" id="product_price"><%= @product.price.to_i%></p></span>
+              <!-- <span class="iner-content2"><p class="inr-icon"></p> <del>999</del> 20% OFF</span> -->
+              <span data-upgrade-id="" id="upgradeID" style="display: none;"></span>
+              <p class="exclusive-text">Inclusive of all taxes</a>
+              </div>
 
-                            <div class="product-details-desc">
-                                <h3>Description</h3>
+              <% unless @product.product_upgrades.empty? %>
+              <div class="pic-up-grade">
+                <h3>Pick an upgrade </h3>
+                <ul>
+                  <% @product.product_upgrades.each do |upgrade| %>
+                  <li><a href="#"><img src="<%= url_for(upgrade.thumbnail)%>" width='80px' class="productUpgrade" data-upgrade-price="<%= upgrade.price.to_i%>" data-upgrade-id="<%= upgrade.id%>"><br><%= upgrade.size%><span><p class="inr-icon"> <%= upgrade.price.to_i%></p></span></a></li>
+                  <%end%>
+                </ul>
+              </div>  
+              <% end %>
+              <div class="location_search1">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-3" style="width:36%;">
+                      <p><i class="fa fa-map-marker" aria-hidden="true" style="left:16px;"></i><input id="pac-input" type="text" placeholder="Enter a location"></p>
 
-                                <%= @product.description.html_safe%>
-                            </div>
+                      <div id="map"></div>
+                    </div>  
+                    <div class="col-md-3">
+                      <p>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>       
+                        <input type="text" class="delivery-details" data-toggle="modal" data-backdrop="true" data-keyboard="true">
+                      </p>
+                    </div>  
+                    <!--p>Test modal</p-->
+                    <div class="button">
+                    </div>
+
+                  </div>
+                  <!-- Modal -->
+
+                  <div class="modal fade" id="delivery_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:20%;z-index:9999999">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="border-bottom: 0px">
+
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
+                        <div class="modal-body">
+                         <!-- calendar -->
+                         <div class="modal-split">
+                           <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT DELIVERY DATE</h4>
+                           <div id="datepicker" data-provide="datepicker-inline" style="text-align: -webkit-center;"></div>
+                           <hr />
+                         </div>
+                         <!-- shipping -->
+                         <div class="modal-split">
+                          <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT SHIPPING METHOD</h4>
+                          <hr />
+                          <ul>
+                            <% ShippingMethod.find(@product.shipping_method_ids).each do |shipping_method| %>
+                            <li class="sm-list">
+                             <a class="sm-url">
+                              <label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
+                                <%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
+                                <span style="display: inline-block"><%= shipping_method.tag_name %></span>
+                              </label>
+                              <div class="input-group-button button del-method-btn">
+                                <span class="delcost" style=""><%= shipping_method.price%></span>
+                              </div>
+                            </a>
+                          </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <!-- timeslots -->
+                      <div class="modal-split">
+                        <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;">SELECT THE TIME SLOT</h4>
+                        <hr />
+                        <ul class="timeslots">
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
 
-                    </div><!----------------col-md-6----------------------->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end of modal-->
+              <% if @product.is_cake? %>
+              <input type="hidden" value="<%= @product.price %>" id="actual_product_price"/>
+              <div class="row" style="margin-left: auto;">
+                <div class=" col-md-4 half-kg-cake cakes"  cake-price-value="0.5" style="width: 25%;">
+                  <span class="cake-img">
+                    <img src="/assets/cake-1.png">
+                  </span>
+                  <span class="exclusive-text">1/2 Kg</span>
+                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price/2%></p></span>
 
-                </div><!----------------row-------------------->
-            </div><!--------container---------------->
-        </div>
+                </div>
+                <div class="col-md-4 one-kg-cake cakes" cake-price-value="1"  style="width: 25%;">
+                  <span class="selected-cake cake-img">
+                    <img src="/assets/cake-1.png">
+                  </span>
+                  <span class="exclusive-text">1 Kg</span>
+                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price %></p></span>
+                </div>
+                <div class="col-md-4 two-kg-cake cakes"  cake-price-value="2" style="width: 25%;">
+                  <span class="cake-img">
+                    <img src="/assets/cake-1.png">
+                  </span>
+                  <span class="exclusive-text">2 Kg</span>
+                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price*2%></p></span>
+                </div>
+              </div>
+              <%end%>
+
+              <div class="form-group">
+                <%@product.extra_fields.each do |ef|%>
+                <%if ef.option_type == 'Boolean'%>
+                <input type="radio" name="cake" class="extra_field" value="<%= ef.id%>"> <%= ef.option_value%>
+                <%end%>
+                <%if ef.option_type == 'TextArea'%>
+                <div class="form-group">
+                  <textarea name="message" class="message" rows="10" cols="30" placeholder="Comments"></textarea>             
+                </div>
+                <%end%>
+                <%end%>
+              </div>
+
+
+              <span id="selectedExtraFieldID" data-extra-field-id="" style="display: none;"></span>
+              <div class="form-group">
+                <div class="modal-product-list">
+                  <%= link_to add_to_cart_url(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1'), class: 'btn btn-warning btn-lg checkout', :id=>"add_to_cart_check",method: :post, remote: true do %>
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart
+                  <%end%>
+                  <button type="button" id ="button1" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-details-desc">
+              <h3>Description</h3>
+
+              <%= @product.description.html_safe%>
+            </div>
+          </div>
+
+        </div><!----------------col-md-6----------------------->
+
+      </div><!----------------row-------------------->
+    </div><!--------container---------------->
+  </div>
 <%# <h1>this is below rating system</h1>
 <span class="glyphicon glyphicon-star"></span>
 <span class="glyphicon glyphicon-star-empty"></span> %>
 
 <section class="client-review">
-    <div class="demo">
-        <div class="container product-wrapper-container">
-            <div class="col-md-12">
-                <h1 class="best-sell-heading text-center">What Customers Are Saying</h1>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="testimonial-slider" class="owl-carousel">
-                        <div class="testimonial">
-                            <img class="startimg" src="/assets/5startimg.png">
-                            <h2>A Truly amazing experience</h2>
-                            <p class="description1">
-                                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-                            </p>
-                            <div class="pic">
-                                <img src="/assets/client-img-1.jpg" alt=""/>
-                            </div>
-                            <span>JOHN, USA</span>
-                        </div>
-
-                        <div class="testimonial">
-                            <img class="startimg" src="/assets/5startimg.png">
-                            <h2>A Truly amazing experience</h2>
-                            <p class="description1">
-                                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-                            </p>
-                            <div class="pic">
-                                <img src="/assets/client-img-1.jpg" alt=""/>
-                            </div>
-                            <span>JOHN, USA</span>
-                        </div>
-
-                        <div class="testimonial">
-                            <img class="startimg" src="/assets/5startimg.png">
-                            <h2>A Truly amazing experience</h2>
-                            <p class="description1">
-                                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-                            </p>
-                            <div class="pic">
-                                <img src="/assets/client-img-1.jpg" alt=""/>
-                            </div>
-                            <span>JOHN, USA</span>
-                        </div>
-
-                        <div class="testimonial">
-                            <img class="startimg" src="/assets/5startimg.png">
-                            <h2>A Truly amazing experience</h2>
-                            <p class="description1">
-                                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-                            </p>
-                            <div class="pic">
-                                <img src="/assets/client-img-1.jpg" alt=""/>
-                            </div>
-                            <span>JOHN, USA</span>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-
-<div class="img0-product-wrapper">
+  <div class="demo">
     <div class="container product-wrapper-container">
-        <div class="row">
+      <div class="col-md-12">
+        <h1 class="best-sell-heading text-center">What Customers Are Saying</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="testimonial-slider" class="owl-carousel">
+            <div class="testimonial">
+              <img class="startimg" src="/assets/5startimg.png">
+              <h2>A Truly amazing experience</h2>
+              <p class="description1">
+                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
+              </p>
+              <div class="pic">
+                <img src="/assets/client-img-1.jpg" alt=""/>
+              </div>
+              <span>JOHN, USA</span>
+            </div>
+
+            <div class="testimonial">
+              <img class="startimg" src="/assets/5startimg.png">
+              <h2>A Truly amazing experience</h2>
+              <p class="description1">
+                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
+              </p>
+              <div class="pic">
+                <img src="/assets/client-img-1.jpg" alt=""/>
+              </div>
+              <span>JOHN, USA</span>
+            </div>
+
+            <div class="testimonial">
+              <img class="startimg" src="/assets/5startimg.png">
+              <h2>A Truly amazing experience</h2>
+              <p class="description1">
+                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
+              </p>
+              <div class="pic">
+                <img src="/assets/client-img-1.jpg" alt=""/>
+              </div>
+              <span>JOHN, USA</span>
+            </div>
+
+            <div class="testimonial">
+              <img class="startimg" src="/assets/5startimg.png">
+              <h2>A Truly amazing experience</h2>
+              <p class="description1">
+                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
+              </p>
+              <div class="pic">
+                <img src="/assets/client-img-1.jpg" alt=""/>
+              </div>
+              <span>JOHN, USA</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="img0-product-wrapper">
+    <div class="container product-wrapper-container">
+      <div class="row">
 
         <div class="col-md-12">
-            <h1 class="best-sell-heading text-center">What Other Are Viewing</h1>
+          <h1 class="best-sell-heading text-center">What Other Are Viewing</h1>
         </div>
 
-            <div class="col-md-12">
-            <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
+        <div class="col-md-12">
+          <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="myCarousel">
             <div class="carousel-inner">
-        
-                <div class="item active">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <a href="#">
-                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                            <div class="img0-product-desc">
-                                <p class="kit-kat-desc">Kit Kat Cake</p>
-                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                            </div>
-                            <div class="earliestdelivery">
-                                Earliest Delivery:
-                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                            </div>  
-                            <div class="each-product-review">
-                                <div class="ratings-count">4.3
-                                    <span class="stars-container stars-86">
-                                        ☆☆☆☆☆
-                                    </span>
-                                </div>
-                                <div class="reviews-count">48 Reviews</div>
-                            </div>                          
+
+              <div class="item active">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <a href="#">
+                    <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                    <div class="img0-product-desc">
+                      <p class="kit-kat-desc">Kit Kat Cake</p>
+                      <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                    </div>
+                    <div class="earliestdelivery">
+                      Earliest Delivery:
+                      <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                    </div>  
+                    <div class="each-product-review">
+                      <div class="ratings-count">4.3
+                        <span class="stars-container stars-86">
+                          ☆☆☆☆☆
+                        </span>
+                      </div>
+                      <div class="reviews-count">48 Reviews</div>
+                    </div>                          
+                  </div>
+                </div>
+
+                <div class="item">
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="#">
+                      <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                      <div class="img0-product-desc">
+                        <p class="kit-kat-desc">Kit Kat Cake</p>
+                        <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                      </div>
+                      <div class="earliestdelivery">
+                        Earliest Delivery:
+                        <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                      </div>  
+                      <div class="each-product-review">
+                        <div class="ratings-count">4.3
+                          <span class="stars-container stars-86">
+                            ☆☆☆☆☆
+                          </span>
                         </div>
+                        <div class="reviews-count">48 Reviews</div>
+                      </div>                          
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <a href="#">
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <div class="img0-product-desc">
+                          <p class="kit-kat-desc">Kit Kat Cake</p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                        </div>
+                        <div class="earliestdelivery">
+                          Earliest Delivery:
+                          <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                        </div>  
+                        <div class="each-product-review">
+                          <div class="ratings-count">4.3
+                            <span class="stars-container stars-86">
+                              ☆☆☆☆☆
+                            </span>
+                          </div>
+                          <div class="reviews-count">48 Reviews</div>
+                        </div>                          
+                      </div>
                     </div>
 
                     <div class="item">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                <div class="img0-product-desc">
-                                    <p class="kit-kat-desc">Kit Kat Cake</p>
-                                    <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                </div>
-                                <div class="earliestdelivery">
-                                    Earliest Delivery:
-                                    <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                </div>  
-                                <div class="each-product-review">
-                                    <div class="ratings-count">4.3
-                                        <span class="stars-container stars-86">
-                                            ☆☆☆☆☆
-                                        </span>
-                                    </div>
-                                    <div class="reviews-count">48 Reviews</div>
-                                </div>                          
+                      <div class="col-md-3 col-sm-6 col-xs-12">
+                        <a href="#">
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                          <div class="img0-product-desc">
+                            <p class="kit-kat-desc">Kit Kat Cake</p>
+                            <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                          </div>
+                          <div class="earliestdelivery">
+                            Earliest Delivery:
+                            <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                          </div>  
+                          <div class="each-product-review">
+                            <div class="ratings-count">4.3
+                              <span class="stars-container stars-86">
+                                ☆☆☆☆☆
+                              </span>
                             </div>
+                            <div class="reviews-count">48 Reviews</div>
+                          </div>                          
+                        </div>
+                      </div>
+
+                      <div class="item">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <a href="#">
+                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                            <div class="img0-product-desc">
+                              <p class="kit-kat-desc">Kit Kat Cake</p>
+                              <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                            </div>
+                            <div class="earliestdelivery">
+                              Earliest Delivery:
+                              <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                            </div>  
+                            <div class="each-product-review">
+                              <div class="ratings-count">4.3
+                                <span class="stars-container stars-86">
+                                  ☆☆☆☆☆
+                                </span>
+                              </div>
+                              <div class="reviews-count">48 Reviews</div>
+                            </div>                          
+                          </div>
                         </div>
 
                         <div class="item">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <a href="#">
-                                    <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                    <div class="img0-product-desc">
-                                        <p class="kit-kat-desc">Kit Kat Cake</p>
-                                        <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                    </div>
-                                    <div class="earliestdelivery">
-                                        Earliest Delivery:
-                                        <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                    </div>  
-                                    <div class="each-product-review">
-                                        <div class="ratings-count">4.3
-                                            <span class="stars-container stars-86">
-                                                ☆☆☆☆☆
-                                            </span>
-                                        </div>
-                                        <div class="reviews-count">48 Reviews</div>
-                                    </div>                          
+                          <div class="col-md-3 col-sm-6 col-xs-12">
+                            <a href="#">
+                              <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                              <div class="img0-product-desc">
+                                <p class="kit-kat-desc">Kit Kat Cake</p>
+                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                              </div>
+                              <div class="earliestdelivery">
+                                Earliest Delivery:
+                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                              </div>  
+                              <div class="each-product-review">
+                                <div class="ratings-count">4.3
+                                  <span class="stars-container stars-86">
+                                    ☆☆☆☆☆
+                                  </span>
                                 </div>
+                                <div class="reviews-count">48 Reviews</div>
+                              </div>                          
+                            </div>
+                          </div>
+
+
+                          <div class="item">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                              <a href="#">
+                                <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                                <div class="img0-product-desc">
+                                  <p class="kit-kat-desc">Kit Kat Cake</p>
+                                  <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                                </div>
+                                <div class="earliestdelivery">
+                                  Earliest Delivery:
+                                  <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                                </div>  
+                                <div class="each-product-review">
+                                  <div class="ratings-count">4.3
+                                    <span class="stars-container stars-86">
+                                      ☆☆☆☆☆
+                                    </span>
+                                  </div>
+                                  <div class="reviews-count">48 Reviews</div>
+                                </div>                          
+                              </div>
                             </div>
 
+
                             <div class="item">
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <a href="#">
-                                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                        <div class="img0-product-desc">
-                                            <p class="kit-kat-desc">Kit Kat Cake</p>
-                                            <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                        </div>
-                                        <div class="earliestdelivery">
-                                            Earliest Delivery:
-                                            <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                        </div>  
-                                        <div class="each-product-review">
-                                            <div class="ratings-count">4.3
-                                                <span class="stars-container stars-86">
-                                                    ☆☆☆☆☆
-                                                </span>
-                                            </div>
-                                            <div class="reviews-count">48 Reviews</div>
-                                        </div>                          
+                              <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="#">
+                                  <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                                  <div class="img0-product-desc">
+                                    <p class="kit-kat-desc">Kit Kat Cake</p>
+                                    <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                                  </div>
+                                  <div class="earliestdelivery">
+                                    Earliest Delivery:
+                                    <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
+                                  </div>  
+                                  <div class="each-product-review">
+                                    <div class="ratings-count">4.3
+                                      <span class="stars-container stars-86">
+                                        ☆☆☆☆☆
+                                      </span>
                                     </div>
+                                    <div class="reviews-count">48 Reviews</div>
+                                  </div>                          
                                 </div>
-
-                                <div class="item">
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <a href="#">
-                                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                            <div class="img0-product-desc">
-                                                <p class="kit-kat-desc">Kit Kat Cake</p>
-                                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                            </div>
-                                            <div class="earliestdelivery">
-                                                Earliest Delivery:
-                                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                            </div>  
-                                            <div class="each-product-review">
-                                                <div class="ratings-count">4.3
-                                                    <span class="stars-container stars-86">
-                                                        ☆☆☆☆☆
-                                                    </span>
-                                                </div>
-                                                <div class="reviews-count">48 Reviews</div>
-                                            </div>                          
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <a href="#">
-                                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                            <div class="img0-product-desc">
-                                                <p class="kit-kat-desc">Kit Kat Cake</p>
-                                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                            </div>
-                                            <div class="earliestdelivery">
-                                                Earliest Delivery:
-                                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                            </div>  
-                                            <div class="each-product-review">
-                                                <div class="ratings-count">4.3
-                                                    <span class="stars-container stars-86">
-                                                        ☆☆☆☆☆
-                                                    </span>
-                                                </div>
-                                                <div class="reviews-count">48 Reviews</div>
-                                            </div>                          
-                                        </div>
-                                    </div>
-
-
-                                    <div class="item">
-                                        <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <a href="#">
-                                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                            <div class="img0-product-desc">
-                                                <p class="kit-kat-desc">Kit Kat Cake</p>
-                                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                            </div>
-                                            <div class="earliestdelivery">
-                                                Earliest Delivery:
-                                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                            </div>  
-                                            <div class="each-product-review">
-                                                <div class="ratings-count">4.3
-                                                    <span class="stars-container stars-86">
-                                                        ☆☆☆☆☆
-                                                    </span>
-                                                </div>
-                                                <div class="reviews-count">48 Reviews</div>
-                                            </div>                          
-                                        </div>
-                                    </div>
-
-
-                                    <div class="item">
-                                        <div class="col-md-3 col-sm-6 col-xs-12">
-                                            <a href="#">
-                                                <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                                <div class="img0-product-desc">
-                                                    <p class="kit-kat-desc">Kit Kat Cake</p>
-                                                    <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                                </div>
-                                                <div class="earliestdelivery">
-                                                    Earliest Delivery:
-                                                    <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                                </div>  
-                                                <div class="each-product-review">
-                                                    <div class="ratings-count">4.3
-                                                        <span class="stars-container stars-86">
-                                                            ☆☆☆☆☆
-                                                        </span>
-                                                    </div>
-                                                    <div class="reviews-count">48 Reviews</div>
-                                                </div>                          
-                                            </div>
-                                        </div>
-                                </div> <!-- col-md-12 -->
+                              </div>
+                            </div> <!-- col-md-12 -->
 
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
                             <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
 
-                        </div> <!-- carousel-inner -->
-                    </div> <!-- carousel-slide -->
+                          </div> <!-- carousel-inner -->
+                        </div> <!-- carousel-slide -->
 
-                </div> <!-- col-md-12 -->
+                      </div> <!-- col-md-12 -->
 
-        </div> <!-- row -->
-    </div> <!-- container -->
-</div> <!-- wrapper -->
+                    </div> <!-- row -->
+                  </div> <!-- container -->
+                </div> <!-- wrapper -->
 
-<!-- Modal -->
-<div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                
-                <%= link_to "X",checkout_path(product_id: @product.id ) ,class: "close" ,id: "buy_now_addon"%>
-                <h4 class="modal-title" id="myModalLabel"><b>Add on something to make it extra special!</b>
-                </h4>
-            </div>
-            <div class="modal-body">
-               <div class="container-fluid">
-                     <div class="row">
-                       <%@addons.each_with_index do |m,index|%>
-                        <input type="hidden" class="addon_ids" value="<%= m.id %>">
-                        <div class="col-md-4"><%= image_tag m.gallery%><br><br>
-                        <h3 style="color:red;text-align:center;" class="price_new" id="<%= m.id%>"><%=m.price%></h3>
-                        <div class="value-button quantity-left-minus" value="Decrease Value">-</div>
-                        <input type="number" id="number<%= index%>" class = "number" value="0">
-                        <div class="value-button quantity-right-plus" value="Increase Value">+</div>            
+                <!-- Modal -->
+                <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+
+                        <%= link_to "X",checkout_path(product_id: @product.id ) ,class: "close" ,id: "buy_now_addon"%>
+                        <h4 class="modal-title" id="myModalLabel"><b>Add on something to make it extra special!</b>
+                        </h4>
+                      </div>
+                      <div class="modal-body">
+                       <div class="container-fluid">
+                         <div class="row">
+                           <%@addons.each_with_index do |m,index|%>
+                           <input type="hidden" class="addon_ids" value="<%= m.id %>">
+                           <div class="col-md-4"><%= image_tag m.gallery%><br><br>
+                            <h3 style="color:red;text-align:center;" class="price_new" id="<%= m.id%>"><%=m.price%></h3>
+                            <div class="value-button quantity-left-minus" value="Decrease Value">-</div>
+                            <input type="number" id="number<%= index%>" class = "number" value="0">
+                            <div class="value-button quantity-right-plus" value="Increase Value">+</div>            
+                          </div>
+                          <% end %>   
+                        </div><!--/row-->
+                      </div><!--/container-fluid-->
+                    </div>
+                    <div class="modal-footer">
+                      <div class="row">
+                        <div class="col-md-2">PRICE DETAILS</div>
+                        <div class="col-md-2">
+                          <p>1 Base Item</p>
+                          <h3 id="base_price"><%= @product.price.to_i %> </h3> 
                         </div>
-                        <% end %>   
-                     </div><!--/row-->
-                    </div><!--/container-fluid-->
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                <div class="col-md-2">PRICE DETAILS</div>
-                <div class="col-md-2">
-                <p>1 Base Item</p>
-                <h3 id="base_price"><%= @product.price.to_i %> </h3> 
-                </div>
-                <div class="col-md-3">
-                <p>Addons</p>
-                <p id="addon_price"><b>0</b></p>
-                </div>
-                <div class="col-md-2" style="font-style: bold;"> + Shipping FREE</div>
-                <div class="col-md-2">
-                 <p style="font-style: bold;"> = Total Price </p>
-                 <p id="total_price" style="font-style: bold;"> 0</p>
+                        <div class="col-md-3">
+                          <p>Addons</p>
+                          <p id="addon_price"><b>0</b></p>
+                        </div>
+                        <div class="col-md-2" style="font-style: bold;"> + Shipping FREE</div>
+                        <div class="col-md-2">
+                         <p style="font-style: bold;"> = Total Price </p>
+                         <p id="total_price" style="font-style: bold;"> 0</p>
+                       </div>
+                     </div>
+
+                     <%= link_to 'Continue Without Addonss' , cart_addon_path(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1'), class: 'btn btn-warning btn-lg', :id=>"add_on_checkout", method: :post %>
+
+
+                   </div>
                  </div>
-                </div>
-                
-                <%= link_to 'Continue Without Addonss' , cart_addon_path(product_id: @product.id, product_upgrade_id: ''), class: 'btn btn-warning btn-lg', :id=>"add_on_checkout", method: :post %>
-                 
-                
-            </div>
-        </div>
-    </div>
-</div>
+               </div>
+             </div>
 
 
-<style>
-    .carousel-control            { width:  4%; }
-    .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
-    @media (max-width: 767px) {
-        .carousel-inner .active.left { left: -100%; }
-        .carousel-inner .next        { left:  100%; }
-        .carousel-inner .prev        { left: -100%; }
-        .active > div { display:none; }
-        .active > div:first-child { display:block; }
+             <style>
+              .carousel-control            { width:  4%; }
+              .carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+              @media (max-width: 767px) {
+                .carousel-inner .active.left { left: -100%; }
+                .carousel-inner .next        { left:  100%; }
+                .carousel-inner .prev        { left: -100%; }
+                .active > div { display:none; }
+                .active > div:first-child { display:block; }
 
-    }
-    @media (min-width: 767px) and (max-width: 992px ) {
-        .carousel-inner .active.left { left: -50%; }
-        .carousel-inner .next        { left:  50%; }
-        .carousel-inner .prev        { left: -50%; }
-        .active > div { display:none; }
-        .active > div:first-child { display:block; }
-        .active > div:first-child + div { display:block; }
-    }
-    @media (min-width: 992px ) {
-        .carousel-inner .active.left { left: -25%; }
-        .carousel-inner .next        { left:  25%; }
-        .carousel-inner .prev        { left: -25%; }    
-    }
-</style>
+              }
+              @media (min-width: 767px) and (max-width: 992px ) {
+                .carousel-inner .active.left { left: -50%; }
+                .carousel-inner .next        { left:  50%; }
+                .carousel-inner .prev        { left: -50%; }
+                .active > div { display:none; }
+                .active > div:first-child { display:block; }
+                .active > div:first-child + div { display:block; }
+              }
+              @media (min-width: 992px ) {
+                .carousel-inner .active.left { left: -25%; }
+                .carousel-inner .next        { left:  25%; }
+                .carousel-inner .prev        { left: -25%; }    
+              }
+            </style>
 
-       
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBOj7r8Ty7P0J6bGFmB8cmoDFuCTD_Qps&libraries=places&callback=initMap"
-        async defer></script> 
-        
-<script>
-    function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -33.8688, lng: 151.2195},
-    zoom: 13
-  });
-  var card = document.getElementById('pac-card');
-  var input = document.getElementById('pac-input');
-  var types = document.getElementById('type-selector');
-  var strictBounds = document.getElementById('strict-bounds-selector');
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBOj7r8Ty7P0J6bGFmB8cmoDFuCTD_Qps&libraries=places&callback=initMap"
+            async defer></script> 
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
+            <script>
+              function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  center: {lat: -33.8688, lng: 151.2195},
+                  zoom: 13
+                });
+                var card = document.getElementById('pac-card');
+                var input = document.getElementById('pac-input');
+                var types = document.getElementById('type-selector');
+                var strictBounds = document.getElementById('strict-bounds-selector');
+
+                map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+                var autocomplete = new google.maps.places.Autocomplete(input);
 
   // Bind the map's bounds (viewport) property to the autocomplete object,
   // so that the autocomplete requests use the current map bounds for the
@@ -771,7 +821,7 @@ input[type=number]::-webkit-outer-spin-button {
 
   // Set the data fields to return when the user selects a place.
   autocomplete.setFields(
-      ['address_components', 'geometry', 'icon', 'name']);
+    ['address_components', 'geometry', 'icon', 'name']);
 
   var infowindow = new google.maps.InfoWindow();
   var infowindowContent = document.getElementById('infowindow-content');
@@ -805,9 +855,9 @@ input[type=number]::-webkit-outer-spin-button {
     var address = '';
     if (place.address_components) {
       address = [
-        (place.address_components[0] && place.address_components[0].short_name || ''),
-        (place.address_components[1] && place.address_components[1].short_name || ''),
-        (place.address_components[2] && place.address_components[2].short_name || '')
+      (place.address_components[0] && place.address_components[0].short_name || ''),
+      (place.address_components[1] && place.address_components[1].short_name || ''),
+      (place.address_components[2] && place.address_components[2].short_name || '')
       ].join(' ');
     }
 
@@ -832,197 +882,197 @@ input[type=number]::-webkit-outer-spin-button {
   setupClickListener('changetype-geocode', ['geocode']);
 
   document.getElementById('use-strict-bounds')
-      .addEventListener('click', function() {
-        console.log('Checkbox clicked! New state=' + this.checked);
-        autocomplete.setOptions({strictBounds: this.checked});
-      });
+  .addEventListener('click', function() {
+    console.log('Checkbox clicked! New state=' + this.checked);
+    autocomplete.setOptions({strictBounds: this.checked});
+  });
 }
 (function($) {
-        $.fn.menumaker = function(options) {  
-            var cssmenu = $(this), settings = $.extend({
-                format: "dropdown",
-                sticky: false
-            }, options);
-            return this.each(function() {
-                $(this).find(".button").on('click', function(){
-                    $(this).toggleClass('menu-opened');
-                    var mainmenu = $(this).next('ul');
-                    if (mainmenu.hasClass('open')) { 
-                        mainmenu.slideToggle().removeClass('open');
-                    }
-                    else {
-                        mainmenu.slideToggle().addClass('open');
-                        if (settings.format === "dropdown") {
-                            mainmenu.find('ul').show();
-                        }
-                    }
-                });
-                cssmenu.find('li ul').parent().addClass('has-sub');
-                multiTg = function() {
-                    cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
-                    cssmenu.find('.submenu-button').on('click', function() {
-                        $(this).toggleClass('submenu-opened');
-                        if ($(this).siblings('ul').hasClass('open')) {
-                            $(this).siblings('ul').removeClass('open').slideToggle();
-                        }
-                        else {
-                            $(this).siblings('ul').addClass('open').slideToggle();
-                        }
-                    });
-                };
-                if (settings.format === 'multitoggle') multiTg();
-                else cssmenu.addClass('dropdown');
-                if (settings.sticky === true) cssmenu.css('position', 'fixed');
-                resizeFix = function() {
-                    var mediasize = 1000;
-                    if ($( window ).width() > mediasize) {
-                        cssmenu.find('ul').show();
-                    }
-                    if ($(window).width() <= mediasize) {
-                        cssmenu.find('ul').hide().removeClass('open');
-                    }
-                };
-                resizeFix();
-                return $(window).on('resize', resizeFix);
-            });
-        };
-    })(jQuery);
+  $.fn.menumaker = function(options) {  
+    var cssmenu = $(this), settings = $.extend({
+      format: "dropdown",
+      sticky: false
+    }, options);
+    return this.each(function() {
+      $(this).find(".button").on('click', function(){
+        $(this).toggleClass('menu-opened');
+        var mainmenu = $(this).next('ul');
+        if (mainmenu.hasClass('open')) { 
+          mainmenu.slideToggle().removeClass('open');
+        }
+        else {
+          mainmenu.slideToggle().addClass('open');
+          if (settings.format === "dropdown") {
+            mainmenu.find('ul').show();
+          }
+        }
+      });
+      cssmenu.find('li ul').parent().addClass('has-sub');
+      multiTg = function() {
+        cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
+        cssmenu.find('.submenu-button').on('click', function() {
+          $(this).toggleClass('submenu-opened');
+          if ($(this).siblings('ul').hasClass('open')) {
+            $(this).siblings('ul').removeClass('open').slideToggle();
+          }
+          else {
+            $(this).siblings('ul').addClass('open').slideToggle();
+          }
+        });
+      };
+      if (settings.format === 'multitoggle') multiTg();
+      else cssmenu.addClass('dropdown');
+      if (settings.sticky === true) cssmenu.css('position', 'fixed');
+      resizeFix = function() {
+        var mediasize = 1000;
+        if ($( window ).width() > mediasize) {
+          cssmenu.find('ul').show();
+        }
+        if ($(window).width() <= mediasize) {
+          cssmenu.find('ul').hide().removeClass('open');
+        }
+      };
+      resizeFix();
+      return $(window).on('resize', resizeFix);
+    });
+  };
+})(jQuery);
 function prep_modal()
-              {
-                $(".modal").each(function() {
-              
-                var element = this;
-                  var pages = $(this).find('.modal-split');
-              
-                if (pages.length != 0)
-                {
-                      pages.hide();
-                      pages.eq(0).show();
-              
-                      var b_button = document.createElement("button");
-                              b_button.setAttribute("type","button");
-                                    b_button.setAttribute("class","btn btn-primary btn-lg");
-                                    b_button.setAttribute("style","display: none;width:30%;background: #f68808;");
-                                    b_button.innerHTML = "Back";
-              
-                      var n_button = document.createElement("button");
-                              n_button.setAttribute("type","button");
-                                    n_button.setAttribute("class","btn btn-primary btn-lg");
-                                    n_button.setAttribute("style","width:30%;background-color: #038e3e;");
-                                    n_button.innerHTML = "Next";
-              
-                      $(this).find('.modal-footer').append(b_button).append(n_button);
-              
-              
-                      var page_track = 0;
-              
-                      $(n_button).click(function() {
-                          var hello = document.getElementsByClassName('datepicker-switch');
-                          var selecteddate = document.getElementsByClassName('active day');
-                          if ((hello[0] != undefined) && (selecteddate[0] != undefined))
-                            {
-                              $('input.delivery-details').val(selecteddate[0].innerText+ ',' +hello[0].innerText);
-                              
-                            }
-                            this.blur();              
-                          if(page_track == 0)
-                          {
-                              $(b_button).show();
-                          }
-                          if(page_track == pages.length-2)
-                          {
-                              $(n_button).text("Submit");
-                          }
+{
+  $(".modal").each(function() {
 
-                      if(page_track == pages.length-1)
-                      {
-                        $(element).find("form").submit();
-                      }
-              
-                          if(page_track < pages.length-1)
-                          {
-                              page_track++;
-              
-                              pages.hide();
-                              pages.eq(page_track).show();
-                          }
-              
-              
-                      });
-              
-                      $(b_button).click(function() {
-              
-                          if(page_track == 1)
-                          {
-                              $(b_button).hide();
-                          }
-              
-                          if(page_track == pages.length-1)
-                          {
-                              $(n_button).text("Next");
-                          }
-              
-                          if(page_track > 0)
-                          {
-                              page_track--;
-              
-                              pages.hide();
-                              pages.eq(page_track).show();
-                          }
-              
-              
-                      });
-              
-                }
-              
-                });
-              }
+    var element = this;
+    var pages = $(this).find('.modal-split');
+
+    if (pages.length != 0)
+    {
+      pages.hide();
+      pages.eq(0).show();
+
+      var b_button = document.createElement("button");
+      b_button.setAttribute("type","button");
+      b_button.setAttribute("class","btn btn-primary btn-lg");
+      b_button.setAttribute("style","display: none;width:30%;background: #f68808;");
+      b_button.innerHTML = "Back";
+
+      var n_button = document.createElement("button");
+      n_button.setAttribute("type","button");
+      n_button.setAttribute("class","btn btn-primary btn-lg");
+      n_button.setAttribute("style","width:30%;background-color: #038e3e;");
+      n_button.innerHTML = "Next";
+
+      $(this).find('.modal-footer').append(b_button).append(n_button);
+
+
+      var page_track = 0;
+
+      $(n_button).click(function() {
+        var hello = document.getElementsByClassName('datepicker-switch');
+        var selecteddate = document.getElementsByClassName('active day');
+        if ((hello[0] != undefined) && (selecteddate[0] != undefined))
+        {
+          $('input.delivery-details').val(selecteddate[0].innerText+ ',' +hello[0].innerText);
+
+        }
+        this.blur();              
+        if(page_track == 0)
+        {
+          $(b_button).show();
+        }
+        if(page_track == pages.length-2)
+        {
+          $(n_button).text("Submit");
+        }
+
+        if(page_track == pages.length-1)
+        {
+          $(element).find("form").submit();
+        }
+
+        if(page_track < pages.length-1)
+        {
+          page_track++;
+
+          pages.hide();
+          pages.eq(page_track).show();
+        }
+
+
+      });
+
+      $(b_button).click(function() {
+
+        if(page_track == 1)
+        {
+          $(b_button).hide();
+        }
+
+        if(page_track == pages.length-1)
+        {
+          $(n_button).text("Next");
+        }
+
+        if(page_track > 0)
+        {
+          page_track--;
+
+          pages.hide();
+          pages.eq(page_track).show();
+        }
+
+
+      });
+
+    }
+
+  });
+}
 $(document).ready(function() {
     // var add_on_ids = new Array();
     prep_modal();
     $("#datepicker").datepicker();
     $('.carousel[data-type="multi"] .item').each(function(){
-        var next = $(this).next();
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+
+      for (var i=0;i<2;i++) {
+        next=next.next();
         if (!next.length) {
-            next = $(this).siblings(':first');
+          next = $(this).siblings(':first');
         }
+
         next.children(':first-child').clone().appendTo($(this));
-
-        for (var i=0;i<2;i++) {
-            next=next.next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-
-            next.children(':first-child').clone().appendTo($(this));
-        }
+      }
     });
     
-     var base_add_on = 0;
-     var add_on_total = 0;
-     var quantity=0;
-     var quantity1=0;
-     var add_on_ids;
-     var add_ons = {};
-     var shippingmethodname = "";
-     var delcost = "";
-     var add_on_quantity = 0;
-     var add_on_quantity1 = 0;
-     $('.addon_ids').each(function(){
-        add_ons[this.value] = 0;
+    var base_add_on = 0;
+    var add_on_total = 0;
+    var quantity=0;
+    var quantity1=0;
+    var add_on_ids;
+    var add_ons = {};
+    var shippingmethodname = "";
+    var delcost = "";
+    var add_on_quantity = 0;
+    var add_on_quantity1 = 0;
+    $('.addon_ids').each(function(){
+      add_ons[this.value] = 0;
     });
-   $('.quantity-right-plus').click(function(e){
-        e.preventDefault();
+    $('.quantity-right-plus').click(function(e){
+      e.preventDefault();
         // Get the field name
-         quantity = parseInt($(this).prev().val()) || 0;
-                                          
+        quantity = parseInt($(this).prev().val()) || 0;
+
                         // Increment
-                    ele = $(this).prev();
-                    doc = ele.attr('id');
-                    quantity = quantity + 1;
-                    $("#" + doc).attr('value',quantity)
-                    add_on_quantity = add_on_quantity + 1;
-                    
+                        ele = $(this).prev();
+                        doc = ele.attr('id');
+                        quantity = quantity + 1;
+                        $("#" + doc).attr('value',quantity)
+                        add_on_quantity = add_on_quantity + 1;
+
                     //Add functionality for addons
                     var num = $(this).parent().children(":nth-child(4)").text();
                     num = parseInt(num);
@@ -1033,120 +1083,120 @@ $(document).ready(function() {
                     $("#total_price").text(add_on_total + parseInt(base_price));
                     $("#add_on_checkout").text("Continue with" + " "+add_on_quantity + " "  +"Addons")
                     quan_check = $("#" + doc).attr('value')
-                        if (quan_check > 0) {
-                            id = $(this).parent().children(":nth-child(4)").attr('id');
+                    if (quan_check > 0) {
+                      id = $(this).parent().children(":nth-child(4)").attr('id');
                             // add_on_ids.push(id);
                             add_ons[id] = quantity;                                                    
-                        }
-    });
+                          }
+                        });
 
-     $('.quantity-left-minus').click(function(e){
+    $('.quantity-left-minus').click(function(e){
         // Stop acting like a button
         e.preventDefault();
         // Get the field name
         var quantity = parseInt($(this).next().val()) || 0;
         
-            if(quantity>0){
-                    add_on_quantity = add_on_quantity - 1
-                    $("#add_on_checkout").text("Continue with" + " "+add_on_quantity + " "  +"Addons")                  
-                    ele1 = $(this).next();
-                    doc1 = ele1.attr('id');
-                    quantity = quantity - 1;
-                    $("#" + doc1).attr('value',quantity)
-                    
-        //Subtract functionality for addons
-                    var num = $(this).parent().children(":nth-child(4)").text();
-                    num = parseInt(num);
-                    
-                    add_on_total = (add_on_total - num) 
-                    
-                    if (add_on_total <= 0) {
-                        add_on_total = 0;
-                        base_add_on = 0;
-                    } 
-                    $("#addon_price").text(add_on_total);
-                    base_price = $("#base_price").text();
-                    
-                    sub_tot = $(this).prev().text();
-                    $("#total_price").text(parseInt(base_price) + add_on_total );
+        if(quantity>0){
+          add_on_quantity = add_on_quantity - 1
+          $("#add_on_checkout").text("Continue with" + " "+add_on_quantity + " "  +"Addons")                  
+          ele1 = $(this).next();
+          doc1 = ele1.attr('id');
+          quantity = quantity - 1;
+          $("#" + doc1).attr('value',quantity)
 
-                    
-                
-                    }   
-                    var quantity_check  = $(this).next().attr('value');
-                    
-                    if (quantity_check <=0) {
-                        id_minus = $(this).parent().children(":nth-child(4)").attr('id');
+        //Subtract functionality for addons
+        var num = $(this).parent().children(":nth-child(4)").text();
+        num = parseInt(num);
+
+        add_on_total = (add_on_total - num) 
+
+        if (add_on_total <= 0) {
+          add_on_total = 0;
+          base_add_on = 0;
+        } 
+        $("#addon_price").text(add_on_total);
+        base_price = $("#base_price").text();
+
+        sub_tot = $(this).prev().text();
+        $("#total_price").text(parseInt(base_price) + add_on_total );
+
+
+
+      }   
+      var quantity_check  = $(this).next().attr('value');
+
+      if (quantity_check <=0) {
+        id_minus = $(this).parent().children(":nth-child(4)").attr('id');
                         // add_on_ids = $.grep(add_on_ids,function(value){
                         //     return value != id_minus;   
                         // }); 
                         add_ons[id_minus] = quantity; 
-                          
-                    }
+
+                      }
                         // $.unique(add_on_ids);
                         
-        });
+                      });
 
-        $("#add_on_checkout").click(function(){
-                href = $('#add_on_checkout').attr('href');
-                delivery_details = $(".delivery-details").val().replace(",", ' ');
-                total_price_addon = $("#total_price").text();
-                pin_code = $("#pac-input").val();
-                href = href + '&add_ons='+JSON.stringify(add_ons) +  '&delivery_details=' +delivery_details + '&total_price=' + total_price_addon + '&pin_code=' + pin_code;
-                $("#add_on_checkout").attr('href',href);
-            });
+    $("#add_on_checkout").click(function(){
+      href = $('#add_on_checkout').attr('href');
+      delivery_details = $(".delivery-details").val().replace(",", ' ');
+      total_price_addon = $("#total_price").text();
+      pin_code = $("#pac-input").val();
+      href = href + '&add_ons='+JSON.stringify(add_ons) +  '&delivery_details=' +delivery_details + '&total_price=' + total_price_addon + '&pin_code=' + pin_code;
+      $("#add_on_checkout").attr('href',href);
+    });
 
-        $("#buy_now_addon").click(function(){
-                href = $('#buy_now_addon').attr('href');
-                delivery_details = $(".delivery-details").val().replace(",", ' ');
-                href = href  + '&delivery_details=' +delivery_details;
-                $("#buy_now_addon").attr('href',href);
-            }); 
-        
-        $("#add_to_cart_check").click(function(){
-                href = $('#add_to_cart_check').attr('href');
-                delivery_details = $(".delivery-details").val().replace(",", ' ');
-                pin_code = $("#pac-input").val();
-                href = href + '&delivery_details=' +delivery_details + '&pincode=' + pin_code;
-                $("#add_to_cart_check").attr('href',href);
-            });
+    $("#buy_now_addon").click(function(){
+      href = $('#buy_now_addon').attr('href');
+      delivery_details = $(".delivery-details").val().replace(",", ' ');
+      href = href  + '&delivery_details=' +delivery_details;
+      $("#buy_now_addon").attr('href',href);
+    }); 
 
-      $('.checkout').click(function(e){
-          if($('.pin-enter').val().length == 0){
-            $('.pin-enter').addClass('empty');
-            e.preventDefault(); 
-            return false
-          }
-        else {
-            $('.pin-enter').removeClass('empty');
-        }
-        
-        
-       });
+    $("#add_to_cart_check").click(function(){
+      href = $('#add_to_cart_check').attr('href');
+      delivery_details = $(".delivery-details").val().replace(",", ' ');
+      pin_code = $("#pac-input").val();
+      href = href + '&delivery_details=' +delivery_details + '&pincode=' + pin_code;
+      $("#add_to_cart_check").attr('href',href);
+    });
+
+    $('.checkout').click(function(e){
+      if($('.pin-enter').val().length == 0){
+        $('.pin-enter').addClass('empty');
+        e.preventDefault(); 
+        return false
+      }
+      else {
+        $('.pin-enter').removeClass('empty');
+      }
+
+
+    });
 //responsive menu toggle
 // $("#menutoggle").click(function() {
 // $('.xs-menu').toggleClass('displaynone');
 // });
 $("#testimonial-slider").owlCarousel({
-            items:3,
-            itemsDesktop:[1199,2],
-            itemsDesktopSmall:[1000,2],
-            itemsTablet:[767,1],
-            pagination: false,
-            navigation:true,
-            navigationText:["",""],
-            autoPlay:false
+          items:3,
+          itemsDesktop:[1199,2],
+          itemsDesktopSmall:[1000,2],
+          itemsTablet:[767,1],
+          pagination: false,
+          navigation:true,
+          navigationText:["",""],
+          autoPlay:false
     });
 
 $("#testimonial-slider").owlCarousel({
-            items:3,
-            itemsDesktop:[1199,2],
-            itemsDesktopSmall:[1000,2],
-            itemsTablet:[767,1],
-            pagination: false,
-            navigation:true,
-            navigationText:["",""],
-            autoPlay:false
+          items:3,
+          itemsDesktop:[1199,2],
+          itemsDesktopSmall:[1000,2],
+          itemsTablet:[767,1],
+          pagination: false,
+          navigation:true,
+          navigationText:["",""],
+          autoPlay:false
     });
 //add active class on menu
 
@@ -1158,58 +1208,75 @@ $("#testimonial-slider").owlCarousel({
 // $('.mega-menu').removeClass('display-on');
 // });
 
-            
-            
-            $("#cssmenu").menumaker({
-                format: "multitoggle"
-            });
+
+
+$("#cssmenu").menumaker({
+  format: "multitoggle"
+});
             //this modal to test
             $(".delivery-details").click(function(){
-                $("#delivery_modal").modal('show');
-                });
+              $("#delivery_modal").modal('show');
+            });
 
             $('.btn-primary').click(function(){
-                if(this.innerText == "Submit") {
-                    var slottime = $('input[name=Slottime]');
-                    $.each(slottime,function(index,value){
-                       if (value.checked){
-                           var addslottime = $('input.delivery-details');
-                           addslottime[0].value = addslottime[0].value + ',' + value.value
-                           $("#delivery_modal").modal('hide');
-                           $('.modal-backdrop').remove();
-                           
-                           
-                        }
-                    })  
-                    $(".delivery-details").val($(".delivery-details").val() + "," + shippingmethodname +":" +delcost);
+              if(this.innerText == "Submit") {
+                var slottime = $('input[name=Slottime]');
+                $.each(slottime,function(index,value){
+                 if (value.checked){
+                   var addslottime = $('input.delivery-details');
+                   addslottime[0].value = addslottime[0].value + ',' + value.value
+                   $("#delivery_modal").modal('hide');
+                   $('.modal-backdrop').remove();
+
+
                  }
-              });
+               })  
+                $(".delivery-details").val($(".delivery-details").val() + "," + shippingmethodname +":" +delcost);
+              }
+            });
 
             
-              $("input[name=shippingmethod_name]").on("click", function(){
-                var product = '<%= @product.id %>';
-                shippingmethodname = this.value;
+            $("input[name=shippingmethod_name]").on("click", function(){
+              var product = '<%= @product.id %>';
+              shippingmethodname = this.value;
 
-                delcost = $(this).closest(".sm-url").find(".delcost").text();
-                
-               $.ajax({
-                   url: '/get_time_slots',
-                   method: "GET",
-                   data: { product_id: product,sm_name: shippingmethodname },
-                   success: function(data){
-                     $(".timeslots").children().remove();
-                     $.each(data,function(index,value){
-                       $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shippingmethodname +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
-                     });
-                   }
-               })
+              delcost = $(this).closest(".sm-url").find(".delcost").text();
+
+              $.ajax({
+               url: '/get_time_slots',
+               method: "GET",
+               data: { product_id: product,sm_name: shippingmethodname },
+               success: function(data){
+                 $(".timeslots").children().remove();
+                 $.each(data,function(index,value){
+                   $(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ shippingmethodname +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+                 });
+               }
+             })
             });
-    
 
-    });       
-              
+
+          });       
+
 
             //Continue add-on function
-            
-    
-</script>   
+
+            $('.cakes').on('click', function() {
+              $('.cake-img').removeClass('selected-cake');
+              $(this).find('.cake-img').addClass('selected-cake');
+              var cakePriceValue = $(this).attr('cake-price-value');
+              var basePrice = $("#actual_product_price").val();
+              var total = parseFloat(cakePriceValue) * parseInt(basePrice);
+              $("#product_price").text(total);
+              $("#base_price").text(total);
+
+               $("#add_to_cart_check").attr('href', function(i,a){
+                  return a.replace( /(cake_price_value=)[+-]?([0-9]*[.])?[0-9]+/ig, 'cake_price_value='+cakePriceValue );
+              });
+
+               $("#add_on_checkout").attr('href', function(i,a){
+                  return a.replace( /(cake_price_value=)[+-]?([0-9]*[.])?[0-9]+/ig, 'cake_price_value='+cakePriceValue );
+              });
+            });
+
+          </script>   

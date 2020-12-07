@@ -41,4 +41,8 @@ class Product < ApplicationRecord
 	def self.filter(params)
 		
 	end
+
+	def is_cake?
+		self.super_category&.slug == "cakes"
+	end
 end
