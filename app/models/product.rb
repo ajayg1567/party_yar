@@ -14,6 +14,7 @@ class Product < ApplicationRecord
 	has_many :orders, :dependent => :destroy
 	has_many :items, :dependent => :destroy
 	ratyrate_rateable 'name'
+	has_many :reviews
 
 
 	def self.find_by_gift_type(gift_type)

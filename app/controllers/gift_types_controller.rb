@@ -3,6 +3,7 @@ class GiftTypesController < ApplicationController
   before_action :set_gift_type, only: :show
 
   def show
+    
   	@products = Product.find_by_gift_type(@gift_type.name)
   	# @filter_prices = @products.select(:price).group(:price).having("count(price) > 0").count
   	@occasions = Occasion.all

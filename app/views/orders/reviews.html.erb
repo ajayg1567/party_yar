@@ -1,0 +1,40 @@
+<div class="inner-page-content0">
+    <div class="modal-content" style = "border-radius: 10px;width: 65%; margin: 2% 0% 2% 17%;">
+      <div class="modal-header review-header">
+        <h5 class="modal-title" id="exampleModalLabel">Review </h5>
+      </div>
+      <div class ="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">    
+          <div class="modal-body text-center rating-body">
+          
+              <%= form_with url: add_reviews_path, method: "post" do |f|%>
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                <input type="hidden" name="product_id" value="<%= @product.id %>" />
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="name" name="name" value = "<%= @product.name %>" disabled>
+                </div>
+                <input type="hidden" class="form-control" id="stars_id" name="stars">
+                <p class="review_rating" style = "float:left">
+                  Give it a rating
+                  <i id="review_star_1" onclick="review_star('1')" class="fa fa-star stars ml-3" style = "color: black;"></i>
+                  <i id="review_star_2" onclick="review_star('2')" class="fa fa-star stars"></i style = "color: black;">
+                  <i id="review_star_3" onclick="review_star('3')" class="fa fa-star stars"></i style = "color: black;">
+                  <i id="review_star_4" onclick="review_star('4')" class="fa fa-star stars"></i style = "color: black;">
+                  <i id="review_star_5" onclick="review_star('5')" class="fa fa-star stars"></i style = "color: black;">
+                </p>
+                
+                <div class="form-group">
+                  <textarea class="form-control" rows="5" id="content" name="content" placeholder= "Write your review"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" onclick="submit_review()">Save</button>
+                </div>
+              <% end %>
+            </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+    </div>
+ </div>

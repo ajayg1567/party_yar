@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get '/update_delivery' => 'checkout#update_delivery'
   get '/update_add_ons' => 'checkout#update_add_ons'
   get '/remove_add_on' => 'checkout#remove_add_on'
+  post '/add_reviews'  => 'orders#add_reviews'
+  get '/reviews/:id'  => 'orders#reviews'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post 'new_address' => 'my_account#create_new'

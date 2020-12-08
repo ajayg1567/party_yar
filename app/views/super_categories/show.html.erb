@@ -16,61 +16,74 @@
 <div class="cake-gift">
 	<div class="container">
 		<div class="row">
-      <div class="col-md-12">		
-        <div class="birthday-cake-menu">
-         <div class="col-md-3 dropdown">
-           <button class="dropbtn">Gift Type
-           <p style="position: fixed"><%= @sub_category.try(:name)%></p></button>
-           <div class="dropdown-content">
-            <% @gift_types.each do |gt| %>
-              <%= link_to gt.name,'#' %>
+      <div class="col-md-12">	
+        <div class="col-md-2 dropdown">	
+          <div class="desktop-menu-list birthday-cake-menu">
+             <div class="menu-container">
+              <div class="menu">
+                <ul>
+                  <li>  
+                    <button class="dropbtn">Gift Type</button>
+                    <ul class="gift_type_drop_down">
+                      <% @super_category.categories.includes(:sub_categories).each do |category| %>
+                        <li class="gift_type_sub_category">
+                          <%= link_to category.name,'#' %>
+                          <% unless category.sub_categories.empty? %>
+                            <ul class="menu-list-scroll">
+                              <% category.sub_categories.each do |sub_category| %>
+                                <li >
+                                  <%= link_to sub_category.name,super_category_path(id: @super_category,sub_category_id: sub_category.id)%>
+                                </li>
+                              <% end %>
+                            </ul>
+                          <% end %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>   
+        </div>
+
+        <div class="col-md-2 dropdown">
+          <button class="dropbtn">Occassions</button>
+          
+          <div class="dropdown-content">
+            <% Occasion.all.each do |ocassion,index| %>
+              <%= link_to ocassion.name, super_category_path(id: @id, sub_category_id: @sub_category_id, occasion_id: ocassion.id)%>
             <% end %>
           </div>
+        </div> 
 
-
-        </div>
-        <div class="col-md-3 dropdown">
-         <button class="dropbtn"> Occasion</button>
-         <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+        <div class="col-md-2 dropdown">
+          <button class="dropbtn">Deliver City</button>
+          
+          <div class="dropdown-content">
+            <%  Product.all.each do |product,index| %>
+              <% if product.city.present? %>
+                <%= link_to product.city, super_category_path(id: @id, sub_category_id: @sub_category_id, city_name: product.city)%>
+              <% end %>
+            <% end %>
+          </div>
         </div>
 
-      </div>			
-
-      <div class="col-md-3 dropdown">
-        <button class="dropbtn"> Delivery City </button>
-        <div class="dropdown-content">
-         <a href="#">Link 1</a>
-         <a href="#">Link 2</a>
-         <a href="#">Link 3</a>
-       </div>
-     </div>		
-   </div>
-
-   <div class="price-dropdown-list">
-     <div class="dropdown">
-      <button class="dropbtn">Price</button>
-      <div class="dropdown-content">
-       <a href="#">Below 501</a>
-       <a href="#">Below 501</a>
-       <a href="#">Below 501</a>
-     </div>
-   </div>	
- </div>
-
-</div>
-</div>
+        <div class="price-dropdown-list">
+          <div class="dropdown">
+            <button class="dropbtn">Price</button>
+            <div class="dropdown-content">
+              <%= link_to 'Below 500', super_category_path(id: @id, sub_category_id: @sub_category_id, below: 500)%>
+              <%= link_to 'Below 1000', super_category_path(id: @id, sub_category_id: @sub_category_id, below: 1000)%>
+              <%= link_to 'Below 1500', super_category_path(id: @id, sub_category_id: @sub_category_id, below: 1500)%>
+              <%= link_to 'Below 2000', super_category_path(id: @id, sub_category_id: @sub_category_id, below: 2000)%>
+              <%= link_to 'Above 2500', super_category_path(id: @id, sub_category_id: @sub_category_id, above: 2500)%>
+            </div>
+          </div>	
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
@@ -78,51 +91,8 @@
 
 
 <section class="cake-product-list">
-	<div class="container">
-		<div class="row">
-
-      <% @products.each do |product|%>
-        <a href="<%= product_path(product)%>">
-        <div class="col-md-3">
-          <div class="cake-crousel-text">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-              </ol>
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <% product.gallery.each_with_index do |gallery_url, index| %>
-                <div class="item <%= index == 0 ? 'active' : ''%>">
-                  <%= image_tag(gallery_url,size: "250x250") if gallery_url.present? %>
-                </div>
-                <% break if index == 3%>
-                <%end if product.gallery.attached?%>
-              </div>
-
-            </div>
-            <span class="b-name"><%= product.name%></span>
-            <span class="f-price"><%= product.price.to_i%></span>	
-            <!-- <p><span class="l-price">699</span> <span class="o-price">21% OFF</span></p> -->
-
-            <div class="delivery-earliest">
-              Delivery:
-              <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery"><%= ShippingMethod.find(product.shipping_method_ids).map(&:tag_name).join(',') %></time>
-            </div>
-
-            <span class="stars-5">☆☆☆☆☆ <p>1809 Reviews</p></span>	
-            </div>
-          </div>	<!-- col-md-3 -->
-        </a>
-        <%end%>
-
-      </div>
-    </div>			
-
-  </section>
+	<%= render partial: 'product' %>	
+</section>
 
 
   <div class="best-seller-cake">

@@ -277,7 +277,7 @@
         <div class="col-md-6">
           <div class="chocolate-cake-products">
             <h2 class="cake"><%= @product.name%></h2>
-            <span class="stars-container stars-100"> ☆☆☆☆☆ <a href="#">42 Reviews</a></span>
+            <span class="stars-container stars-100"> ☆☆☆☆☆ <a href="#"><%= @product.reviews.count %> Reviews</a></span>
             <div class="price-off">
               <span class="iner-content"><p class="inr-icon"></p> <p class="product-price" id="product_price"><%= @product.price.to_i%></p></span>
               <!-- <span class="iner-content2"><p class="inr-icon"></p> <del>999</del> 20% OFF</span> -->

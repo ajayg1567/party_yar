@@ -1,0 +1,43 @@
+<div class="container">
+		<div class="row">
+
+      <% @products.each do |product|%>
+        <a href="<%= product_path(product)%>">
+        <div class="col-md-3">
+          <div class="cake-crousel-text">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <% product.gallery.each_with_index do |gallery_url, index| %>
+                <div class="item <%= index == 0 ? 'active' : ''%>">
+                  <%= image_tag(gallery_url,size: "250x250") if gallery_url.present? %>
+                </div>
+                <% break if index == 3%>
+                <%end if product.gallery.attached?%>
+              </div>
+
+            </div>
+            <span class="b-name"><%= product.name%></span>
+            <span class="f-price"><%= product.price.to_i%></span>	
+            <!-- <p><span class="l-price">699</span> <span class="o-price">21% OFF</span></p> -->
+
+            <div class="delivery-earliest">
+              Delivery:
+              <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery"><%= ShippingMethod.find(product.shipping_method_ids).map(&:tag_name).join(',') %></time>
+            </div>
+
+            <span class="stars-5">☆☆☆☆☆ <p><%= product.reviews.count %> Reviews</p></span>	
+            </div>
+          </div>	<!-- col-md-3 -->
+        </a>
+        <%end%>
+
+      </div>
+    </div>
