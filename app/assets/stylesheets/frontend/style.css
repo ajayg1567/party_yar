@@ -1316,7 +1316,6 @@ span.stars-5 p {
 .birthday-cake-menu {
     background: #666666;
     display: inline-block;
-    width: 70%;
 }
 .price-dropdown-list {
     background: #666666;
@@ -3162,4 +3161,29 @@ ul.cake-order-list-item li {
 .product-price{
     display: contents;
     font-size: 25px;
+}
+
+.birthday-cake-menu .menu > ul > li > ul > .gift_type_sub_category{
+    width: 17% !important;
+}
+.birthday-cake-menu .menu > ul > li > a.gift_type_category{
+    color: white !important;
+}
+
+.birthday-cake-menu .menu > ul > li:hover {
+    background: #f0f0f0;
+}
+
+.birthday-cake-menu .menu > ul > li > ul > li > ul > li a:hover {
+    color: #9a0a0f;
+    padding-left:10px;
+}
+.gift_type_drop_down{
+    margin-top: 52px !important;
+    background: #666666 !important;
+}
+
+
+.birthday-cake-menu .menu > ul > li > ul > li a{
+    color: white !important;
 }

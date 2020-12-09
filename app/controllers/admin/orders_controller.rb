@@ -59,6 +59,12 @@ class Admin::OrdersController < ApplicationController
     end
   end
 
+  def update_status
+    order = Order.find(params[:order_id])
+    order.update(state: params[:state].to_i)
+    UpdateOrderStatusNotificationJob.perform_async(order) unless order.pending?
+  end
+
 private
    def order_params
     params.require(:order).permit!

@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :product
   belongs_to :user
 
+  enum state: [ :pending, :confirmed, :dispatched, :delivered, :cancelled]
   [:authorized, :captured, :refunded, :error].each do |scoped_key|
     scope scoped_key, -> { where('LOWER(status) = ?', scoped_key.to_s.downcase) }
   end

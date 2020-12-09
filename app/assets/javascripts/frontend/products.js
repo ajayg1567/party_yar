@@ -90,6 +90,53 @@ $(document).ready(function() {
 		call_controller(price, gift_type_id);
 	})
 
+	window.review_star = function(star_id){
+    $("#stars_id").val(star_id)
+    $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "black");
+      $("#review_star_3").css("color", "black");
+      $("#review_star_4").css("color", "black");
+      $("#review_star_5").css("color", "black");
+    if(star_id == 1){
+      $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "black");
+      $("#review_star_3").css("color", "black");
+      $("#review_star_4").css("color", "black");
+      $("#review_star_5").css("color", "black");
+    }else if (star_id == 2){
+      $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "#f5bb1b");
+      $("#review_star_3").css("color", "black");
+      $("#review_star_4").css("color", "black");
+      $("#review_star_5").css("color", "black");
+    }else if(star_id == 3){
+      $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "#f5bb1b");
+      $("#review_star_3").css("color", "#f5bb1b");
+      $("#review_star_4").css("color", "black");
+      $("#review_star_5").css("color", "black");
+    }else if(star_id == 4)
+    {
+      $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "#f5bb1b");
+      $("#review_star_3").css("color", "#f5bb1b");
+      $("#review_star_4").css("color", "#f5bb1b");
+      $("#review_star_5").css("color", "black");
+
+    }else if (star_id == 5){
+      $("#review_star_1").css("color", "#f5bb1b");
+      $("#review_star_2").css("color", "#f5bb1b");
+      $("#review_star_3").css("color", "#f5bb1b");
+      $("#review_star_4").css("color", "#f5bb1b");
+      $("#review_star_5").css("color", "#f5bb1b");
+    }
+  }
+
+  window.submit_review= function(){
+  	window.location.href= '/my-account/orders'
+  	window.setTimeout(function(){location.reload()},2000)
+  }
+
 });
 
 // Filter Ajax call function

@@ -4,14 +4,14 @@ class CheckoutController < ApplicationController
 	layout 'frontend/application'
 
 	def index
-		@product = Product.last
-		@address = Address.new
+		# @product = Product.last
+		# @address = Address.new
 		#@product_id = Product.where(:id=> params["product_id"])
 		# delivery_details = params["delivery_details"].split(",")
 		# @delivery_date = delivery_details[0]
 		# @delivery_time = delivery_details[1]
 		# @delivery_type = delivery_details[2]
-		@add_on_price = params["total_price"].to_i
+		# @add_on_price = params["total_price"].to_i
 		
 		# if params["add_on_ids"]
 		# 	add_on_id = params["add_on_ids"].split(",") 
@@ -29,4 +29,23 @@ class CheckoutController < ApplicationController
 		# @product.shipping_price = sm_price
 		# @product.save			
 	end
+
+	def update_add_ons
+		item = Item.find params[:item_id]
+		item.additional[:add_ons][params[:add_on_id]] = params[:add_on_count]
+		item.save
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def remove_add_on
+		item = Item.find params[:item_id]
+		item.additional[:add_ons].map{|m, count| item.additional[:add_ons].delete(m) if params[:add_on_id] == m}
+		item.save
+		respond_to do |format|
+			format.js
+		end
+	end
+	
 end

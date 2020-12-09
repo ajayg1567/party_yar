@@ -32,6 +32,19 @@ class OrdersController < ApplicationController
     redirect_to :action => "show", :id => @order.id
   end
 
+  def reviews
+    @product = Product.find_by(id: params[:id])
+  end
+  def add_reviews
+    begin
+      review = Review.create!(user_id: current_user.id, content: params[:content], stars: params[:stars], product_id: params[:product_id])
+      review.save!
+      flash[:success] = "Review is Added!" 
+    rescue => e
+      flash[:danger] = "Something is wrong!" 
+    end
+  end
+
   private
     def payment_params
       p = params.permit(:payment_id, :user_id, :price, :razorpay_payment_id)
