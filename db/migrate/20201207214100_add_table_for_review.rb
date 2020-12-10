@@ -3,6 +3,7 @@ class AddTableForReview < ActiveRecord::Migration[5.2]
   	create_table :reviews do |t|
       	t.integer :stars
       	t.text :content
+        t.text :title
       	t.references :user, null: false, foreign_key: true
       	t.references :product, null: false, foreign_key: true
       	

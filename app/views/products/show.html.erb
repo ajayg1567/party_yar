@@ -277,7 +277,11 @@
         <div class="col-md-6">
           <div class="chocolate-cake-products">
             <h2 class="cake"><%= @product.name%></h2>
-            <span class="stars-container stars-100"> ☆☆☆☆☆ <a href="#"><%= @product.reviews.count %> Reviews</a></span>
+            <span class="stars-container"> 
+              <% 5.times do |x| %>
+                <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@product) ? '#f5bb1b' : 'grey'  %>;"></i>
+              <% end %>
+             <a href="#"> <%= @product.reviews.count %> Reviews</a></span>
             <div class="price-off">
               <span class="iner-content"><p class="inr-icon"></p> <p class="product-price" id="product_price"><%= @product.price.to_i%></p></span>
               <!-- <span class="iner-content2"><p class="inr-icon"></p> <del>999</del> 20% OFF</span> -->
@@ -435,72 +439,40 @@
 <%# <h1>this is below rating system</h1>
 <span class="glyphicon glyphicon-star"></span>
 <span class="glyphicon glyphicon-star-empty"></span> %>
-
-<section class="client-review">
-  <div class="demo">
-    <div class="container product-wrapper-container">
-      <div class="col-md-12">
-        <h1 class="best-sell-heading text-center">What Customers Are Saying</h1>
-      </div>
-
-      <div class="row">
+<% if @product.reviews.count > 0 %>
+  <section class="client-review">
+    <div class="demo">
+      <div class="container product-wrapper-container">
         <div class="col-md-12">
-          <div id="testimonial-slider" class="owl-carousel">
-            <div class="testimonial">
-              <img class="startimg" src="/assets/5startimg.png">
-              <h2>A Truly amazing experience</h2>
-              <p class="description1">
-                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-              </p>
-              <div class="pic">
-                <img src="/assets/client-img-1.jpg" alt=""/>
-              </div>
-              <span>JOHN, USA</span>
-            </div>
-
-            <div class="testimonial">
-              <img class="startimg" src="/assets/5startimg.png">
-              <h2>A Truly amazing experience</h2>
-              <p class="description1">
-                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-              </p>
-              <div class="pic">
-                <img src="/assets/client-img-1.jpg" alt=""/>
-              </div>
-              <span>JOHN, USA</span>
-            </div>
-
-            <div class="testimonial">
-              <img class="startimg" src="/assets/5startimg.png">
-              <h2>A Truly amazing experience</h2>
-              <p class="description1">
-                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-              </p>
-              <div class="pic">
-                <img src="/assets/client-img-1.jpg" alt=""/>
-              </div>
-              <span>JOHN, USA</span>
-            </div>
-
-            <div class="testimonial">
-              <img class="startimg" src="/assets/5startimg.png">
-              <h2>A Truly amazing experience</h2>
-              <p class="description1">
-                All the tour guides we were allocated were experts in their knowledge. Thank you Bravo Indochina forcreating a life long memory of our time                                 
-              </p>
-              <div class="pic">
-                <img src="/assets/client-img-1.jpg" alt=""/>
-              </div>
-              <span>JOHN, USA</span>
-            </div>
-
-          </div>
+          <h1 class="best-sell-heading text-center">What Customers Are Saying</h1>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <div class="row">
+          <div class="col-md-12">
+            <div id="testimonial-slider" class="owl-carousel">
+              <% @product.reviews.each do |review| %>
 
+              <div class="testimonial">
+                <% 5.times do |x| %>
+                  <i class="fa fa-star stars" style="color: <%= x < review.stars ? '#f5bb1b' : 'grey'  %>;"></i>
+                <% end %>
+                <h2><%= review&.title%></h2>
+                <p class="description1">
+                  <%= review.content %>                                 
+                </p>
+                <div class="pic">
+                  <img src="/assets/user.jpeg" alt=""/>
+                </div>
+                <span><%= review.user.name %></span>
+              </div>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  <% end %>
 
 
   <div class="img0-product-wrapper">

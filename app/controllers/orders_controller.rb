@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
   def add_reviews
     begin
-      review = Review.create!(user_id: current_user.id, content: params[:content], stars: params[:stars], product_id: params[:product_id])
+      review = Review.create!(user_id: current_user.id, title: params[:title], content: params[:content], stars: params[:stars], product_id: params[:product_id])
       review.save!
       flash[:success] = "Review is Added!" 
     rescue => e
