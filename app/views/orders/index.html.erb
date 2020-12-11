@@ -18,45 +18,58 @@
               <p>Order Placed: <%= order.created_at.strftime('%a, %d %b, %y, %H:%M')%> HRS</p>
               <span>Order No: <%= order.order_no%></span>
             </div>
-
             <div class="delivered-on-list">
-              <div class="delivered-on0" style="width: 50%;">
+              <div class="delivered-on0" style="width: 20%;">
                 <p class="Delivered-pop" style="text-align: left;"><span class="status">In transit</span><br><span><%= order.created_at.strftime('%a, %d %b, %y')%></span></p>
                 <div class="images_cushion">
-                  <div class="raw">
-                    <div class="col-md-8">
-                      <div class="raw">
-                        <div class="col-md-6">
-                          <img src="<%= url_for(@products[order.product_id].banner) if @products[order.product_id].banner.attached?%>">
-                        </div>
-                        <div class="col-md-6">
-                          <p style="float: left;margin-left: 1em;"><%= @products[order.product_id].name%><br>
-                            <%if order.additional[:product_upgrade_id].present?%>
-                              <%= @product_upgrades[order.product_upgrade_id].price.to_i%> * 1
-                            <%else%>
-                              <%= @products[order.product_id].price.to_i%> * 1
-                            <%end%>
-                          </p>
-                        </div>
-                      </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                        <img src="<%= url_for(order.product.gallery.first) if order.product.gallery.attached?%>" class="productBanner">
+                        <p style="font-size: 15px; margin-top: 20px;"><span>&#8377;</span><%= order.total_price %> </p>
                     </div>
-                    <div class="col-md-4">
-                      <p>Delivery Details</p>
-                      <p>Tue, 25 Dec 18</p>
-                      <p>Courier</p>
-                      <p>09:00 Hrs-21:00 Hrs</p>
-                    </div>
+                    
                   </div>
                 </div>
                 
               </div>
-
-              <div class="delivered-on0" style="width: 25%;">
-                <p class="Delivered-pop"><span>Recipient's Deatils </span><br><span> Wed, 26 Dec 18</span></p>
+              <div class="delivered-on0" style="width: 20%;">
+                <p class="Delivered-pop" style="text-align: left;"><span>Item's Details </span></p>
+                <p class="ml-1"><%= order.product.name%><br>
+                  <%= order.adjusted_price.to_i%> * 1
+                </p>
+                <% if order.additional[:add_ons] %>
+                  <% add_ons = order.additional[:add_ons] %>
+                  <% add_on_objects = order.additional[:add_ons].map{|m, count| AddOn.where(:id=> m)}.flatten%>
+                <% end %>
+                <% add_on_objects&.each do |item1| %>
+                  <p class="ml-1"> 
+                    <%= item1.name %> 
+                    <br>
+                    <%= item1.price.to_i %> * <%= add_ons[item1.id.to_s]%>
+                  </p>
+                <% end %>
 
               </div>
+              <div class="delivered-on0" style="width: 20%;">
+                <p class="Delivered-pop" style="text-align: left;"><span>Delivery Details </span></p>
+                <p class="ml-1"><%= order.additional[:delivery_date] %></p>
+                <p class="ml-1"><%= order.additional[:delivery_time] %></p>
 
-              <div class="delivered-on0" style="width: 25%;">
+
+              </div>
+              <div class="delivered-on0" style="width: 20%;">
+                <p class="Delivered-pop" style="text-align: left;"><span>Recipient's Deatils </span></p>
+                <% address = order.recipient_address %>
+                <% if address.present? %>
+                  <p class="ml-1">
+                    <%= address.name %> <br>
+                    <%= address.email %> <br>
+                    <%= address.mobile %> <br>
+                    <%= "#{address.address_line1}, #{address.city}, #{address.pincode}" %></p>
+                <% end %>
+              </div>
+
+              <div class="delivered-on0" style="width: 20%;">
                 <p class="Delivered-pop" style="text-align: right;"><span>Sub Order No. </span><br><span><%= order.order_no%></span></p>
                 <div class="images_cushion_btn" style="display: grid;">
                   <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>

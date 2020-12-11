@@ -19,10 +19,10 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = User.last.orders
+    @orders = current_user.orders
     # @orders = Order.filter(filter_params).page(params[:page]).per(20)
    # @product_upgrades = ProductUpgrade.all.index_by(&:id)
-    @products = Product.where(id: @orders.pluck(:product_id)).index_by(&:id)
+    # @products = Product.where(id: @orders.pluck(:product_id)).index_by(&:id)
     
   end
 
