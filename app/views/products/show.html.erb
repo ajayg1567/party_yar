@@ -273,15 +273,19 @@
             </div>
           </div>
         </div><!---------------col-md-6-------------->
-
         <div class="col-md-6">
           <div class="chocolate-cake-products">
             <h2 class="cake"><%= @product.name%></h2>
-            <span class="stars-container"> 
-              <% 5.times do |x| %>
-                <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@product) ? '#f5bb1b' : 'grey'  %>;"></i>
-              <% end %>
-             <a href="#"> <%= @product.reviews.count %> Reviews</a></span>
+            <% if @product.reviews.present? %>
+              <span class="stars-container"> 
+                <% 5.times do |x| %>
+                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@product) ? '#f5bb1b' : 'grey'  %>;"></i>
+                <% end %>
+               <a href="#"> <%= @product.reviews.count %> Reviews</a></span>
+            <% else %>
+              <span class="stars-container"> ☆☆☆☆☆ <a href="#"> <%= @product.reviews.count %> Reviews</a></span>
+            <% end %>
+
             <div class="price-off">
               <span class="iner-content"><p class="inr-icon"></p> <p class="product-price" id="product_price"><%= @product.price.to_i%></p></span>
               <!-- <span class="iner-content2"><p class="inr-icon"></p> <del>999</del> 20% OFF</span> -->
