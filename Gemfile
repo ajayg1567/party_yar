@@ -39,6 +39,7 @@ gem 'dotenv-rails'
 gem 'uglifier'
 gem 'country_select', '~> 4.0'
 gem 'letsrate'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
