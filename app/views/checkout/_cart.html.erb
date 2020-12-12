@@ -486,7 +486,9 @@
 	 var itemid = "";
 	 var prod_id = "";
 	 prep_modal();
-	 $("#datepicker").datepicker();
+	 var nowDate = new Date(); 
+    var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+    $("#datepicker").datepicker({ autoclose: true}).datepicker('setStartDate', today).focus();
 
 	 $(".delivery-details").click(function(){
 		$("#delivery_modal").modal('show');

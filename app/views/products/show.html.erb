@@ -1006,7 +1006,9 @@ function prep_modal()
 $(document).ready(function() {
     // var add_on_ids = new Array();
     prep_modal();
-    $("#datepicker").datepicker();
+    var nowDate = new Date(); 
+    var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+    $("#datepicker").datepicker({ autoclose: true}).datepicker('setStartDate', today).focus();
     $('.carousel[data-type="multi"] .item').each(function(){
       var next = $(this).next();
       if (!next.length) {
