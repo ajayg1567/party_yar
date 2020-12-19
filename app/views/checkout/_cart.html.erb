@@ -1,7 +1,6 @@
 <% 
-@product = Product.last
 @address = Address.new
-@add_on_price = params["total_price"].to_i
+@product = current_cart.items.first.product
 %>
 <div class="my-acount-deatils">
 	<div class="container" style="width: 90%;">
@@ -11,34 +10,8 @@
 
 				<div id='mainContentWrapper'>
 					<div class="col-md-9">
+						<% current_cart.items.order(created_at: :desc).each_with_index do |item, index|%>
 						<div class="shopping_cart">
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion" style="font-weight:bold;">Contact
-										and Billing Information</a>
-									</h4>
-								</div>
-								<div class="panel-collapse collapse in">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-3">
-												<p><%= current_user.name%></p>
-											</div>
-
-											<div class="col-md-3" style="float: right;">
-												<p><%= current_user.phone%></p>
-											</div>
-											<div class="col-md-3" style="float: right;margin-right: 2em;">
-												<p><%= current_user.email%></p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-
 							<div class="panel panel-default" id="order_refresh">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -47,7 +20,7 @@
 								</div>
 
 								<div id="collapseTwo" class="panel-collapse collapse in">
-									<% current_cart.items.order(created_at: :desc).each_with_index do |item, index|%>
+									
 									<br>
 									<span class="gift-header">
 										<span>GIFT <%= index+1 %></span>
@@ -80,7 +53,7 @@
 											</div>
 
 											<div class="col-md-2">
-												<button class="btn btn-success btn-warning delivery-details" id="change_ajax<%= index%>",data-toggle="modal" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" data-prodid= <%= @product.id%> data-itemid=  <%= item.id%>>Change</button>
+												<button class="btn btn-success btn-warning delivery-details" id="change_details<%= index%>" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" onclick="change_product(<%= item.product.id%>, <%= item.id%>)">Change</button>
 											</div>
 										</div><!-- row -->
 										<% if item.additional[:add_ons] %>
@@ -191,6 +164,7 @@
 								</div>
 
 							</div>
+							
 							<h4 class="panel-title" style="font-weight: bold;margin-left: 2%;" id="select_address<%= index%>">SELECTED ADDRESS</h4><br> 
 							<ul id="address_selected<%= index%>">
 								<!-- Address panel -->
@@ -219,7 +193,7 @@
 							data-key="rzp_test_ceKCXwYi0JrUYI"
 
 							data-amount="<%= (current_cart.total_amount_with_delivery) * 100 %>"
-							data-name="<%= "#{@product.name}" %>"
+							# data-name="<%= "#{@product.name}" %>"
 							data-description="<%= truncate(@product.description.html_safe, :length => 80, :omission => "" , :escape => false)%>"
 							data-image="/assets/logo.png"
 
@@ -229,15 +203,14 @@
 							>
 						</script>
 						<!-- <input type="hidden" value="<%#= "#{@product.id}" %>" name="product_id"> -->
-						<input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
-					</form>
+							<input type="hidden" value="<%= "#{current_user.id}" %>" name="user_id">
+						</form>
 
-
-				</div> <!-- Collapse div -->
-			</div> <!-- Panel Default-->
-		</div>
+					</div> <!-- Collapse div -->
+				</div> <!-- Panel Default-->
+			</div>
 		<!-- $("#collapseTwo").slideToggle(); -->
-
+		</div>
 
 
 		<div class="col-md-3">
@@ -300,16 +273,16 @@
 				<hr />
 				<ul>
 				 <% ShippingMethod.find(@product.shipping_method_ids).each do |shipping_method| %>
-				 <li class="sm-list">
-					 <a class="sm-url">
-						<label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
-							<%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
-							<span style="display: inline-block"><%= shipping_method.tag_name %></span>
-						</label>
-						<div class="input-group-button button del-method-btn">
-							<span class="delcost" style=""><%= shipping_method.price%></span>
-						</div>
-					</a>
+				 		<li class="sm-list">
+					 		<a class="sm-url">
+								<label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
+								<%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
+									<span style="display: inline-block"><%= shipping_method.tag_name %></span>
+								</label>
+								<div class="input-group-button button del-method-btn">
+									<span class="delcost" style=""><%= shipping_method.price%></span>
+								</div>
+							</a>
 				</li>
 				<% end %>
 			</ul>
@@ -428,6 +401,7 @@
 
 	$(document).ready(function(){
 
+		
 		$('.quantity-right-plus').click(function(e){
 			e.preventDefault();
 			// Get the field name

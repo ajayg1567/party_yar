@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@addons = AddOn.all
+		@recomended_products = Product.all.order!('views DESC').take(8)
 	end
 
 	def get_location
@@ -29,5 +30,6 @@ class ProductsController < ApplicationController
 
 	def set_product
 		@product = Product.friendly.find(params[:id])
+		@product.update_column(:views, @product.views + 1)
 	end
 end

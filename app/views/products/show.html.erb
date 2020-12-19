@@ -496,21 +496,31 @@
                   <a href="#">
                     <img src="/assets/red-cake.jpg" class="img-responsive"></a>
                     <div class="img0-product-desc">
-                      <p class="kit-kat-desc">Kit Kat Cake</p>
-                      <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                      <p class="kit-kat-desc"><%= @recomended_products[0].name%></p>
+                      <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[0].price %></span>                       
                     </div>
-                    <div class="earliestdelivery">
-                      Earliest Delivery:
-                      <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                    </div>  
-                    <div class="each-product-review">
-                      <div class="ratings-count">4.3
-                        <span class="stars-container stars-86">
-                          ☆☆☆☆☆
-                        </span>
+
+                    <% if  @recomended_products[0].reviews.present? %>
+                      <div class="each-product-review">
+                        <div class="ratings-count">
+                          <span class=""> 
+                            <% 5.times do |x| %>
+                              <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[0]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                            <% end %>
+                          </span>
+                        </div>
+                        <div class="reviews-count"><%= @recomended_products[0].reviews.count %> Reviews</div>
                       </div>
-                      <div class="reviews-count">48 Reviews</div>
-                    </div>                          
+                    <% else %>
+                      <div class="each-product-review">
+                        <div class="ratings-count">
+                          <span class="">
+                            ☆☆☆☆☆
+                          </span>
+                        </div>
+                        <div class="reviews-count">0 Reviews</div>
+                      </div>                          
+                    <% end %>
                   </div>
                 </div>
 
@@ -519,21 +529,30 @@
                     <a href="#">
                       <img src="/assets/red-cake.jpg" class="img-responsive"></a>
                       <div class="img0-product-desc">
-                        <p class="kit-kat-desc">Kit Kat Cake</p>
-                        <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                        <p class="kit-kat-desc"><%= @recomended_products[1].name%></p>
+                        <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[1].price %></span>                       
                       </div>
-                      <div class="earliestdelivery">
-                        Earliest Delivery:
-                        <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                      </div>  
-                      <div class="each-product-review">
-                        <div class="ratings-count">4.3
-                          <span class="stars-container stars-86">
-                            ☆☆☆☆☆
-                          </span>
+                      <% if @recomended_products[1].reviews.present? %>
+                        <div class="each-product-review">
+                          <div class="ratings-count">
+                            <span class=""> 
+                              <% 5.times do |x| %>
+                                <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[1]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                              <% end %>
+                            </span>
+                          </div>
+                          <div class="reviews-count"><%= @recomended_products[1].reviews.count %> Reviews</div>
                         </div>
-                        <div class="reviews-count">48 Reviews</div>
-                      </div>                          
+                      <% else %>
+                        <div class="each-product-review">
+                          <div class="ratings-count">
+                            <span class="">
+                              ☆☆☆☆☆
+                            </span>
+                          </div>
+                          <div class="reviews-count">0 Reviews</div>
+                        </div>                          
+                      <% end %>                       
                     </div>
                   </div>
 
@@ -542,140 +561,170 @@
                       <a href="#">
                         <img src="/assets/red-cake.jpg" class="img-responsive"></a>
                         <div class="img0-product-desc">
-                          <p class="kit-kat-desc">Kit Kat Cake</p>
-                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
+                          <p class="kit-kat-desc"><%= @recomended_products[2].name%></p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[2].price %></span>                       
                         </div>
-                        <div class="earliestdelivery">
-                          Earliest Delivery:
-                          <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                        </div>  
-                        <div class="each-product-review">
-                          <div class="ratings-count">4.3
-                            <span class="stars-container stars-86">
-                              ☆☆☆☆☆
-                            </span>
+                        
+                        <% if @recomended_products[2].reviews.present? %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class=""> 
+                                <% 5.times do |x| %>
+                                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[2]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                                <% end %>
+                              </span>
+                            </div>
+                            <div class="reviews-count"><%= @recomended_products[2].reviews.count %> Reviews</div>
                           </div>
-                          <div class="reviews-count">48 Reviews</div>
-                        </div>                          
+                        <% else %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class="">
+                                ☆☆☆☆☆
+                              </span>
+                            </div>
+                            <div class="reviews-count">0 Reviews</div>
+                          </div>                          
+                        <% end %>                           
                       </div>
                     </div>
 
                     <div class="item">
                       <div class="col-md-3 col-sm-6 col-xs-12">
-                        <a href="#">
-                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                          <div class="img0-product-desc">
-                            <p class="kit-kat-desc">Kit Kat Cake</p>
-                            <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                          </div>
-                          <div class="earliestdelivery">
-                            Earliest Delivery:
-                            <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                          </div>  
+                      <a href="#">
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <div class="img0-product-desc">
+                          <p class="kit-kat-desc"><%= @recomended_products[3].name%></p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[3].price %></span>                       
+                        </div>
+                        
+                        <% if @recomended_products[3].reviews.present? %>
                           <div class="each-product-review">
-                            <div class="ratings-count">4.3
-                              <span class="stars-container stars-86">
+                            <div class="ratings-count">
+                              <span class=""> 
+                                <% 5.times do |x| %>
+                                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[3]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                                <% end %>
+                              </span>
+                            </div>
+                            <div class="reviews-count"><%= @recomended_products[3].reviews.count %> Reviews</div>
+                          </div>
+                        <% else %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class="">
                                 ☆☆☆☆☆
                               </span>
                             </div>
-                            <div class="reviews-count">48 Reviews</div>
+                            <div class="reviews-count">0 Reviews</div>
                           </div>                          
-                        </div>
+                        <% end %>                           
                       </div>
+                    </div>
 
                       <div class="item">
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                          <a href="#">
-                            <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                            <div class="img0-product-desc">
-                              <p class="kit-kat-desc">Kit Kat Cake</p>
-                              <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                            </div>
-                            <div class="earliestdelivery">
-                              Earliest Delivery:
-                              <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                            </div>  
-                            <div class="each-product-review">
-                              <div class="ratings-count">4.3
-                                <span class="stars-container stars-86">
-                                  ☆☆☆☆☆
-                                </span>
-                              </div>
-                              <div class="reviews-count">48 Reviews</div>
-                            </div>                          
-                          </div>
+                      <a href="#">
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <div class="img0-product-desc">
+                          <p class="kit-kat-desc"><%= @recomended_products[4].name%></p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[4].price %></span>                       
                         </div>
+                        
+                        <% if @recomended_products[4].reviews.present? %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class=""> 
+                                <% 5.times do |x| %>
+                                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[4]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                                <% end %>
+                              </span>
+                            </div>
+                            <div class="reviews-count"><%= @recomended_products[4].reviews.count %> Reviews</div>
+                          </div>
+                        <% else %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class="">
+                                ☆☆☆☆☆
+                              </span>
+                            </div>
+                            <div class="reviews-count">0 Reviews</div>
+                          </div>                          
+                        <% end %>                           
+                      </div>
+                    </div>
 
                         <div class="item">
                           <div class="col-md-3 col-sm-6 col-xs-12">
-                            <a href="#">
-                              <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                              <div class="img0-product-desc">
-                                <p class="kit-kat-desc">Kit Kat Cake</p>
-                                <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                              </div>
-                              <div class="earliestdelivery">
-                                Earliest Delivery:
-                                <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                              </div>  
-                              <div class="each-product-review">
-                                <div class="ratings-count">4.3
-                                  <span class="stars-container stars-86">
-                                    ☆☆☆☆☆
-                                  </span>
-                                </div>
-                                <div class="reviews-count">48 Reviews</div>
-                              </div>                          
+                      <a href="#">
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <div class="img0-product-desc">
+                          <p class="kit-kat-desc"><%= @recomended_products[5].name%></p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[5].price %></span>                       
+                        </div>
+                        
+                        <% if @recomended_products[5].reviews.present? %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class=""> 
+                                <% 5.times do |x| %>
+                                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[5]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                                <% end %>
+                              </span>
                             </div>
+                            <div class="reviews-count"><%= @recomended_products[5].reviews.count %> Reviews</div>
                           </div>
+                        <% else %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class="">
+                                ☆☆☆☆☆
+                              </span>
+                            </div>
+                            <div class="reviews-count">0 Reviews</div>
+                          </div>                          
+                        <% end %>                           
+                      </div>
+                    </div>
 
 
                           <div class="item">
                             <div class="col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">
-                                <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                <div class="img0-product-desc">
-                                  <p class="kit-kat-desc">Kit Kat Cake</p>
-                                  <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                </div>
-                                <div class="earliestdelivery">
-                                  Earliest Delivery:
-                                  <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                </div>  
-                                <div class="each-product-review">
-                                  <div class="ratings-count">4.3
-                                    <span class="stars-container stars-86">
-                                      ☆☆☆☆☆
-                                    </span>
-                                  </div>
-                                  <div class="reviews-count">48 Reviews</div>
-                                </div>                          
-                              </div>
+                      <a href="#">
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <div class="img0-product-desc">
+                          <p class="kit-kat-desc"><%= @recomended_products[6].name%></p>
+                          <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[6].price %></span>                       
+                        </div>
+                        
+                        <% if @recomended_products[6].reviews.present? %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class=""> 
+                                <% 5.times do |x| %>
+                                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(@recomended_products[6]) ? '#f5bb1b' : 'grey'  %>;"></i>
+                                <% end %>
+                              </span>
                             </div>
+                            <div class="reviews-count"><%= @recomended_products[6].reviews.count %> Reviews</div>
+                          </div>
+                        <% else %>
+                          <div class="each-product-review">
+                            <div class="ratings-count">
+                              <span class="">
+                                ☆☆☆☆☆
+                              </span>
+                            </div>
+                            <div class="reviews-count">0 Reviews</div>
+                          </div>                          
+                        <% end %>                           
+                      </div>
+                    </div>
 
 
-                            <div class="item">
-                              <div class="col-md-3 col-sm-6 col-xs-12">
-                                <a href="#">
-                                  <img src="/assets/red-cake.jpg" class="img-responsive"></a>
-                                  <div class="img0-product-desc">
-                                    <p class="kit-kat-desc">Kit Kat Cake</p>
-                                    <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span>1099</span>                       
-                                  </div>
-                                  <div class="earliestdelivery">
-                                    Earliest Delivery:
-                                    <time datetime="2019-09-27T08:41:40+05:30" class="dt-delivery">Today</time>
-                                  </div>  
-                                  <div class="each-product-review">
-                                    <div class="ratings-count">4.3
-                                      <span class="stars-container stars-86">
-                                        ☆☆☆☆☆
-                                      </span>
-                                    </div>
-                                    <div class="reviews-count">48 Reviews</div>
-                                  </div>                          
-                                </div>
-                              </div>
+                            
+                    
                             </div> <!-- col-md-12 -->
 
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
@@ -695,7 +744,6 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-
                         <%= link_to "X",checkout_path(product_id: @product.id ) ,class: "close" ,id: "buy_now_addon"%>
                         <h4 class="modal-title" id="myModalLabel"><b>Add on something to make it extra special!</b>
                         </h4>

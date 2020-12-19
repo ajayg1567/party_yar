@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   layout 'frontend/application'
-  
+   
   skip_before_action :verify_authenticity_token
   def purchase_status
     begin
@@ -54,6 +54,10 @@ class OrdersController < ApplicationController
 
     def filter_params
       params.permit(:status, :page)
+    end
+
+    def views_count
+
     end
 
 end

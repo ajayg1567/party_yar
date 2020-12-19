@@ -75,7 +75,7 @@
                   <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
                   <a href="#" class="track-order_2"><i class="fa fa-question-circle" aria-hidden="true"></i>Raise query</a>              
                   <a href="/reviews/<%= order.product_id%>" class="btn btn-primary track-order_3"><i class="fa fa-comments"></i> Write A Review</a>
-                  <%= link_to admin_invoice_show_path(order, format: :pdf), :class=>'track-order_3 btn btn-primary' do %>
+                  <%= link_to admin_invoice_show_path(order, format: :pdf), :class=>'track-order_3 btn btn-primary', target: "blank" do %>
 										<i class="fa fa-download" aria-hidden="true"></i> Download Invoice
 										<%end%>
 
