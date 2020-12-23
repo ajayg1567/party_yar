@@ -90,3 +90,7 @@ form.search button {
  	color: #000!important;
  	background: #f5f4f4;
  }
+ #toast-container{
+  z-index: 99999999999 !important;
+ }
+

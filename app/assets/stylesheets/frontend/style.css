@@ -66,6 +66,9 @@ span.status{
     font-weight: 400;
     margin-bottom: 10px;
 }
+.ml-1{
+  margin-left: 1em;
+}
 /*-------------header-menu-----------------*/
 .container {
     width: 1600px;

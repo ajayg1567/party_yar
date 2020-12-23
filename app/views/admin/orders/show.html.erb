@@ -28,6 +28,64 @@ a.track-order_3 {
     display: inline-block;
     max-width: 100%;
 }
+.delivered-on-list {
+    border: solid 1px #cccccc;
+    display: inline-block;
+    width: 100%;
+}
+.delivered-on0 {
+    width: 33.3%;
+    display: inline-block;
+    min-height: 250px;
+    float: left;
+}
+.delivered-on0 span {
+    background: #f5f5f5;
+    padding: 0;
+    line-height: initial;
+    width: 100%;
+}
+
+.images_cushion_btn {
+    text-align: center;
+    float: right;
+    padding: 10px
+}
+p.Delivered-pop {
+    background: #f5f5f5;
+    padding: 13px;
+    height: 65px;
+    font-size: 13px;
+    text-align: center;
+}
+.images_cushion_btn a .fa {
+    padding-right: 10px;
+}
+p.Delivered-pop span {
+    width: 100%;
+}
+.images_cushion {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+}
+.images_cushion img {
+    width: 100%;
+    float: left;
+}
+.images_cushion p {
+    float: left;
+}
+.ml-1{
+  margin-left: 1em;
+}
+span.status{
+    color: #7BC682;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
 
 </style>
 <h3>Order #<%= @order.order_no%> Details</h3>
@@ -51,51 +109,70 @@ a.track-order_3 {
 </div>
 
 <br>
-<section class="container">
-  <div class="panel panel-default panel-success panel-shadow">
-			    <div class="panel-heading" style="padding: 24px 12px;">
-      
-          <div class="col-md-4 heading-status">
-           <span class="status ">In transit</span><span><%= @order.created_at.strftime('%a, %d %b, %y')%></span>
-          </div>
-          <div class="col-md-4 heading-status">
-          <p class="Delivered-pop"><span>Recipient's Deatils </span><span> Wed, 26 Dec 18</span></p>
-          </div>
-          <div class="col-md-4 heading-status">
-           <p class="Delivered-pop"><span>Sub Order No. </span><span><%= @order.order_no%></span></p>
-          </div>
+<div class="container">
+  <% order = @order %>
+<div class="delivered-on-list">
+  <div class="delivered-on0" style="width: 20%;">
+    <p class="Delivered-pop" style="text-align: left;"><span class="status">In transit</span><br><span><%= order.created_at.strftime('%a, %d %b, %y')%></span></p>
+    <div class="images_cushion">
+      <div class="row">
+        <div class="col-md-12">
+            <img src="<%= url_for(order.product.gallery.first) if order.product.gallery.attached?%>" class="productBanner">
+            <p style="font-size: 15px; margin-top: 20px;"><span>&#8377;</span><%= order.total_price %> </p>
+        </div>
+        
+      </div>
     </div>
-			    <div class="panel-body">
-     <div class="col-md-3">
-           <img src="<%= url_for(@product.banner) if @product.banner.attached?%>" width="150">
-          </div>
-          <div class="col-md-3">
-          <p style="float: left;margin-left: 1em;"><%= @product.name%><br>
-                            <%if @order.additional[:product_upgrade_id].present?%>
-                              <%= @product_upgrades[order.product_upgrade_id].price.to_i%> * 1
-                            <%else%>
-                              <%= @product.price.to_i%> * 1
-                            <%end%>
-                          </p>
-          </div>
-          <div class="col-md-3">
-           <p>Delivery Details</p>
-                      <p>Tue, 25 Dec 18</p>
-                      <p>Courier</p>
-                      <p>09:00 Hrs-21:00 Hrs</p>
-          </div>
-
-          <div class="col-md-3">
-                  
-                  
-                  <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
-                  
-                  <a href="#" class="track-order_3"><i class="fa fa-download" aria-hidden="true"></i>Download Invoice</a>
-                
-          </div>
-    </div>
+    
   </div>
-</section>
+  <div class="delivered-on0" style="width: 20%;">
+    <p class="Delivered-pop" style="text-align: left;"><span>Item's Details </span></p>
+    <p class="ml-1"><%= order.product.name%><br>
+      <%= order.adjusted_price.to_i%> * 1
+    </p>
+    <% if order.additional[:add_ons] %>
+      <% add_ons = order.additional[:add_ons] %>
+      <% add_on_objects = order.additional[:add_ons].map{|m, count| AddOn.where(:id=> m)}.flatten%>
+    <% end %>
+    <% add_on_objects&.each do |item1| %>
+      <p class="ml-1"> 
+        <%= item1.name %> 
+        <br>
+        <%= item1.price.to_i %> * <%= add_ons[item1.id.to_s]%>
+      </p>
+    <% end %>
+
+  </div>
+  <div class="delivered-on0" style="width: 20%;">
+    <p class="Delivered-pop" style="text-align: left;"><span>Delivery Details </span></p>
+    <p class="ml-1"><%= order.additional[:delivery_date] %></p>
+    <p class="ml-1"><%= order.additional[:delivery_time] %></p>
+
+
+  </div>
+  <div class="delivered-on0" style="width: 20%;">
+    <p class="Delivered-pop" style="text-align: left;"><span>Recipient's Deatils </span></p>
+    <% address = order.recipient_address %>
+    <% if address.present? %>
+      <p class="ml-1">
+        <%= address.name %> <br>
+        <%= address.email %> <br>
+        <%= address.mobile %> <br>
+        <%= "#{address.address_line1}, #{address.city}, #{address.pincode}" %></p>
+    <% end %>
+  </div>
+
+  <div class="delivered-on0" style="width: 20%;">
+    <p class="Delivered-pop" style="text-align: right;"><span>Sub Order No. </span><br><span><%= order.order_no%></span></p>
+    <div class="images_cushion_btn" style="display: grid;">
+      <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
+      <%= link_to admin_invoice_show_path(order, format: :pdf), :class=>'track-order_3 btn btn-primary' do %>
+        <i class="fa fa-download" aria-hidden="true"></i> Download Invoice
+        <%end%>
+    </div>
+  </div>            
+</div>
+</div>
 
 
 <%= link_to 'Edit', edit_admin_order_path(@order) %> |

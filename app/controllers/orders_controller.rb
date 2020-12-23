@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   layout 'frontend/application'
-  
+   
   skip_before_action :verify_authenticity_token
   def purchase_status
     begin
@@ -19,10 +19,10 @@ class OrdersController < ApplicationController
   end
   
   def index
-    @orders = User.last.orders
+    @orders = current_user.orders
     # @orders = Order.filter(filter_params).page(params[:page]).per(20)
    # @product_upgrades = ProductUpgrade.all.index_by(&:id)
-    @products = Product.where(id: @orders.pluck(:product_id)).index_by(&:id)
+    # @products = Product.where(id: @orders.pluck(:product_id)).index_by(&:id)
     
   end
 
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
   end
   def add_reviews
     begin
-      review = Review.create!(user_id: current_user.id, content: params[:content], stars: params[:stars], product_id: params[:product_id])
+      review = Review.create!(user_id: current_user.id, title: params[:title], content: params[:content], stars: params[:stars], product_id: params[:product_id])
       review.save!
       flash[:success] = "Review is Added!" 
     rescue => e
@@ -54,6 +54,10 @@ class OrdersController < ApplicationController
 
     def filter_params
       params.permit(:status, :page)
+    end
+
+    def views_count
+
     end
 
 end

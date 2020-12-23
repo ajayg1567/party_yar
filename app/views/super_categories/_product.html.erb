@@ -32,8 +32,15 @@
               Delivery:
               <time datetime="2019-09-19T14:51:44+05:30" class="dt-delivery"><%= ShippingMethod.find(product.shipping_method_ids).map(&:tag_name).join(',') %></time>
             </div>
-
-            <span class="stars-5">☆☆☆☆☆ <p><%= product.reviews.count %> Reviews</p></span>	
+            <% if product.reviews.count > 0 %>
+              <span class="stars-5"><p><%= product_review_rating(product)%></p>
+                <% 5.times do |x| %>
+                  <i class="fa fa-star stars" style="color: <%= x < product_review_rating(product) ? '#f5bb1b' : 'grey'  %>;"></i>
+                <% end %>
+               <p><%= product.reviews.count %> Reviews</p></span>
+            <% else %>
+              <span class="stars-5">☆☆☆☆☆ <p><%= product.reviews.count %> Reviews</p></span>
+            <% end %>
             </div>
           </div>	<!-- col-md-3 -->
         </a>

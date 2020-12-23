@@ -136,6 +136,45 @@ $(document).ready(function() {
   	window.location.href= '/my-account/orders'
   	window.setTimeout(function(){location.reload()},2000)
   }
+  	window.changeOrderDetails = function(product_id, item_id){
+		$("#cart_item_id").val(item_id)
+		$.ajax({
+	       type: "GET",
+	       dataType: "json",
+	       url: '/change_order_details/'+product_id,
+	       success: function(data){
+	        var html_str = ''
+		        $.each( data.shipping_method, function( key, value ) {
+		        	html_str += '<li class="sm-list" style="list-style: none;">'
+		        	html_str += '<a class="sm-url">'
+		        	html_str += '<label  style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">'
+		        	html_str += '<input onClick="changeTimeSlot('+product_id+','+value["id"]+')" type="radio" name="shippingmethod_name" value='+value["tag_name"]+'>'
+		        	html_str += '<span style="display: inline-block">'+value["tag_name"]+'</span>'
+		        	html_str += '</label>'
+		        	html_str += '<div class="input-group-button button del-method-btn">'
+		        	html_str += '<span class="delcost" style="">'+value["price"]+'</span>'
+		        	html_str += '</div></a></li>'
+		        })
+		        $('#ul_shipping_method').html(html_str);
+	    	}
+    	});
+	}
+
+	window.changeTimeSlot = function(product_id, id){
+       	$("#product_id").val(product_id)
+		$("#shipping_method_id").val(id)
+       $.ajax({
+        	url: '/get_time_slots',
+        	method: "GET",
+       		data: { product_id: product_id ,sm_id: id },
+       		success: function(data){
+         		$(".timeslots").children().remove();
+         		$.each(data.timeslots,function(index,value){
+	           		$(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ data.name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+	         	});
+       		}
+     	})
+    }
 
 });
 

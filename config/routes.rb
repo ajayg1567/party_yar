@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/remove/:item_id' => 'cart#remove', :as => 'remove'
   get 'checkout' => 'checkout#index'
   get '/ratings/new' => 'user_feedback#new'
-  
+  get '/change_order_details/:id' => 'checkout#change_order_details'
   resources :profile, only: [:edit]
   get 'my-account' => 'my_account#index'
   get 'my-account/:id/profile-edit' => 'my_account#edit_profile', as: :profile_edit
