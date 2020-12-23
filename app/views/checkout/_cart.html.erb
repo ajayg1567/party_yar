@@ -1,6 +1,5 @@
 <% 
 @address = Address.new
-@product = current_cart.items.first.product
 %>
 <div class="my-acount-deatils">
 	<div class="container" style="width: 90%;">
@@ -53,7 +52,7 @@
 											</div>
 
 											<div class="col-md-2">
-												<button class="btn btn-success btn-warning delivery-details" id="change_details<%= index%>" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" onclick="change_product(<%= item.product.id%>, <%= item.id%>)">Change</button>
+												<button class="btn btn-success btn-warning delivery-details" id="change_details<%= index%>" data-backdrop="true" data-keyboard="true" style="background-color:#2179d0;border-color:#2179d0;" onClick="changeOrderDetails(<%= item.product.id%>, <%= item.id %>)">Change</button>
 											</div>
 										</div><!-- row -->
 										<% if item.additional[:add_ons] %>
@@ -262,6 +261,10 @@
 			</div>
 			<div class="modal-body">
 				<!-- calendar -->
+				<input type="hidden" name="shipping_method_id" id="shipping_method_id"/>
+				<input type="hidden" name="product_id" id="product_id"/>
+
+				<input type="hidden" name="item_id" id="cart_item_id"/>
 				<div class="modal-split">
 				 <h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT DELIVERY DATE</h4>
 				 <div id="datepicker" data-provide="datepicker-inline" style="text-align: -webkit-center;"></div>
@@ -271,20 +274,8 @@
 			 <div class="modal-split">
 				<h4 class="modal-title" id="myModalLabel" style="text-align: center;font-weight: bold;margin-bottom:28px;">SELECT SHIPPING METHOD</h4>
 				<hr />
-				<ul>
-				 <% ShippingMethod.find(@product.shipping_method_ids).each do |shipping_method| %>
-				 		<li class="sm-list">
-					 		<a class="sm-url">
-								<label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">
-								<%= radio_button_tag 'shippingmethod_name',shipping_method.tag_name,nil,:id => "radio-#{shipping_method.tag_name}" %> 
-									<span style="display: inline-block"><%= shipping_method.tag_name %></span>
-								</label>
-								<div class="input-group-button button del-method-btn">
-									<span class="delcost" style=""><%= shipping_method.price%></span>
-								</div>
-							</a>
-				</li>
-				<% end %>
+				<ul id="ul_shipping_method">
+				 
 			</ul>
 		</div>
 		<!-- timeslots -->
@@ -400,7 +391,6 @@
 	}
 
 	$(document).ready(function(){
-
 		
 		$('.quantity-right-plus').click(function(e){
 			e.preventDefault();
@@ -525,7 +515,6 @@
 
 	$('.btn-primary').click(function(){
 
-
 		var delcost = $(this).closest(".sm-url").find(".delcost").text();
 
 		if(this.innerText == "Submit") {
@@ -534,14 +523,16 @@
 		 var hello = document.getElementsByClassName('datepicker-switch');
 		 var selecteddate = document.getElementsByClassName('active day');
 		 var updated_delivery_date = selecteddate[0].innerText+ ',' +hello[0].innerText
-
+		 var itemid = $("#cart_item_id").val()
+		 var sm_id = $("#shipping_method_id").val()
+		 var product_id = $("#product_id").val()
 		 $.each(slottime,function(index,value){
 			if (value.checked){
 							 //var addslottime = $('input.delivery-details');
 							 $.ajax({
 								url: '/update_delivery',
 								method: "GET",
-								data: { product_id: prod_id,sm_name: shipping_method_name, item_id: itemid, slot_time: slot_value , delivery_date: updated_delivery_date,current_cart: <%= current_cart.id %>},
+								data: { product_id: product_id,sm_id: sm_id, item_id: itemid, slot_time: slot_value , delivery_date: updated_delivery_date,current_cart: <%= current_cart.id %>},
 								success: function(data){
 
 									location.reload();

@@ -19,15 +19,13 @@ class CheckoutController < ApplicationController
 		# end
 	end
 
-	def update_delivery		
+	def update_delivery	
 		@item = Item.find params[:item_id]
 		@item.additional[:delivery_date] = params[:delivery_date]
 		@item.additional[:delivery_time] = params[:slot_time]
 		@item.save
-		sm_price = ShippingMethod.select{|m| m.tag_name.downcase == params[:sm_name].downcase}
-		# @product = Product.find params[:product_id]
-		# @product.shipping_price = sm_price
-		# @product.save			
+
+		sm_price = ShippingMethod.find_by(id: params[:sm_id]).price
 	end
 
 	def update_add_ons
@@ -46,6 +44,11 @@ class CheckoutController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	def change_order_details
+		shipping_method = ShippingMethod.find(Product.find_by(id: params[:id]).shipping_method_ids)
+		render json: { shipping_method: shipping_method }, status: 200
 	end
 	
 end
