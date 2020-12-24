@@ -1,5 +1,4 @@
-class Admin::OrdersController < ApplicationController
-    layout 'admin'
+class Admin::OrdersController < Admin::ApplicationController
 
   def index
     @orders = Order.all
@@ -45,17 +44,17 @@ class Admin::OrdersController < ApplicationController
         end
   end
 
-  
+
   def destroy
     begin
       @order = Order.find(params[:id])
       if @order.destroy
         admin_orders_path
       else
-        admin_orders_path 
+        admin_orders_path
       end
     rescue Exception => e
-      
+
     end
   end
 

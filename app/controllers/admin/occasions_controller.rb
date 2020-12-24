@@ -1,6 +1,5 @@
-class Admin::OccasionsController < ApplicationController
+class Admin::OccasionsController < Admin::ApplicationController
   before_action :set_occasion, only: [:edit, :update, :destroy]
-  layout 'admin'
 
   def index
     @occasions = Occasion.all

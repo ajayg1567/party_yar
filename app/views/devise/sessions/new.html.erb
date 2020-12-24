@@ -2,8 +2,8 @@
   <link rel="stylesheet" href="/assets/frontend/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/frontend/style.css">
   <link rel="stylesheet" href="/assets/frontend/animate.min.css">
-  <link rel="stylesheet" href="/assets/frontend/font-awesome.css"> 
-  <link rel="stylesheet" href="/assets/frontend/ionicons.min.css"> 
+  <link rel="stylesheet" href="/assets/frontend/font-awesome.css">
+  <link rel="stylesheet" href="/assets/frontend/ionicons.min.css">
   <!---------------------Header Start-------------------->
   <header>
 
@@ -13,11 +13,11 @@
           <div class="col-md-6">
             <div class="logo">
               <img src="/assets/logo.png">
-            </div>          
+            </div>
           </div>
 
         </div>
-      </div>  
+      </div>
     </div>
 
   </header>
@@ -47,21 +47,21 @@
               </div>
 
               <%end%>
-
-              <div class="login-using">
-                <p>Or login using</p>
-                <div class="login-socil-icon">
-                  <%- if devise_mapping.omniauthable? %>
-                  <%- resource_class.omniauth_providers.each do |provider| %>
-                  <%if provider.to_s == 'facebook'%>
-                  <%= link_to "<i class='fa fa-facebook' aria-hidden='true'></i>#{OmniAuth::Utils.camelize(provider)}".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-facebook" %>
-                  <%else%>
-                  <%= link_to "<i class='fa fa-google-plus' aria-hidden='true'></i>Google".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-g" %>
-                  <%end%>
-                  <% end %>
-                  <% end %>
+              <% if resource.is_a? User %>
+                <div class="login-using">
+                  <p>Or login using</p>
+                  <div class="login-socil-icon">
+                    <%- if devise_mapping.omniauthable? %>
+                    <%- resource_class.omniauth_providers.each do |provider| %>
+                    <%if provider.to_s == 'facebook'%>
+                    <%= link_to "<i class='fa fa-facebook' aria-hidden='true'></i>#{OmniAuth::Utils.camelize(provider)}".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-facebook" %>
+                    <%else%>
+                    <%= link_to "<i class='fa fa-google-plus' aria-hidden='true'></i>Google".html_safe, omniauth_authorize_path(resource_name, provider), class: "login-using-g" %>
+                    <%end%>
+                    <% end %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
             </div>
 
             <div class="secure-login-panel">
@@ -77,12 +77,13 @@
                 <li><a href="#"><img src="/assets/american.jpg"></a></li>
 
               </ul>
-              <div class="smile-guranteed1">  
-                <img src="/assets/smile-guranteed.jpg">  
+              <div class="smile-guranteed1">
+                <img src="/assets/smile-guranteed.jpg">
               </div>
               <div class="question-mark">
                 <a href="#"><i class="fa fa-question-circle"></i> Need Help</a>
               </div>
+              <% end %>
             </div>
 
           </div>

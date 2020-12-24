@@ -1,5 +1,4 @@
-class Admin::GiftTypesController < ApplicationController
-  layout 'admin'
+class Admin::GiftTypesController < Admin::ApplicationController
   before_action :set_gift_type, only: [:show, :edit, :update, :destroy]
   before_action :set_categories, only: [:edit, :create, :update, :new]
 

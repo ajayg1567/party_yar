@@ -17,9 +17,9 @@
     <li class="<%= 'active' if current_page?(admin_products_url) %>"><a href="<%= admin_products_url %>">Products</a></li>
     <li class="<%= 'active' if current_page?(admin_add_ons_url) %>"><a href="<%= admin_add_ons_url %>">Add On</a></li>
     <li>
-      <%if user_signed_in?%>
-        <p style="color: #000;font-size: 12px;">Signed in as:<br/> <%= current_user.email%></p>
-        <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-danger btn-xs' %>
+      <%if admin_signed_in?%>
+        <p style="color: #000;font-size: 12px;">Signed in as:<br/> <%= current_admin.email%></p>
+        <%= link_to 'Sign out', destroy_admin_session_path, :method => :delete, class: 'btn btn-danger btn-xs' %>
       <%end%>
     </li>
   </ul>

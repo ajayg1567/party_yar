@@ -1,5 +1,4 @@
-class Admin::ShippingMethodsController < ApplicationController
-  layout 'admin'
+class Admin::ShippingMethodsController < Admin::ApplicationController
 
   before_action :set_shipping_method, only: [:show, :edit, :update, :destroy]
 

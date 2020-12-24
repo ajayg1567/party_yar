@@ -23,7 +23,7 @@
  sub_categories4.each do |sub_category|
     SubCategory.create(name: sub_category,category_id: Category.fourth.id )
  end
- 
+
 
  cats1 = ["House Decoration","Surprise Room Decorations","Club House Or Party Hall Decorations","Lawn n Out Door Decoration"]
  cats1.each do |sc|
@@ -49,26 +49,15 @@
  end
 
  sub_categories4 = ["Flex n Arch Combos at Lawn","Screen n Arch Combos at Lawn","Pool Side Decorations","OutDoor Lighting with Decors"]
- categoryid =   Category.find_by_name("Lawn n Out Door Decoration").id 
+ categoryid =   Category.find_by_name("Lawn n Out Door Decoration").id
  sub_categories4.each do |sub_category|
     SubCategory.create(name: sub_category,category_id: categoryid )
  end
- 
 
-
-
-
-
-
-  
- 
- 
- 
- 
- 
- 
- 
- 
+ Admin.where(
+  email: 'ajayg.156@gmail.com').first_or_create!(
+    password: 'Admin@123', password_confirmation: 'Admin@123'
+  )
 
 
 
@@ -92,13 +81,28 @@
 
 
 
- 
- 
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,6 @@
-class Admin::DashboardController < ApplicationController
-	layout 'admin'
-	
+class Admin::DashboardController < Admin::ApplicationController
+
 	def index
-		
+
 	end
 end

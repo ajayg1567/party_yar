@@ -1,7 +1,6 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_super_categories, only: [:new, :edit, :create, :update]
-  layout 'admin'
   # GET /categories
   # GET /categories.json
   def index
