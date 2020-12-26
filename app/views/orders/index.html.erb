@@ -19,7 +19,7 @@
               <span>Order No: <%= order.order_no%></span>
             </div>
             <div class="delivered-on-list">
-              <div class="delivered-on0" style="width: 20%;">
+              <div class="delivered-on0 order-details-list" >
                 <p class="Delivered-pop" style="text-align: left;"><span class="status">In transit</span><br><span><%= order.created_at.strftime('%a, %d %b, %y')%></span></p>
                 <div class="images_cushion">
                   <div class="row">
@@ -32,7 +32,7 @@
                 </div>
                 
               </div>
-              <div class="delivered-on0" style="width: 20%;">
+              <div class="delivered-on0 order-details-list" >
                 <p class="Delivered-pop" style="text-align: left;"><span>Item's Details </span></p>
                 <p class="ml-1"><%= order.product.name%><br>
                   <%= order.adjusted_price.to_i%> * 1
@@ -50,14 +50,14 @@
                 <% end %>
 
               </div>
-              <div class="delivered-on0" style="width: 20%;">
+              <div class="delivered-on0 order-details-list" >
                 <p class="Delivered-pop" style="text-align: left;"><span>Delivery Details </span></p>
                 <p class="ml-1"><%= order.additional[:delivery_date] %></p>
                 <p class="ml-1"><%= order.additional[:delivery_time] %></p>
 
 
               </div>
-              <div class="delivered-on0" style="width: 20%;">
+              <div class="delivered-on0 order-details-list">
                 <p class="Delivered-pop" style="text-align: left;"><span>Recipient's Deatils </span></p>
                 <% address = order.recipient_address %>
                 <% if address.present? %>
@@ -69,7 +69,7 @@
                 <% end %>
               </div>
 
-              <div class="delivered-on0" style="width: 20%;">
+              <div class="delivered-on0 order-details-list">
                 <p class="Delivered-pop" style="text-align: right;"><span>Sub Order No. </span><br><span><%= order.order_no%></span></p>
                 <div class="images_cushion_btn" style="display: grid;">
                   <a href="#" class="track-order_1"><i class="fa fa-map-marker" aria-hidden="true"></i> Track Order</a>
