@@ -494,7 +494,11 @@
               <div class="item active">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                   <a href="#">
-                    <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                    <% if @recomended_products[0].gallery.first.present? %>
+                      <%= image_tag(@recomended_products[0].gallery.first,size: "250x250")%>
+                    <% else %>
+                      <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                    <% end %>
                     <div class="img0-product-desc">
                       <p class="kit-kat-desc"><%= @recomended_products[0].name%></p>
                       <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[0].price %></span>                       
@@ -527,7 +531,11 @@
                 <div class="item">
                   <div class="col-md-3 col-sm-6 col-xs-12">
                     <a href="#">
-                      <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                      <% if @recomended_products[1].gallery.first.present? %>
+                        <%= image_tag(@recomended_products[1].gallery.first,size: "250x250")%>
+                      <% else %>
+                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                      <% end %>
                       <div class="img0-product-desc">
                         <p class="kit-kat-desc"><%= @recomended_products[1].name%></p>
                         <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[1].price %></span>                       
@@ -559,7 +567,11 @@
                   <div class="item">
                     <div class="col-md-3 col-sm-6 col-xs-12">
                       <a href="#">
-                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% if @recomended_products[2].gallery.first.present? %>
+                          <%= image_tag(@recomended_products[2].gallery.first,size: "250x250")%>
+                        <% else %>
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% end %>
                         <div class="img0-product-desc">
                           <p class="kit-kat-desc"><%= @recomended_products[2].name%></p>
                           <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[2].price %></span>                       
@@ -592,7 +604,11 @@
                     <div class="item">
                       <div class="col-md-3 col-sm-6 col-xs-12">
                       <a href="#">
-                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% if @recomended_products[3].gallery.first.present? %>
+                          <%= image_tag(@recomended_products[3].gallery.first,size: "250x250")%>
+                        <% else %>
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% end %>
                         <div class="img0-product-desc">
                           <p class="kit-kat-desc"><%= @recomended_products[3].name%></p>
                           <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[3].price %></span>                       
@@ -625,7 +641,11 @@
                       <div class="item">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                       <a href="#">
-                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% if @recomended_products[4].gallery.first.present? %>
+                          <%= image_tag(@recomended_products[4].gallery.first,size: "250x250")%>
+                        <% else %>
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% end %>
                         <div class="img0-product-desc">
                           <p class="kit-kat-desc"><%= @recomended_products[4].name%></p>
                           <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[4].price %></span>                       
@@ -658,7 +678,11 @@
                         <div class="item">
                           <div class="col-md-3 col-sm-6 col-xs-12">
                       <a href="#">
-                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% if @recomended_products[4].gallery.first.present? %>
+                          <%= image_tag(@recomended_products[4].gallery.first,size: "250x250")%>
+                        <% else %>
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% end %>
                         <div class="img0-product-desc">
                           <p class="kit-kat-desc"><%= @recomended_products[5].name%></p>
                           <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[5].price %></span>                       
@@ -692,7 +716,11 @@
                           <div class="item">
                             <div class="col-md-3 col-sm-6 col-xs-12">
                       <a href="#">
-                        <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% if @recomended_products[4].gallery.first.present? %>
+                          <%= image_tag(@recomended_products[4].gallery.first,size: "250x250")%>
+                        <% else %>
+                          <img src="/assets/red-cake.jpg" class="img-responsive"></a>
+                        <% end %>
                         <div class="img0-product-desc">
                           <p class="kit-kat-desc"><%= @recomended_products[6].name%></p>
                           <span class="h-price webprice"><meta itemprop="priceCurrency" content="INR"><meta itemprop="price" content="1099.00"><span class="WebRupee">₹&nbsp;</span><%= @recomended_products[6].price %></span>                       

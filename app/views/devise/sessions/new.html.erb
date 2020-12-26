@@ -29,7 +29,11 @@
           <div class="login-panel-list">
             <div class="login-panel-2">
               <div class="login-panel-3">
-                <h1>LOGIN / REGISTER</h1>
+                <% if resource.is_a? User %>
+                  <h1>LOGIN / REGISTER</h1>
+                <% else %>
+                  <h1>ADMIN LOGIN</h1>
+                <% end %>
 
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-group'}) do |f| %>
                 <%= render 'layouts/frontend/error_messages', object: resource %>

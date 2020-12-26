@@ -125,7 +125,7 @@
 											 </div>                        
 											 <div class="form-group col-md-6">								
 												 <label>Recipient's Email Id:</label> 
-												 <%= f.text_field :email, :name=> "email",:id=>"rec_email#{index}",:class=>'form-control',value: @address.email, required: true%>
+												 <%= f.email_field :email, :name=> "email",:id=>"rec_email#{index}",:class=>'form-control',value: @address.email, required: true%>
 											 </div>	          
 											 <div class="form-group col-md-6">				 									  	
 												<label>Recipient's Address</label>
@@ -142,7 +142,7 @@
 											</div>                             
 											<div class="form-group col-md-6">									
 												<label for="zip">Zip</label>
-												<%= f.text_field :pincode,:name=> "pincode", :id=>"rec_zip#{index}",:class=>'form-control',value: @address.try(:pincode) %>		
+												<%= f.number_field :pincode,:name=> "pincode", :id=>"rec_zip#{index}",:class=>'form-control',value: @address.try(:pincode) %>		
 											</div>								
 											<div class="form-group col-md-6">
 
@@ -192,8 +192,10 @@
 							data-key="rzp_test_ceKCXwYi0JrUYI"
 
 							data-amount="<%= (current_cart.total_amount_with_delivery) * 100 %>"
-							# data-name="<%= "#{@product.name}" %>"
-							data-description="<%= truncate(@product.description.html_safe, :length => 80, :omission => "" , :escape => false)%>"
+							
+							data-name="<%= current_cart.items.first.product.name  %>"
+							
+							data-description="<%= truncate(current_cart.items.first.product.description.html_safe, :length => 80, :omission => "" , :escape => false)%>"
 							data-image="/assets/logo.png"
 
 							data-prefill.name="<%= "#{current_user.name}" %>"
@@ -554,7 +556,7 @@
 
 
 	$("input[name=shippingmethod_name]").on("click", function(){
-		var product = '<%= @product.id %>';
+		
 		shipping_method_name = this.value;
 
 		delcost = $(this).closest(".sm-url").find(".delcost").text();
