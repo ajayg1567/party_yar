@@ -125,7 +125,7 @@
 											 </div>                        
 											 <div class="form-group col-md-6">								
 												 <label>Recipient's Email Id:</label> 
-												 <%= f.email_field :email, :name=> "email",:id=>"rec_email#{index}",:class=>'form-control',value: @address.email, required: true%>
+												 <%= f.email_field :email, :name=> "email",:id=>"rec_email#{index}",:class=>'form-control',value: @address.email, required: true, autofocus: true%>
 											 </div>	          
 											 <div class="form-group col-md-6">				 									  	
 												<label>Recipient's Address</label>
@@ -597,7 +597,7 @@
 			});
 		 },
 		 error: function(jqXHR, textStatus, errorThrown) {
-			 alert("in error---");
+			 alert(jqXHR.responseJSON.errors);
 		 }    
 	 })
 	});

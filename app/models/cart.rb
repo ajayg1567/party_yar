@@ -52,7 +52,11 @@ class Cart < ApplicationRecord
 		price = []
 		products = Product.includes(:shipping_method).where(id: items.pluck(:product_id))
 		products.each do |product|
-			price <<  product.shipping_method.first.price.to_i
+			if product.shipping_method.present?
+				price <<  product.shipping_method.first.price.to_i
+			else
+				price << 100
+			end
 		end
 		price.sum
 	end

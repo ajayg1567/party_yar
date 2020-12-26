@@ -25,7 +25,7 @@ class MyAccountController < ApplicationController
 			@item.save
 			render :json => @address.to_json
 		else
-			render :json=> {:errors=>@address.errors.full_messages},:status=> 422
+			render :json=> {:errors=>@address.errors.details[@address.errors.messages.first[0]][0][:alert]},:status=> 422
 		end
 	end
 
