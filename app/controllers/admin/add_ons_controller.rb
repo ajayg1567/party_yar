@@ -1,10 +1,9 @@
-class Admin::AddOnsController < ApplicationController
+class Admin::AddOnsController < Admin::ApplicationController
   before_action :set_add_on, only: [:show, :edit, :update, :destroy]
   before_action :get_primary_data, only: [:new, :edit, :create, :update]
-  layout 'admin'
-  
+
     def index
-        @add_ons = AddOn.all 
+        @add_ons = AddOn.all
     end
 
     def new

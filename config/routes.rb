@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   get 'user_feedbacks/new'
   post '/rate' => 'rater#create', :as => 'rate'
   root to: 'home#index'
