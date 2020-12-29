@@ -23,6 +23,7 @@ class CheckoutController < ApplicationController
 		@item = Item.find params[:item_id]
 		@item.additional[:delivery_date] = params[:delivery_date]
 		@item.additional[:delivery_time] = params[:slot_time]
+		@item.additional[:shipping_method] = ShippingMethod.find_by(id: params[:sm_id]).tag_name
 		@item.save
 
 		sm_price = ShippingMethod.find_by(id: params[:sm_id]).price
@@ -47,8 +48,9 @@ class CheckoutController < ApplicationController
 	end
 
 	def change_order_details
+		item = Item.find_by(id: params[:item_id]).additional 
 		shipping_method = ShippingMethod.find(Product.find_by(id: params[:id]).shipping_method_ids)
-		render json: { shipping_method: shipping_method }, status: 200
+		render json: { shipping_method: shipping_method, item: item }, status: 200
 	end
 	
 end

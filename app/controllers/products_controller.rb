@@ -22,12 +22,13 @@ class ProductsController < ApplicationController
 	  product = params[:product_id]
 	  sm = ShippingMethod.find_by_tag_name(params[:sm_name]) if params[:sm_name].present?
 	  sm = ShippingMethod.find_by_id(params[:sm_id]) if params[:sm_id].present?
+	  item = Item.find_by_id(params[:item_id]) if params[:item_id].present?
 	  timeslots = []
 	  sm.time_slots.each do |ts|
 		timeslots << {id: ts.id,from: ts.from.strftime("%I:%M %p"),to: ts.to.strftime("%I:%M %p") }
 	  end
 	  if params[:sm_id].present?
-	  	render json: { timeslots: timeslots, name: sm.tag_name }, status: 200 
+	  	render json: { timeslots: timeslots, name: sm.tag_name, item: item}, status: 200 
 	  else
 	  	render json: timeslots.to_json
 	  end
