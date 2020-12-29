@@ -10,6 +10,7 @@ class Cart < ApplicationRecord
 		additional[:cake_price_value] = params['cake_price_value'].to_f if params["cake_price_value"].present?
 		additional[:product_upgrade_id] = params[:product_upgrade_id]
 		additional[:pincode] = params[:pincode]
+		additional[:shipping_method] = params[:delivery_details].split("shipping_method:")[1].present? ? params[:delivery_details].split("shipping_method:")[1] : nil
 		if params["delivery_details"]
 			delivery_details = params["delivery_details"].split(",")
 			additional[:delivery_date] = delivery_details[0]
@@ -50,14 +51,12 @@ class Cart < ApplicationRecord
 
 	def shipping_price
 		price = []
-		products = Product.includes(:shipping_method).where(id: items.pluck(:product_id))
-		products.each do |product|
-			if product.shipping_method.present?
-				price <<  product.shipping_method.first.price.to_i
-			else
-				price << 100
+		items = self.items
+		items.each do |item|
+			if item.additional[:shipping_method].present?
+				price <<  ShippingMethod.find_by_tag_name(item.additional[:shipping_method]).price
 			end
 		end
-		price.sum
+		price&.sum
 	end
 end

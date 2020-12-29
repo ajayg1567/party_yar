@@ -1,4 +1,9 @@
 $(document).ready(function() {
+	window.openNav = function () {
+		document.getElementById("head-mobile").style.width = "250px";
+		document.getElementById("main").style.marginLeft = "250px";
+		}
+		
 	$('.pin-enter').keyup(function() {
 		var pincode = $('.pin-enter').val();
 		if (pincode.length == 6) {
@@ -142,13 +147,23 @@ $(document).ready(function() {
 	       type: "GET",
 	       dataType: "json",
 	       url: '/change_order_details/'+product_id,
+	       data: { item_id: item_id },
 	       success: function(data){
 	        var html_str = ''
+  			$('#datepicker').datepicker("setDate", new Date(data.item["delivery_date"]));
 		        $.each( data.shipping_method, function( key, value ) {
+
 		        	html_str += '<li class="sm-list" style="list-style: none;">'
 		        	html_str += '<a class="sm-url">'
 		        	html_str += '<label  style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 0 solid #fff;padding-top: 10px;padding-left: 54px;">'
-		        	html_str += '<input onClick="changeTimeSlot('+product_id+','+value["id"]+')" type="radio" name="shippingmethod_name" value='+value["tag_name"]+'>'
+		      		if(value["tag_name"] == data.item["shipping_method"]){
+		        		html_str += '<input onClick="changeTimeSlot('+item_id+','+product_id+','+value["id"]+')" type="radio" name="shippingmethod_name" value="'+value["tag_name"]+'" id="shipping_'+value["id"]+'" checked>'
+		        		changeTimeSlot(item_id,product_id,value["id"])
+		      		}
+		      		else{
+		      			
+		        		html_str += '<input onClick="changeTimeSlot('+item_id+','+product_id+','+value["id"]+')" type="radio" name="shippingmethod_name" value="'+value["tag_name"]+'" id="shipping_'+value["id"]+'" >'
+		      		}
 		        	html_str += '<span style="display: inline-block">'+value["tag_name"]+'</span>'
 		        	html_str += '</label>'
 		        	html_str += '<div class="input-group-button button del-method-btn">'
@@ -159,18 +174,21 @@ $(document).ready(function() {
 	    	}
     	});
 	}
-
-	window.changeTimeSlot = function(product_id, id){
+	window.changeTimeSlot = function(item_id, product_id, id){
        	$("#product_id").val(product_id)
 		$("#shipping_method_id").val(id)
        $.ajax({
         	url: '/get_time_slots',
         	method: "GET",
-       		data: { product_id: product_id ,sm_id: id },
+       		data: { product_id: product_id ,sm_id: id, item_id: item_id },
        		success: function(data){
+       			var html_str = ''
          		$(".timeslots").children().remove();
          		$.each(data.timeslots,function(index,value){
-	           		$(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ data.name +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+
+	           		$(".timeslots").append('<li class="sm-list" style="list-style: none;"><a class="sm-url" href="#"><label style="margin-left: -23px;width: 83.9%;border-radius: 4px 0 0 4px;margin-right: 0;height: 50px;border: 1px solid #CCC;border-right: 1 solid #fff;padding-top: 10px;padding-left: 54px;"><input type="radio" name="Slottime" value="'+ value.from +' - ' + value.to +'" id="'+ value.from.concat(" - "+value.to) +'" /><span style="display: inline-block">'+ value.from +' - ' + value.to + '</span></label></a></li>');
+         			
+
 	         	});
        		}
      	})
