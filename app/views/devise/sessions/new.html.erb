@@ -30,7 +30,7 @@
             <div class="login-panel-2">
               <div class="login-panel-3">
                 <% if resource.is_a? User %>
-                  <h1>LOGIN / REGISTER</h1>
+                  <h1>LOGIN</h1>
                 <% else %>
                   <h1>ADMIN LOGIN</h1>
                 <% end %>
@@ -48,9 +48,10 @@
                   <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "exampleInputPassword1", placeholder: "Password" %>
                 </div>
                 <%= f.submit "Log in" %>
+              <%end%>
+              <a class="btn btn-block btn-primary" style="padding: 10px; box-shadow: 0px 0px 10px 2px grey;" href="/users/sign_up">Create an Account!</a>
               </div>
 
-              <%end%>
               <% if resource.is_a? User %>
                 <div class="login-using">
                   <p>Or login using</p>

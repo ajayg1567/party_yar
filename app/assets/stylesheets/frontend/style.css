@@ -3190,3 +3190,19 @@ ul.cake-order-list-item li {
 .birthday-cake-menu .menu > ul > li > ul > li a{
     color: white !important;
 }
+
+
+@media only screen and (max-width: 480px){
+    #cart_container{
+        position: initial !important;
+    }
+    .delivered-on-list > .order-details-list{
+        width: 100% !important;
+        min-height: 170px !important;
+    }
+
+}
+.delivered-on-list > .order-details-list{
+    width: 20%;
+}
+
