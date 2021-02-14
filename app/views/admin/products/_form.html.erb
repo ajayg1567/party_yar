@@ -11,10 +11,6 @@
     <%= form.cktext_area :description, class: 'form-control' %>
   </div><br>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, class: 'form-control' %>
-  </div><br>
 
   <div class="field">
     <%= form.label :shipping_method_id, "Shipping Methods" %><br />
@@ -52,7 +48,7 @@
   <%end if @product.gallery.attached?%>
 
   <div class="field">
-    <%= form.label :quantity %>
+    <%= form.label :quantity,"Total quantity" %><br />
     <%= form.number_field :quantity, class: 'form-control' %>
   </div><br>
 
@@ -68,35 +64,53 @@
       <%= extra_field.text_field :option_value, class: "form-control" %>
     </div><br/>
   <%end%>
+
   <%= form.link_to_add "Add new field", :extra_fields, class: "btn btn-default btn-sm", style: 'margin-bottom: 20px;' %>
-
   <br><legend><b>Add variation</b></legend>
-  <%= form.fields_for :variations  do |variation| %>
-    <%= variation.link_to_remove "Remove this upgrade", class: "btn btn-danger btn-xs remove-button" %><br/>
-    <div class="field">
-      <%= variation.label :quantity %>
-      <%= variation.number_field :quantity, class: "form-control" %>
-    </div><br/>
-    <div class="field">
-      <%= variation.label :size %>
-      <%= variation.select :size, options_for_select(Variation::SIZE), {:include_blank => false},  {style: 'width:100%;', class: "form-control"} %>
-    </div><br/>
-    <div class="field">
-      <%= variation.label :price %>
-      <%= variation.text_field :price, class: "form-control" %>
-    </div><br/>
-    <div class="field">
-      <%= variation.label :thumbnail %>
-      <%= variation.file_field :thumbnail, class: "form-control" %>
-    </div><br/>
 
-  <%end%>
+  <div class="form-group">
+    <label for="type">Select Variation:</label>
+    <select class="form-control" name="has_variation" id="variation_category" onChange="selectVariation()">
+      <option>Select Type</option>
+      <option value="weight" >Weight</option>
+      <option value="size" >Size</option>
+    </select>
+  </div>
+ 
+  <div class="field c" id="price_variation">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: 'form-control' %>
+  </div><br>
+
+  <div>
+    <%= form.fields_for :variations  do |variation| %>
+      <%= variation.link_to_remove "Remove this upgrade", class: "btn btn-danger btn-xs remove-button" %><br/>
+      <div class="field">
+        <%= variation.label :quantity %>
+        <%= variation.number_field :quantity, class: "form-control" %>
+      </div><br/>
+
+      <div class="field">
+        <%= variation.label :unit %>
+        <%= variation.select :unit, options_for_select(Variation::WEIGHT), {:include_blank => false},  {style: 'width:100%;', class: "form-control"} %>
+      <br/></div>
+
+      <div class="field">
+        <%= variation.label :price %>
+        <%= variation.text_field :price, class: "form-control" %>
+      </div><br/>
+      <div class="field">
+        <%= variation.label :thumbnail %>
+        <%= variation.file_field :thumbnail, class: "form-control" %>
+      </div><br/>
+
+    <%end%>
 
     <%@product.variations.each do |p|%>
       <%= image_tag url_for(p.thumbnail), width: '100x100' if p.thumbnail.attached? %>
     <%end%>
-
-  <%= form.link_to_add "Add variations", :variations, class: "btn btn-default btn-sm" %>
+    <%= form.link_to_add "Add variations", :variations, class: "btn btn-default btn-sm"%>
+  </div>
 
   <div class="actions"><br>
     <%= form.submit :class => 'btn btn-primary' %>

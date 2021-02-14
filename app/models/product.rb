@@ -16,7 +16,6 @@ class Product < ApplicationRecord
 	ratyrate_rateable 'name'
 	has_many :reviews
 
-
 	def self.find_by_gift_type(gift_type)
 		category = Category.find_by_name(gift_type)
 		sub_category = SubCategory.find_by(category_id: category.id)

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   layout 'frontend/application'
 
 	def show
+		@variation = nil
 		@addons = AddOn.all
 		@recomended_products = Product.all.order!('views DESC').take(8)
 	end

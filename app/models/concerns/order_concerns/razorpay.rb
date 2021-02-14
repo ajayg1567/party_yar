@@ -6,10 +6,12 @@ module OrderConcerns::Razorpay
         Razorpay::Payment.fetch(raz_payment_id)
       end
 
-      def generate_order_id(product)
+      def generate_order_id(product, item)
       	seed = Random.rand(10000) % 100
     		receipt = "#{product.id.to_s}#{seed}#{Time.now.strftime('%y%m%d')}"
-      	options = { amount: product.price.to_i,
+      	amount = item.product_variation_id.present? ? Variation.find_by(id: item.product_variation_id).price : product.price.to_i
+
+        options = { amount: amount,
       							currency: 'INR',
       							receipt: receipt,
       							payment_capture: '0'

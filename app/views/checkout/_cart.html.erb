@@ -10,6 +10,7 @@
 				
 				<div class="col-md-9">
 					<% current_cart.items.order(created_at: :desc).each_with_index do |item, index|%>
+					<% @variation = Variation.find_by(id: item.product_variation_id) if item.product_variation_id.present? %>
 					<div class="shopping_cart">
 						<div class="panel panel-default" id="order_refresh">
 							<div class="panel-heading">
@@ -40,7 +41,9 @@
 												</div> 
 												<div class="col-md-4">
 													<p style="font-size: 14px"><%= item.product.name%></p>
-													<p style="font-size: 14px;"><span>&#8377;</span> <%= (@product_upgrade.present?) ? (@product_upgrade.price) : (item.price) %> </p>
+													<p style="font-size: 14px;"><span>&#8377;</span> 
+														<%= (@variation.present?) ? (@variation.price) : (item.price) %> </p>
+													<p><%= (@variation.present?) ? ("Unit: #{@variation.unit}") : nil %></p>
 												</div>
 											</div>
 										</div>

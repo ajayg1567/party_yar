@@ -1,6 +1,7 @@
 <%if current_cart.present? && current_cart.items.length > 0%>
 	<% current_cart.items.order(:created_at => :desc).each do |item|%>
 	<%@product = Product.find(item.product_id)%>
+	<% @variation = Variation.find_by(id: item.product_variation_id) if item.product_variation_id.present? %>
 	<%#@product_upgrade = ProductUpgrade.find_by(id: item.additional[:product_upgrade_id].to_i)%>
 	<%@extra_field = ExtraField.find_by(id: item.additional[:extra_field_id].to_i)%>
    
@@ -15,8 +16,14 @@
 						<h5 class="card-title"><%= @product.name%></h5>
 						<div class="row">
 							<div class="col-md-6" style="padding: 0;padding-left: 15px;">
-								<p><%= @product_upgrade.present? ? @product_upgrade.price : @product.price %> x 1</p>
+								<% if @variation.present? %>
+									<p>Price: <%= @variation.price %> x1 </p>
+									<p>Unit: <%= @variation.unit %></p>
+								<% else %>
+									<p>Price<%= @product.price %> x 1</p>
+								<% end %>
 							</div>
+
 							<div class="col-md-6" style="padding: 0;">
 								<p style="text-transform: uppercase;"><%= @extra_field&.option_value %></p>
 							</div>

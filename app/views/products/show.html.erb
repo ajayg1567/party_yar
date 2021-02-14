@@ -375,33 +375,22 @@
                 </div>
               </div>
               <!-- end of modal-->
-              <% if @product.is_cake? %>
-              <input type="hidden" value="<%= @product.price %>" id="actual_product_price"/>
-              <div class="row" style="margin-left: auto;">
-                <div class=" col-md-4 half-kg-cake cakes"  cake-price-value="0.5" style="width: 25%;">
-                  <span class="cake-img">
-                    <img src="/assets/cake-1.png">
-                  </span>
-                  <span class="exclusive-text">1/2 Kg</span>
-                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price/2%></p></span>
+                <% @product.variations.each do |variation| %>
 
+                  <div class="row" style="margin-left: auto;">
+                    <div class=" col-md-4 half-kg-cake cakes"  cake-price-value="<%= variation.price %>" variation-id = "<%= variation.id %>" style="width: 25%;">
+                      <span class="cake-img">
+                        <% if variation.thumbnail.present? %>
+                          <img src="<%= url_for(variation.thumbnail) if variation.thumbnail.attached?%>">
+                        <% else %>
+                          <img src="/assets/cake-1.png">
+                        <% end %>
+                      </span>
+                      <span class="exclusive-text"><%= variation.unit%></span>
+                      <span><p class="money-icon"></p> <p class="cake-price"><%= variation.price%></p></span>
+                    </div>
+                  <% end %>
                 </div>
-                <div class="col-md-4 one-kg-cake cakes" cake-price-value="1"  style="width: 25%;">
-                  <span class="selected-cake cake-img">
-                    <img src="/assets/cake-1.png">
-                  </span>
-                  <span class="exclusive-text">1 Kg</span>
-                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price %></p></span>
-                </div>
-                <div class="col-md-4 two-kg-cake cakes"  cake-price-value="2" style="width: 25%;">
-                  <span class="cake-img">
-                    <img src="/assets/cake-1.png">
-                  </span>
-                  <span class="exclusive-text">2 Kg</span>
-                  <span><p class="money-icon"></p> <p class="cake-price"><%= @product.price*2%></p></span>
-                </div>
-              </div>
-              <%end%>
 
               <div class="form-group">
                 <%@product.extra_fields.each do |ef|%>
@@ -420,7 +409,7 @@
               <span id="selectedExtraFieldID" data-extra-field-id="" style="display: none;"></span>
               <div class="form-group">
                 <div class="modal-product-list">
-                  <%= link_to add_to_cart_url(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1'), class: 'btn btn-warning btn-lg checkout', :id=>"add_to_cart_check",method: :post, remote: true do %>
+                  <%= link_to add_to_cart_url(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1', variation_id: '0'), class: 'btn btn-warning btn-lg checkout', :id=>"add_to_cart_check",method: :post, remote: true do %>
                   <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add To Cart
                   <%end%>
                   <button type="button" id ="button1" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">Buy Now</button>
@@ -850,7 +839,7 @@
                        </div>
                      </div>
 
-                     <%= link_to 'Continue Without Addonss' , cart_addon_path(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1'), class: 'btn btn-warning btn-lg', :id=>"add_on_checkout", method: :post %>
+                     <%= link_to 'Continue Without Addonss' , cart_addon_path(product_id: @product.id, product_upgrade_id: '', cake_price_value: '1', variation_id: '0'), class: 'btn btn-warning btn-lg', :id=>"add_on_checkout", method: :post %>
 
 
                    </div>
@@ -1359,18 +1348,26 @@ $("#cssmenu").menumaker({
             $('.cakes').on('click', function() {
               $('.cake-img').removeClass('selected-cake');
               $(this).find('.cake-img').addClass('selected-cake');
-              var cakePriceValue = $(this).attr('cake-price-value');
-              var basePrice = $("#actual_product_price").val();
-              var total = parseFloat(cakePriceValue) * parseInt(basePrice);
+              var total = $(this).attr('cake-price-value');
+              var variation_id = $(this).attr('variation-id')
+              $("#variation_id").val(variation_id);
+              
               $("#product_price").text(total);
               $("#base_price").text(total);
 
-               $("#add_to_cart_check").attr('href', function(i,a){
-                  return a.replace( /(cake_price_value=)[+-]?([0-9]*[.])?[0-9]+/ig, 'cake_price_value='+cakePriceValue );
+              $("#add_to_cart_check").attr('href', function(i,a){
+                  return a.replace( /(cake_price_value=)[a-fA-F0-9]+/ig, 'cake_price_value='+total);
+              });
+              $("#add_to_cart_check").attr('href', function(i,a){
+                  return a.replace( /(variation_id=)[+-]?([0-9]*[.])?[0-9]+/ig, 'variation_id='+variation_id);
               });
 
-               $("#add_on_checkout").attr('href', function(i,a){
-                  return a.replace( /(cake_price_value=)[+-]?([0-9]*[.])?[0-9]+/ig, 'cake_price_value='+cakePriceValue );
+              $("#add_on_checkout").attr('href', function(i,a){
+                  return a.replace( /(cake_price_value=)[+-]?([0-9]*[.])?[0-9]+/ig, 'cake_price_value='+total);
+              });
+
+              $("#add_on_checkout").attr('href', function(i,a){
+                  return a.replace( /(variation_id=)[+-]?([0-9]*[.])?[0-9]+/ig, 'variation_id='+variation_id);
               });
             });
 

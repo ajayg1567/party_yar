@@ -18,6 +18,11 @@ class Admin::ProductsController < Admin::ApplicationController
 
   # GET /products/new
   def new
+    # if params[:variation_id].present? && params[:variation_id] == 'Weight'
+    #   @variation = Variation::WEIGHT
+    # else params[:variation_id].present? && params[:variation_id] == 'Size'
+    #   @variation = Variation::SIZE
+    # end
     @product = Product.new
   end
 
@@ -43,9 +48,19 @@ class Admin::ProductsController < Admin::ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    
+    if @product.variations.present?
+      @product.variations.each_with_index do |variation, key|
+        if params[:has_variation].present? && params[:has_variation] == "weight" 
+          @product.variations[key].unit = @product.variations[key].unit.split(" - ")[1]
+        elsif params[:has_variation].present? && params[:has_variation] == "size"
+          @product.variations[key].unit = @product.variations[key].unit.split(" - ")[0].downcase
+        end
+      end
+    end
     respond_to do |format|
       if @product.save
+        
         format.html { redirect_to admin_product_url(@product), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else

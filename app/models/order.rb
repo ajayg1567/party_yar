@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
       if status == "authorized"
         razorpay_pmnt_obj.capture({amount: ((current_cart.total_amount_with_delivery.to_i) * 100)})
         razorpay_pmnt_obj = fetch_payment(params[:payment_id])
-        razorpay_pmnt_order_id = generate_order_id(product)
+        razorpay_pmnt_order_id = generate_order_id(product, current_cart.items.first)
         params.merge!({status: razorpay_pmnt_obj.status, price: current_cart.total_amount_with_delivery, payment_mode: razorpay_pmnt_obj.method, order_id: razorpay_pmnt_order_id, order_no: Random.rand(10000000)})
         OrderNotificationJob.perform_async(params, current_cart)
       else

@@ -16,4 +16,17 @@ $(document).on('turbolinks:load', function() {
 		var checkboxVal = $(this).is(':checked');
 		$('#day_delivery_field').toggle(checkboxVal);
 	});
+
+	window.selectVariation = function(){
+		var value = $("#variation_category").val()
+		if(value == "weight" || value == "size") {
+          	$('#product_price').val(null)
+          	element = document.getElementById("price_variation")
+          	element.classList.add("display-none")
+
+		}else{
+			element = document.getElementById("price_variation")
+          	element.classList.remove("display-none")
+		}
+	}
 })

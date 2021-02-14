@@ -17,8 +17,9 @@ class Cart < ApplicationRecord
 			additional[:delivery_time] = delivery_details[1]
 			delivery_details = params["delivery_details"].split(",") 
 		end
-		additional[:extra_field_id] = params[:extra_field_id]  	
-		self.items << Item.new(product_id: params[:product_id], additional: additional)
+		additional[:extra_field_id] = params[:extra_field_id]  
+		variation_id = (params[:variation_id].to_i > 0) ? params[:variation_id].to_i : nil
+		self.items << Item.new(product_id: params[:product_id], additional: additional, product_variation_id: variation_id)
 		self.save
 		return
 	end
@@ -33,8 +34,8 @@ class Cart < ApplicationRecord
 		price = []
 		new_price = []
 		items.each do |item|
-			if item.additional[:product_upgrade_id].present?
-				price << ProductUpgrade.find(item.additional[:product_upgrade_id]).price.to_i
+			if item.product_variation_id.present?
+				price << Variation.find_by(id: item.product_variation_id).price.to_i
 			else
 				price << item.additional[:add_ons].map{|m, count| AddOn.find(m).price.to_i * count.to_i}.flatten.map(&:to_i) if item.additional[:add_ons].present?
 				price << Product.find(item.product_id).price.to_i * (item.additional[:cake_price_value] || 1)
